@@ -1,0 +1,65 @@
+@import "../preflight.css";
+@import "../coreBase.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sk-ai-bubble,
+.sk-ai-bubble[data-color="vattjom"] {
+  @apply bg-bubble-surface hover:bg-bubble-surface-hover text-bubble-text;
+  @apply border-bubble border-customcolor;
+  box-shadow: var(--sk-spacing-bubbleshadow) !important;
+  .sk-ai-bubble-tail {
+    @apply shadow-bubble-surface;
+    display: var(--sk-spacing-displaybubble) !important;
+    &:before {
+      display: var(--sk-spacing-displaybubbleshadow);
+    }
+  }
+  .sk-icon {
+    display: var(--sk-spacing-displaybubbleicon) !important;
+  }
+  &:hover {
+    .sk-ai-bubble-tail {
+      @apply shadow-bubble-surface-hover;
+    }
+  }
+}
+
+.sk-ai-markdown {
+  word-break: break-word;
+}
+
+.sk-ai-assistant-presentation-header-title {
+  @apply font-header;
+}
+
+.sk-ai-service-module {
+  &-row {
+    &[data-color],
+    &[data-color][data-inverted] {
+      @apply bg-header-background;
+      /* @apply text-header-text-primary; */
+    }
+  }
+
+  &[data-variant="secondary"] {
+    @apply border-customwidth border-customcolor;
+  }
+}
+
+.sk-link {
+  @apply text-dark-link;
+  @apply hover:text-dark-link-hover;
+  &[data-inverted="true"] {
+    @apply text-header-text-link;
+    @apply hover:text-header-text-link-hover;
+  }
+}
+
+.sk-form-input {
+  @apply border-customwidth border-customcolor;
+  &-group {
+    @apply border-customwidth border-customcolor;
+  }
+}
