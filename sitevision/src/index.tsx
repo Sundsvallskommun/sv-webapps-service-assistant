@@ -326,7 +326,7 @@ router.get("/", (req, res) => {
     variant: appData.get("variant") as string,
     readmore,
     rounded,
-    icon: icon.props.src,
+    icon: icon ? icon?.props?.src : undefined,
     border,
   };
 

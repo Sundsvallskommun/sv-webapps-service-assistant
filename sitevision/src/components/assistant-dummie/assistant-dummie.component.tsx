@@ -333,12 +333,12 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
     "--bg-color-surface": "#005595",
     "--bg-inverted-color-surface": "#CFE0EC",
     "--bg-bubble-surface": getBubbleBackground(
-      options?.colors.bubble?.color || "vattjom",
-      options?.colors.bubble?.inverted || false
+      options?.colors?.bubble?.color || "vattjom",
+      options?.colors?.bubble?.inverted || false
     ),
     "--text-bubble": getBubbleText(
-      options?.colors.bubble?.color || "vattjom",
-      options?.colors.bubble?.inverted || false
+      options?.colors?.bubble?.color || "vattjom",
+      options?.colors?.bubble?.inverted || false
     ),
     "--bg-primary-surface": getPrimarySurface(
       options?.colors?.header?.color || "vattjom"
@@ -487,7 +487,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
                     return (
                       <li key={`sk-ai-sm-question-${index}`}>
                         <Bubble
-                          data-color={options?.colors.bubble?.surface?.light}
+                          data-color={options?.colors?.bubble?.surface?.light}
                           hideIcon={!options?.colors?.bubble?.icon}
                           shadow={options?.colors?.bubble?.shadow}
                           variant={
@@ -495,7 +495,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
                               ? "simple"
                               : "default"
                           }
-                          data-borders={options?.colors.bubble?.borders}
+                          data-borders={options?.colors?.bubble?.borders}
                         >
                           {item}
                         </Bubble>
