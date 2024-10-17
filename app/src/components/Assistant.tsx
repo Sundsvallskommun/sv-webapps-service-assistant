@@ -1,5 +1,6 @@
 import { AIServiceModule, useAssistantStore } from "@sk-web-gui/ai";
 import { Avatar } from "@sk-web-gui/react";
+import HtmlParser from "react-html-parser";
 
 export const Assistant = () => {
   const options = useAssistantStore((state) => state.options);
@@ -14,8 +15,8 @@ export const Assistant = () => {
         ? !options?.colors?.header?.inverted
         : options?.colors?.header?.inverted,
     variant: options?.variant,
-    title: options?.title,
-    children: options?.subtitle,
+    header: options?.title ? HtmlParser(options.title) : undefined,
+    children: options?.subtitle ? HtmlParser(options.subtitle) : undefined,
     label: options?.label,
     readmore: options?.readmore,
     headerIcon: options?.icon ? (
