@@ -3,6 +3,7 @@ import { Avatar, Button, Link } from "@sk-web-gui/react";
 import React from "react";
 import type { DefaultColor } from "../../common/defaultColors";
 import styles from "./assistant-dummie.styling.scss";
+import HtmlParser from "react-html-parser";
 
 interface Color {
   light: string;
@@ -415,9 +416,9 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
                     <Avatar size="md" imageUrl={options?.icon}></Avatar>
                   </span>
                 )}
-                {options?.title}
+                {options?.title && HtmlParser(options.title)}
               </header>
-              {options?.subtitle}
+              {options?.subtitle && HtmlParser(options.subtitle)}
               <div className="sk-ai-service-module-form">
                 <div className="sk-form-control sk-ai-service-module-form-control">
                   {options?.helperText && (
