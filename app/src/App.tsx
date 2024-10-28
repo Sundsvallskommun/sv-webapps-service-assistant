@@ -76,6 +76,20 @@ function App({
     setApiBaseUrl,
   ]);
 
+  useEffect(() => {
+    if (options?.css) {
+      const rootElement = document.getElementById(id);
+      const isShadow = rootElement.getAttribute("data-shadow") === "true";
+      const firstChild = rootElement.firstChild as HTMLElement;
+
+      const styleroot = isShadow ? firstChild?.shadowRoot : firstChild;
+
+      const style = document?.createElement("style");
+      style.textContent = options.css;
+      styleroot?.appendChild(style);
+    }
+  }, [options?.css]);
+
   const getBubbleSurface = (
     color: AdditionalAssistantOptions,
     mode: "light" | "dark"

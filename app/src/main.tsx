@@ -63,14 +63,20 @@ for (let index = 0; index < containerArray.length; index++) {
   const container = containerArray[index];
 
   if (container) {
-    console.log("🚀 ~ container:", container);
     if (container.getAttribute("data-shadow") === "false") {
       container.setAttribute("class", "sk-serviceroot");
+      // create variable to attach the tailwind stylesheet
+      const style = document?.createElement("style");
+
+      // attach the stylesheet as text
+      style.textContent = css;
+
+      // apply the style
+      container.appendChild(style);
 
       initializeReactApp(container, container);
     } else {
       const id = `service-assistant-shadow-${index}`;
-      console.log("🚀 ~ id:", id);
       customElements.define(id, CustomAppComponent);
       container.appendChild(document?.createElement(id));
     }

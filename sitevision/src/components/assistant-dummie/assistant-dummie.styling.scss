@@ -334,6 +334,7 @@
 
       &-header {
         position: relative;
+        font-weight: bold;
         &,
         > * {
           margin: 0;
@@ -462,9 +463,9 @@
         }
 
         &[data-variant="primary"] {
-          width: 14rem;
-          max-width: 14rem;
-          min-width: 14rem;
+          width: 22.5rem;
+          max-width: 22.5rem;
+          min-width: 22.5rem;
         }
         &[data-variant="secondary"] {
           width: 100%;

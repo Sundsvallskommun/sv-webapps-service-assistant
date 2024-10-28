@@ -1,202 +1,148 @@
-<div class="panel-group" id="editorial">
-  <h2><%= i18n('editorial') %></h2>
-  <div class="panel panel-default">
-    <a
-      class="panel-heading"
-      role="button"
-      data-toggle="collapse"
-      data-target="#assistant-headers"
-      data-parent="#editorial"
-    >
-      <h3 class="panel-title"><%= i18n('headings') %></h3>
-    </a>
-    <div class="panel-collapse" id="assistant-headers">
-      <div class="panel-body">
-        <div class="form-group">
-          <label><%= i18n('heading') %></label>
-          <input class="form-control" name="title" />
-        </div>
-        <div class="form-group">
-          <label><%= i18n('subheading') %></label>
-          <input class="form-control" name="subtitle" />
-        </div>
-        <div class="form-group">
-          <label><%= i18n('label') %></label>
-          <input class="form-control" name="label" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-target="#assistant-readmore"
-      data-parent="#editorial"
-    >
-      <h3 class="panel-title"><%= i18n('read_more') %></h3>
-    </a>
-    <div class="panel-collapse" id="assistant-readmore">
-      <div class="panel-body">
-        <div class="form-group">
-          <label><%= i18n('text') %></label>
-          <input class="form-control" name="read_more_text" />
-        </div>
-        <div class="form-group">
-          <label><%= i18n('link_text') %></label>
-          <input class="form-control" name="read_more_link_text" />
-        </div>
-        <div class="form-group">
-          <label><%= i18n('link_url') %></label>
-          <input class="form-control" name="read_more_link_url" />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-target="#pre-defined-question-panel"
-      data-parent="#editorial"
-    >
-      <h3 class="panel-title"><%= i18n('pre_defined_questions') %></h3>
-    </a>
-    <div class="panel-collapse" id="pre-defined-question-panel">
-      <div class="panel-body">
-        <div class="form-group">
-          <label>
-            <input
-              type="checkbox"
-              name="use_questions"
-              data-enables=".pre-defined-questions"
-              data-value-type="boolean"
-            />
-            <%= i18n('use_pre_defined_questions') %>
-          </label>
-        </div>
-      </div>
-      <div class="panel-body pre-defined-questions">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <label><%= i18n('heading') %></label>
-              <input class="form-control" name="questions_title" />
-            </div>
-            <div class="form-group">
-              <label><%= i18n('number_of_questions') %></label>
-              <input
-                class="form-control"
-                data-component="number-spinner"
-                data-min="1"
-                data-max="5"
-                data-step="1"
-                name="questions_count"
-              />
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-group">
-              <label><%= i18n('question') %> 1</label>
-              <input class="form-control" name="question_1" />
-            </div>
-            <div class="form-group">
-              <label><%= i18n('question') %> 2</label>
-              <input class="form-control" name="question_2" />
-            </div>
-            <div class="form-group">
-              <label><%= i18n('question') %> 3</label>
-              <input class="form-control" name="question_3" />
-            </div>
-            <div class="form-group">
-              <label><%= i18n('question') %> 4</label>
-              <input class="form-control" name="question_4" />
-            </div>
-            <div class="form-group">
-              <label><%= i18n('question') %> 5</label>
-              <input class="form-control" name="question_5" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="form-group">
+  <fieldset class="form-group">
+    <legend><%= i18n('version') %></legend>
+    <label>
+      <input
+        type="radio"
+        name="version"
+        value="1"
+        data-enables="#primary-values"
+      />
+      <%= i18n('primary') %>
+    </label>
+    <label>
+      <input
+        type="radio"
+        data-enables="#secondary-values"
+        name="version"
+        value="2"
+      />
+      <%= i18n('secondary') %>
+    </label>
+  </fieldset>
 </div>
 
-<div class="panel-group" id="assistant-information">
-  <h2><%= i18n('assistant') %></h2>
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-target="#assistant-settings"
-    >
-      <h3 class="panel-title"><%= i18n('settings') %></h3>
-    </a>
-    <div class="panel-collapse" id="assistant-settings">
-      <div class="panel-body">
-        <div class="form-group">
-          <label><%= i18n('server_url') %></label>
-          <input class="form-control" name="server_url" />
+<!-- PRIMARY -->
+<div id="primary-values">
+  <div class="panel-group" id="one_editorial">
+    <h2><%= i18n('editorial') %></h2>
+    <div class="panel panel-default">
+      <a
+        class="panel-heading"
+        role="button"
+        data-toggle="collapse"
+        data-target="#one_assistant-headers"
+        data-parent="#one_editorial"
+      >
+        <h3 class="panel-title"><%= i18n('headings') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_assistant-headers">
+        <div class="panel-body">
+          <div class="form-group">
+            <label><%= i18n('heading') %></label>
+            <input class="form-control" name="1_title" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('subheading') %></label>
+            <input class="form-control" name="1_subtitle" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('label') %></label>
+            <input class="form-control" name="1_label" />
+          </div>
         </div>
-        <div class="form-group">
-          <label><%= i18n('assistant_id') %></label>
-          <input class="form-control" name="assistantId" />
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#one_assistant-readmore"
+        data-parent="#one_editorial"
+      >
+        <h3 class="panel-title"><%= i18n('read_more') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_assistant-readmore">
+        <div class="panel-body">
+          <div class="form-group">
+            <label><%= i18n('text') %></label>
+            <input class="form-control" name="1_read_more_text" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('link_text') %></label>
+            <input class="form-control" name="1_read_more_link_text" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('link_url') %></label>
+            <input class="form-control" name="1_read_more_link_url" />
+          </div>
         </div>
-        <div class="form-group">
-          <label><%= i18n('app') %></label>
-          <input class="form-control" name="app" />
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#one_pre-defined-question-panel"
+        data-parent="#one_editorial"
+      >
+        <h3 class="panel-title"><%= i18n('pre_defined_questions') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_pre-defined-question-panel">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_questions"
+                data-enables="#one_pre-defined-questions"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_pre_defined_questions') %>
+            </label>
+          </div>
         </div>
-
-        <div
-          class="panel-group"
-          id="advanced-settings-accordion"
-          data-accordion
-        >
-          <div class="panel panel-default">
-            <a
-              class="panel-heading collapsed"
-              role="button"
-              data-toggle="collapse"
-              data-parent="#advanced-settings-accordion"
-              data-target="#advanced-settings"
-              ><label class="panel-title"><%= i18n('advanced') %></label>
-            </a>
-            <div class="panel-collapse" id="advanced-settings">
-              <div class="panel-body">
-                <div class="form-group">
-                  <label
-                    ><input
-                      type="checkbox"
-                      name="stream"
-                      data-value-type="boolean"
-                    />
-                    <%= i18n('stream_answers') %></label
-                  >
-                </div>
-                <div class="form-group">
-                  <label
-                    ><input
-                      type="checkbox"
-                      name="shadowdom"
-                      data-value-type="boolean"
-                    />
-                    <%= i18n('use_shadow_dom') %></label
-                  >
-                </div>
-                <div class="form-group">
-                  <label
-                    ><input
-                      type="checkbox"
-                      name="use_user"
-                      data-value-type="boolean"
-                    />
-                    <%= i18n('use_user') %></label
-                  >
-                </div>
+        <div class="panel-body" id="one_pre-defined-questions">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('heading') %></label>
+                <input class="form-control" name="1_questions_title" />
+              </div>
+              <div class="form-group">
+                <label><%= i18n('number_of_questions') %></label>
+                <input
+                  class="form-control"
+                  data-component="number-spinner"
+                  data-min="1"
+                  data-max="5"
+                  data-step="1"
+                  name="1_questions_count"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('question') %> 1</label>
+                <input class="form-control" name="1_question_1" />
+              </div>
+              <div class="form-group">
+                <label><%= i18n('question') %> 2</label>
+                <input class="form-control" name="1_question_2" />
+              </div>
+              <div class="form-group">
+                <label><%= i18n('question') %> 3</label>
+                <input class="form-control" name="1_question_3" />
+              </div>
+              <div class="form-group">
+                <label><%= i18n('question') %> 4</label>
+                <input class="form-control" name="1_question_4" />
+              </div>
+              <div class="form-group">
+                <label><%= i18n('question') %> 5</label>
+                <input class="form-control" name="1_question_5" />
               </div>
             </div>
           </div>
@@ -204,175 +150,123 @@
       </div>
     </div>
   </div>
-  <!-- ASSISTANT INFORMATION -->
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-target="#assistant-info"
-      data-parent="#assistant-information"
-    >
-      <h3 class="panel-title"><%= i18n('assistant_info') %></h3>
-    </a>
-    <div class="panel-collapse" id="assistant-info">
-      <div class="panel-body">
-        <div class="form-group">
-          <label><%= i18n('name') %></label>
-          <input class="form-control" name="assistant_name" />
-        </div>
-        <div class="form-group">
-          <label><%= i18n('avatar') %></label>
-          <input
-            class="form-control"
-            data-component="image-selector"
-            data-removable
-            name="assistant_avatar"
-          />
-        </div>
-        <div class="form-group">
-          <label><%= i18n('initials') %></label>
-          <input
-            class="form-control"
-            name="assistant_shortName"
-            maxlength="2"
-          />
-        </div>
-        <div class="form-group">
-          <label><%= i18n('avatar_color') %></label>
-          <select
-            id="select"
-            name="assistant_avatar_color"
-            class="form-control"
-          >
-            <option value="vattjom">Vattjom</option>
-            <option value="juniskar">Juniskär</option>
-            <option value="bjornstigen">Björnstigen</option>
-            <option value="gronsta">Grönsta</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label
-            ><input
-              type="checkbox"
-              name="assistant_show_title"
-              data-value-type="boolean"
-            />
-            <%= i18n('show_name_in_feed') %></label
-          >
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- USER INFORMATION -->
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-target="#user-info"
-      data-parent="#assistant-information"
-    >
-      <h3 class="panel-title"><%= i18n('user_info') %></h3>
-    </a>
-    <div class="panel-collapse" id="user-info">
-      <div class="panel-body">
-        <p><%= i18n('user_info_description') %></p>
-        <div class="form-group">
-          <label><%= i18n('name') %></label>
-          <input class="form-control" name="user_name" />
-        </div>
-
-        <div class="form-group">
-          <label><%= i18n('avatar') %></label>
-          <input
-            class="form-control"
-            data-component="image-selector"
-            data-removable
-            name="user_avatar"
-          />
-        </div>
-        <div class="form-group">
-          <label><%= i18n('initials') %></label>
-          <input class="form-control" name="user_initials" maxlength="2" />
-        </div>
-        <div class="form-group">
-          <label><%= i18n('avatar_color') %></label>
-          <select id="select" name="user_avatar_color" class="form-control">
-            <option value="vattjom">Vattjom</option>
-            <option value="juniskar">Juniskär</option>
-            <option value="bjornstigen">Björnstigen</option>
-            <option value="gronsta">Grönsta</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label
-            ><input
-              type="checkbox"
-              name="user_show_title"
-              data-value-type="boolean"
-            />
-            <%= i18n('show_name_in_feed') %></label
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SYSTEM INFORMATION -->
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-target="#system-info"
-      data-parent="#assistant-information"
-    >
-      <h3 class="panel-title"><%= i18n('system_info') %></h3>
-    </a>
-    <div class="panel-collapse" id="system-info">
-      <div class="panel-body">
-        <p><strong><%= i18n('system_info_description') %></strong></p>
-
-        <fieldset class="form-group">
-          <label>
-            <input type="radio" name="system_show" value="assistant" />
-            <%= i18n('system_show_as_assistant') %>
-          </label>
-          <label>
-            <input
-              type="radio"
-              data-enables="#system-custom-setup"
-              name="system_show"
-              value="custom"
-            />
-            <%= i18n('system_show_as_custom') %>
-          </label>
-        </fieldset>
-
-        <div id="system-custom-setup">
+  <div class="panel-group" id="one_assistant-information">
+    <h2><%= i18n('assistant') %></h2>
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#one_assistant-settings"
+      >
+        <h3 class="panel-title"><%= i18n('settings') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_assistant-settings">
+        <div class="panel-body">
           <div class="form-group">
-            <label><%= i18n('name') %></label>
-            <input class="form-control" name="system_name" />
+            <label><%= i18n('server_url') %></label>
+            <input class="form-control" name="1_server_url" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('assistant_id') %></label>
+            <input class="form-control" name="1_assistantId" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('app') %></label>
+            <input class="form-control" name="1_app" />
           </div>
 
+          <div
+            class="panel-group"
+            id="one_advanced-settings-accordion"
+            data-accordion
+          >
+            <div class="panel panel-default">
+              <a
+                class="panel-heading collapsed"
+                role="button"
+                data-toggle="collapse"
+                data-parent="#one_advanced-settings-accordion"
+                data-target="#one_advanced-settings"
+                ><label class="panel-title"><%= i18n('advanced') %></label>
+              </a>
+              <div class="panel-collapse" id="one_advanced-settings">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="1_stream"
+                        data-value-type="boolean"
+                      />
+                      <%= i18n('stream_answers') %></label
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="1_shadowdom"
+                        data-value-type="boolean"
+                      />
+                      <%= i18n('use_shadow_dom') %></label
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="1_use_user"
+                        data-value-type="boolean"
+                      />
+                      <%= i18n('use_user') %></label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ASSISTANT INFORMATION -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#one_assistant-info"
+        data-parent="#one_assistant-information"
+      >
+        <h3 class="panel-title"><%= i18n('assistant_info') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_assistant-info">
+        <div class="panel-body">
+          <div class="form-group">
+            <label><%= i18n('name') %></label>
+            <input class="form-control" name="1_assistant_name" />
+          </div>
           <div class="form-group">
             <label><%= i18n('avatar') %></label>
             <input
               class="form-control"
               data-component="image-selector"
               data-removable
-              name="system_avatar"
+              name="1_assistant_avatar"
             />
           </div>
           <div class="form-group">
             <label><%= i18n('initials') %></label>
-            <input class="form-control" name="system_initials" maxlength="2" />
+            <input
+              class="form-control"
+              name="1_assistant_shortName"
+              maxlength="2"
+            />
           </div>
           <div class="form-group">
             <label><%= i18n('avatar_color') %></label>
-            <select id="select" name="system_avatar_color" class="form-control">
+            <select name="1_assistant_avatar_color" class="form-control">
               <option value="vattjom">Vattjom</option>
               <option value="juniskar">Juniskär</option>
               <option value="bjornstigen">Björnstigen</option>
@@ -383,7 +277,7 @@
             <label
               ><input
                 type="checkbox"
-                name="system_show_title"
+                name="1_assistant_show_title"
                 data-value-type="boolean"
               />
               <%= i18n('show_name_in_feed') %></label
@@ -392,716 +286,220 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- UTSEENDE -->
-<div class="panel-group" id="styling-accordion" data-accordion>
-  <h2><%= i18n('look') %></h2>
-  <!-- Sidhuvud -->
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-parent="#styling-accordion"
-      data-target="#styling-header"
-      ><h3 class="panel-title"><%= i18n('style') %></h3>
-    </a>
-    <div class="panel-collapse" id="styling-header">
-      <div class="panel-body">
-        <fieldset>
-          <legend><%= i18n('style_variant') %></legend>
-          <label>
-            <input type="radio" name="variant" value="primary" />
-            <%= i18n('primary') %>
-          </label>
-          <label>
+    <!-- USER INFORMATION -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#one_user-info"
+        data-parent="#one_assistant-information"
+      >
+        <h3 class="panel-title"><%= i18n('user_info') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_user-info">
+        <div class="panel-body">
+          <p><%= i18n('user_info_description') %></p>
+          <div class="form-group">
+            <label><%= i18n('name') %></label>
+            <input class="form-control" name="1_user_name" />
+          </div>
+
+          <div class="form-group">
+            <label><%= i18n('avatar') %></label>
             <input
-              type="radio"
-              name="variant"
-              value="secondary"
-              data-enables="#main-icon"
+              class="form-control"
+              data-component="image-selector"
+              data-removable
+              name="1_user_avatar"
             />
-            <%= i18n('secondary') %>
-          </label>
-        </fieldset>
-      </div>
-      <div class="panel-body" id="main-icon">
-        <div class="form-group">
-          <label><%= i18n('icon') %></label>
-          <input
-            class="form-control"
-            data-component="image-selector"
-            data-removable
-            name="header_icon"
-          />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('initials') %></label>
+            <input class="form-control" name="1_user_initials" maxlength="2" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('avatar_color') %></label>
+            <select name="1_user_avatar_color" class="form-control">
+              <option value="vattjom">Vattjom</option>
+              <option value="juniskar">Juniskär</option>
+              <option value="bjornstigen">Björnstigen</option>
+              <option value="gronsta">Grönsta</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label
+              ><input
+                type="checkbox"
+                name="1_user_show_title"
+                data-value-type="boolean"
+              />
+              <%= i18n('show_name_in_feed') %></label
+            >
+          </div>
         </div>
       </div>
-      <div class="panel-body">
-        <fieldset class="form-group">
-          <legend><%= i18n('color') %></legend>
-          <label>
-            <input type="radio" name="color_header" value="black" />
-            <%= i18n('black') %>
-          </label>
-          <label>
-            <input type="radio" name="color_header" value="vattjom" />
-            Vattjom
-          </label>
-          <label>
-            <input type="radio" name="color_header" value="juniskar" />
-            Juniskär
-          </label>
-          <label>
-            <input type="radio" name="color_header" value="bjornstigen" />
-            Björnstigen
-          </label>
-          <label>
-            <input type="radio" name="color_header" value="gronsta" />
-            Grönsta
-          </label>
-          <label>
-            <input
-              type="radio"
-              data-enables=".color-header-values"
-              name="color_header"
-              value="custom"
-            />
-            <%= i18n('use_custom') %>
-          </label>
-        </fieldset>
-        <div class="row" id="color-header-inverted">
-          <div class="col-md-6">
+    </div>
+
+    <!-- SYSTEM INFORMATION -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#one_system-info"
+        data-parent="#one_assistant-information"
+      >
+        <h3 class="panel-title"><%= i18n('system_info') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_system-info">
+        <div class="panel-body">
+          <p><strong><%= i18n('system_info_description') %></strong></p>
+
+          <fieldset class="form-group">
+            <label>
+              <input type="radio" name="1_system_show" value="assistant" />
+              <%= i18n('system_show_as_assistant') %>
+            </label>
+            <label>
+              <input
+                type="radio"
+                data-enables="#one_system-custom-setup"
+                name="1_system_show"
+                value="custom"
+              />
+              <%= i18n('system_show_as_custom') %>
+            </label>
+          </fieldset>
+
+          <div id="one_system-custom-setup">
+            <div class="form-group">
+              <label><%= i18n('name') %></label>
+              <input class="form-control" name="1_system_name" />
+            </div>
+
+            <div class="form-group">
+              <label><%= i18n('avatar') %></label>
+              <input
+                class="form-control"
+                data-component="image-selector"
+                data-removable
+                name="1_system_avatar"
+              />
+            </div>
+            <div class="form-group">
+              <label><%= i18n('initials') %></label>
+              <input
+                class="form-control"
+                name="1_system_initials"
+                maxlength="2"
+              />
+            </div>
+            <div class="form-group">
+              <label><%= i18n('avatar_color') %></label>
+              <select name="1_system_avatar_color" class="form-control">
+                <option value="vattjom">Vattjom</option>
+                <option value="juniskar">Juniskär</option>
+                <option value="bjornstigen">Björnstigen</option>
+                <option value="gronsta">Grönsta</option>
+              </select>
+            </div>
             <div class="form-group">
               <label
                 ><input
                   type="checkbox"
-                  name="color_header_inverted"
+                  name="1_system_show_title"
                   data-value-type="boolean"
                 />
-                <%= i18n('inverted') %></label
+                <%= i18n('show_name_in_feed') %></label
               >
             </div>
-          </div>
-        </div>
-        <div class="row color-header-values">
-          <div class="col-md-6">
-            <formfield class="form-group">
-              <legend><%= i18n('lightmode') %></legend>
-              <div class="form-group">
-                <label><%= i18n('background') %>, <%= i18n('colored') %></label>
-                <select
-                  data-component="color-selector"
-                  name="color_header_background_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label><%= i18n('background') %>, <%= i18n('neutral') %></label>
-                <select
-                  data-component="color-selector"
-                  name="color_header_contentbg_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('light') %>, <%=
-                  i18n('primary') %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_primary_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('light') %>, <%=
-                  i18n('secondary') %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_secondary_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
-                  %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_link_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
-                  %>, <%= i18n('hover') %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_link_hover_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('primary')
-                  %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_dark_primary_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('dark') %>, <%=
-                  i18n('secondary') %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_dark_secondary_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
-                  %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_dark_link_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
-                  %>, <%= i18n('hover') %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_dark_link_hover_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label><%= i18n('button') %>, <%= i18n('primary') %></label>
-                <select
-                  data-component="color-selector"
-                  name="color_header_surface_primary_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
-                  i18n('hover') %>,</label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_surface_hover_light"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
-                  i18n('disabled') %>,</label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_surface_disabled_light"
-                ></select>
-              </div>
-            </formfield>
-          </div>
-          <div class="col-md-6">
-            <formfield class="form-group">
-              <legend><%= i18n('darkmode') %></legend>
-              <div class="form-group">
-                <label><%= i18n('background') %>, <%= i18n('colored') %></label>
-                <select
-                  data-component="color-selector"
-                  name="color_header_background_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label><%= i18n('background') %>, <%= i18n('neutral') %></label>
-                <select
-                  data-component="color-selector"
-                  name="color_header_contentbg_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('light') %>, <%=
-                  i18n('primary') %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_primary_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('light') %>, <%=
-                  i18n('secondary') %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_secondary_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
-                  %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_link_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
-                  %>, <%= i18n('hover') %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_link_hover_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('primary')
-                  %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_dark_primary_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('dark') %>, <%=
-                  i18n('secondary') %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_dark_secondary_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
-                  %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_dark_link_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
-                  %>, <%= i18n('hover') %></label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_text_dark_link_hover_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label><%= i18n('button') %>, <%= i18n('primary') %></label>
-                <select
-                  data-component="color-selector"
-                  name="color_header_surface_primary_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
-                  i18n('hover') %>,</label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_surface_hover_dark"
-                ></select>
-              </div>
-              <div class="form-group">
-                <label
-                  ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
-                  i18n('disabled') %>,</label
-                >
-                <select
-                  data-component="color-selector"
-                  name="color_header_surface_disabled_dark"
-                ></select>
-              </div>
-            </formfield>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Fonts -->
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-parent="#styling-accordion"
-      data-target="#styling-fonts"
-      ><h3 class="panel-title"><%= i18n('fonts') %></h3>
-    </a>
-    <div class="panel-collapse" id="styling-fonts">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-6">
-            <fieldset class="form-group">
-              <legend><%= i18n('font_default') %></legend>
-              <label>
-                <input type="radio" name="font_default" value="theme" />
-                <%= i18n('use_from_theme') %>
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  data-enables="#font-default-value"
-                  name="font_default"
-                  value="other"
-                />
-                <%= i18n('use_other') %>
-              </label>
+  <!-- UTSEENDE -->
+  <div class="panel-group" id="one_styling-accordion" data-accordion>
+    <h2><%= i18n('look') %></h2>
+    <!-- Sidhuvud -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-header"
+        ><h3 class="panel-title"><%= i18n('style') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_styling-header">
+        <div class="panel-body">
+          <fieldset>
+            <legend><%= i18n('style_variant') %></legend>
+            <label>
+              <input type="radio" name="1_variant" value="primary" />
+              <%= i18n('primary') %>
+            </label>
+            <label>
               <input
-                class="form-control"
-                id="font-default-value"
-                name="font_default_value"
+                type="radio"
+                name="1_variant"
+                value="secondary"
+                data-enables="#one_main-icon"
               />
-            </fieldset>
+              <%= i18n('secondary') %>
+            </label>
+          </fieldset>
+        </div>
+        <div class="panel-body" id="one_main-icon">
+          <div class="form-group">
+            <label><%= i18n('icon') %></label>
+            <input
+              class="form-control"
+              data-component="image-selector"
+              data-removable
+              name="1_header_icon"
+            />
           </div>
-          <div class="col-md-6">
-            <fieldset class="form-group">
-              <legend><%= i18n('font_header') %></legend>
-              <label>
-                <input type="radio" name="font_header" value="theme" />
-                <%= i18n('use_from_theme') %>
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  data-enables="#font-header-value"
-                  name="font_header"
-                  value="other"
-                />
-                <%= i18n('use_other') %>
-              </label>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <legend><%= i18n('color') %></legend>
+            <label>
+              <input type="radio" name="1_color_header" value="vattjom" />
+              Vattjom
+            </label>
+            <label>
+              <input type="radio" name="1_color_header" value="juniskar" />
+              Juniskär
+            </label>
+            <label>
+              <input type="radio" name="1_color_header" value="bjornstigen" />
+              Björnstigen
+            </label>
+            <label>
+              <input type="radio" name="1_color_header" value="gronsta" />
+              Grönsta
+            </label>
+            <label>
               <input
-                class="form-control"
-                id="font-header-value"
-                name="font_header_value"
+                type="radio"
+                data-enables=".one_color-header-values"
+                name="1_color_header"
+                value="custom"
               />
-            </fieldset>
-          </div>
-        </div>
-      </div>
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <label><%= i18n('base_font_size') %></label>
-              <input
-                class="form-control"
-                data-component="number-spinner"
-                data-min="0"
-                data-max="100"
-                data-step="1"
-                name="fontbase"
-                data-postfix="px"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Border radius -->
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-parent="#styling-accordion"
-      data-target="#styling-border-radius"
-      ><h3 class="panel-title"><%= i18n('border-radius') %></h3>
-    </a>
-    <div class="panel-collapse" id="styling-border-radius">
-      <div class="panel-body">
-        <div class="form-group">
-          <label>
-            <input
-              type="checkbox"
-              name="use_custom_border_radius"
-              data-enables="#border-radius-values"
-              data-value-type="boolean"
-            />
-            <%= i18n('use_custom_border_radius') %>
-          </label>
-        </div>
-      </div>
-      <div class="panel-body" id="border-radius-values">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <label
-                ><%= i18n('border-radius') %>, <%= i18n('main-card') %></label
-              >
-              <div class="input-group websize-selector bootstrap-touchspin">
-                <input
-                  class="form-control"
-                  data-component="number-spinner"
-                  data-min="0"
-                  data-max="10000"
-                  data-step="1"
-                  name="border_radius_main_value"
-                />
-                <span
-                  class="input-group-addon bootstrap-touchspin-postfix dropdown"
-                >
-                  <select
-                    name="border_radius_main_unit"
-                    class="btn btn-default dropdown-toggle unit-button"
-                  >
-                    <option value="px">px</option>
-                    <option value="em">em</option>
-                    <option value="rem">rem</option>
-                    <option value="%">%</option>
-                  </select>
-                </span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label
-                ><%= i18n('border-radius') %>, <%= i18n('input') %>, <%=
-                i18n('big_buttons') %></label
-              >
-              <div class="input-group websize-selector bootstrap-touchspin">
-                <input
-                  class="form-control"
-                  data-component="number-spinner"
-                  data-min="0"
-                  data-max="10000"
-                  data-step="1"
-                  name="border_radius_input_value"
-                />
-                <span
-                  class="input-group-addon bootstrap-touchspin-postfix dropdown"
-                >
-                  <select
-                    name="border_radius_input_unit"
-                    class="btn btn-default dropdown-toggle unit-button"
-                  >
-                    <option value="px">px</option>
-                    <option value="em">em</option>
-                    <option value="rem">rem</option>
-                    <option value="%">%</option>
-                  </select>
-                </span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label
-                ><%= i18n('border-radius') %>, <%= i18n('small_buttons')
-                %></label
-              >
-              <div class="input-group websize-selector bootstrap-touchspin">
-                <input
-                  class="form-control"
-                  data-component="number-spinner"
-                  data-min="0"
-                  data-max="10000"
-                  data-step="1"
-                  name="border_radius_button_value"
-                />
-                <span
-                  class="input-group-addon bootstrap-touchspin-postfix dropdown"
-                >
-                  <select
-                    name="border_radius_button_unit"
-                    class="btn btn-default dropdown-toggle unit-button"
-                  >
-                    <option value="px">px</option>
-                    <option value="em">em</option>
-                    <option value="rem">rem</option>
-                    <option value="%">%</option>
-                  </select>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Borders -->
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-parent="#styling-accordion"
-      data-target="#styling-borders"
-      ><h3 class="panel-title"><%= i18n('borders') %></h3>
-    </a>
-    <div class="panel-collapse" id="styling-borders">
-      <div class="panel-body">
-        <div class="form-group">
-          <label>
-            <input
-              type="checkbox"
-              name="use_custom_borders"
-              data-enables="#borders-values"
-              data-value-type="boolean"
-            />
-            <%= i18n('use_custom_borders') %>
-          </label>
-        </div>
-      </div>
-      <div class="panel-body" id="borders-values">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <label><%= i18n('border') %>, <%= i18n('thickness') %></label>
-              <div class="input-group websize-selector bootstrap-touchspin">
-                <input
-                  class="form-control"
-                  data-component="number-spinner"
-                  data-min="0"
-                  data-max="10000"
-                  data-step="1"
-                  name="border_thickness_value"
-                />
-                <span
-                  class="input-group-addon bootstrap-touchspin-postfix dropdown"
-                >
-                  <select
-                    name="border_thickness_unit"
-                    class="btn btn-default dropdown-toggle unit-button"
-                  >
-                    <option value="px">px</option>
-                    <option value="em">em</option>
-                    <option value="rem">rem</option>
-                    <option value="%">%</option>
-                  </select>
-                </span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label><%= i18n('border') %>, <%= i18n('color') %></label>
-              <select
-                data-component="color-selector"
-                name="border_color"
-              ></select>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Question bubbles -->
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-parent="#styling-accordion"
-      data-target="#styling-bubbles"
-      ><h3 class="panel-title"><%= i18n('question_bubbles') %></h3>
-    </a>
-    <div class="panel-collapse" id="styling-bubbles">
-      <div class="panel-body">
-        <div class="form-group">
-          <label>
-            <input
-              type="checkbox"
-              name="use_simple_bubbles"
-              data-value-type="boolean"
-              data-enables="#bubble-borders"
-            />
-            <%= i18n('use_simple_bubbles') %>
-          </label>
-        </div>
-      </div>
-      <div class="panel-body">
-        <div class="form-group">
-          <label>
-            <input
-              type="checkbox"
-              name="use_bubble_shadow"
-              data-value-type="boolean"
-            />
-            <%= i18n('use_bubble_shadow') %>
-          </label>
-        </div>
-        <div class="form-group">
-          <label>
-            <input
-              type="checkbox"
-              name="use_bubble_icon"
-              data-value-type="boolean"
-            />
-            <%= i18n('use_bubble_icon') %>
-          </label>
-        </div>
-        <div class="form-group" id="bubble-borders">
-          <label>
-            <input
-              type="checkbox"
-              name="use_bubble_borders"
-              data-value-type="boolean"
-            />
-            <%= i18n('use_bubble_borders') %>
-          </label>
-        </div>
-      </div>
-      <div class="panel-body">
-        <fieldset class="form-group">
-          <legend><%= i18n('color') %></legend>
-          <label>
-            <input type="radio" name="color_bubble" value="vattjom" />
-            Vattjom
-          </label>
-          <label>
-            <input type="radio" name="color_bubble" value="juniskar" />
-            Juniskär
-          </label>
-          <label>
-            <input type="radio" name="color_bubble" value="bjornstigen" />
-            Björnstigen
-          </label>
-          <label>
-            <input type="radio" name="color_bubble" value="gronsta" />
-            Grönsta
-          </label>
-          <label>
-            <input
-              type="radio"
-              data-enables="#color-bubble-values"
-              data-disables="#color-bubble-inverted"
-              name="color_bubble"
-              value="custom"
-            />
-            <%= i18n('use_custom') %>
-          </label>
-          <div class="row" id="color-bubble-inverted">
+              <%= i18n('use_custom') %>
+            </label>
+          </fieldset>
+          <div class="row" id="one_color-header-inverted">
             <div class="col-md-6">
               <div class="form-group">
                 <label
                   ><input
                     type="checkbox"
-                    name="color_bubble_inverted"
+                    name="1_color_header_inverted"
                     data-value-type="boolean"
                   />
                   <%= i18n('inverted') %></label
@@ -1109,29 +507,133 @@
               </div>
             </div>
           </div>
-          <div class="row" id="color-bubble-values">
+          <div class="row one_color-header-values">
             <div class="col-md-6">
               <formfield class="form-group">
                 <legend><%= i18n('lightmode') %></legend>
                 <div class="form-group">
-                  <label><%= i18n('background') %></label>
+                  <label
+                    ><%= i18n('background') %>, <%= i18n('colored') %></label
+                  >
                   <select
                     data-component="color-selector"
-                    name="color_bubble_surface_light"
+                    name="1_color_header_background_light"
                   ></select>
                 </div>
                 <div class="form-group">
-                  <label><%= i18n('background') %>, <%= i18n('hover') %></label>
+                  <label
+                    ><%= i18n('background') %>, <%= i18n('neutral') %></label
+                  >
                   <select
                     data-component="color-selector"
-                    name="color_bubble_surface_hover_light"
+                    name="1_color_header_contentbg_light"
                   ></select>
                 </div>
                 <div class="form-group">
-                  <label><%= i18n('text') %></label>
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%=
+                    i18n('primary') %></label
+                  >
                   <select
                     data-component="color-selector"
-                    name="color_bubble_text_light"
+                    name="1_color_header_text_primary_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%=
+                    i18n('secondary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_secondary_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
+                    %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_link_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
+                    %>, <%= i18n('hover') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_link_hover_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%=
+                    i18n('primary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_dark_primary_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%=
+                    i18n('secondary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_dark_secondary_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
+                    %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_dark_link_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
+                    %>, <%= i18n('hover') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_dark_link_hover_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label><%= i18n('button') %>, <%= i18n('primary') %></label>
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_surface_primary_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
+                    i18n('hover') %>,</label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_surface_hover_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
+                    i18n('disabled') %>,</label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_surface_disabled_light"
                   ></select>
                 </div>
               </formfield>
@@ -1140,72 +642,633 @@
               <formfield class="form-group">
                 <legend><%= i18n('darkmode') %></legend>
                 <div class="form-group">
-                  <label><%= i18n('background') %></label>
+                  <label
+                    ><%= i18n('background') %>, <%= i18n('colored') %></label
+                  >
                   <select
                     data-component="color-selector"
-                    name="color_bubble_surface_dark"
+                    name="1_color_header_background_dark"
                   ></select>
                 </div>
                 <div class="form-group">
-                  <label><%= i18n('background') %>, <%= i18n('hover') %></label>
+                  <label
+                    ><%= i18n('background') %>, <%= i18n('neutral') %></label
+                  >
                   <select
                     data-component="color-selector"
-                    name="color_bubble_surface_hover_dark"
+                    name="1_color_header_contentbg_dark"
                   ></select>
                 </div>
                 <div class="form-group">
-                  <label><%= i18n('text') %></label>
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%=
+                    i18n('primary') %></label
+                  >
                   <select
                     data-component="color-selector"
-                    name="color_bubble_text_dark"
+                    name="1_color_header_text_primary_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%=
+                    i18n('secondary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_secondary_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
+                    %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_link_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
+                    %>, <%= i18n('hover') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_link_hover_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%=
+                    i18n('primary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_dark_primary_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%=
+                    i18n('secondary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_dark_secondary_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
+                    %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_dark_link_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
+                    %>, <%= i18n('hover') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_text_dark_link_hover_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label><%= i18n('button') %>, <%= i18n('primary') %></label>
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_surface_primary_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
+                    i18n('hover') %>,</label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_surface_hover_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
+                    i18n('disabled') %>,</label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="1_color_header_surface_disabled_dark"
                   ></select>
                 </div>
               </formfield>
             </div>
           </div>
-        </fieldset>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Responsivitet -->
-  <div class="panel panel-default">
-    <a
-      class="panel-heading collapsed"
-      role="button"
-      data-toggle="collapse"
-      data-parent="#styling-accordion"
-      data-target="#styling-responsiveness"
-      ><h3 class="panel-title"><%= i18n('responsiveness') %></h3>
-    </a>
-    <div class="panel-collapse" id="styling-responsiveness">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="form-group">
-              <label><%= i18n('small_screen_breakpoint') %></label>
-              <div class="input-group websize-selector bootstrap-touchspin">
+    <!-- Fonts -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-fonts"
+        ><h3 class="panel-title"><%= i18n('fonts') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_styling-fonts">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset class="form-group">
+                <legend><%= i18n('font_default') %></legend>
+                <label>
+                  <input type="radio" name="1_font_default" value="theme" />
+                  <%= i18n('use_from_theme') %>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    data-enables="#one_font-default-value"
+                    name="1_font_default"
+                    value="other"
+                  />
+                  <%= i18n('use_other') %>
+                </label>
+                <input
+                  class="form-control"
+                  id="one_font-default-value"
+                  name="1_font_default_value"
+                />
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset class="form-group">
+                <legend><%= i18n('font_header') %></legend>
+                <label>
+                  <input type="radio" name="1_font_header" value="theme" />
+                  <%= i18n('use_from_theme') %>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    data-enables="#one_font-header-value"
+                    name="1_font_header"
+                    value="other"
+                  />
+                  <%= i18n('use_other') %>
+                </label>
+                <input
+                  class="form-control"
+                  id="one_font-header-value"
+                  name="1_font_header_value"
+                />
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('base_font_size') %></label>
                 <input
                   class="form-control"
                   data-component="number-spinner"
                   data-min="0"
-                  data-max="10000"
+                  data-max="100"
                   data-step="1"
-                  name="mobile_breakpoint"
+                  name="1_fontbase"
+                  data-postfix="px"
                 />
-                <span
-                  class="input-group-addon bootstrap-touchspin-postfix dropdown"
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Border radius -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-border-radius"
+        ><h3 class="panel-title"><%= i18n('border-radius') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_styling-border-radius">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_custom_border_radius"
+                data-enables="#one_border-radius-values"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_custom_border_radius') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body" id="one_border-radius-values">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('main-card') %></label
                 >
-                  <select
-                    name="mobile_breakpoint_unit"
-                    class="btn btn-default dropdown-toggle unit-button"
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="1_border_radius_main_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
                   >
-                    <option value="px">px</option>
-                    <option value="em">em</option>
-                    <option value="rem">rem</option>
-                    <option value="%">%</option>
-                  </select>
-                </span>
+                    <select
+                      name="1_border_radius_main_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('input') %>, <%=
+                  i18n('big_buttons') %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="1_border_radius_input_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="1_border_radius_input_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('small_buttons')
+                  %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="1_border_radius_button_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="1_border_radius_button_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Borders -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-borders"
+        ><h3 class="panel-title"><%= i18n('borders') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_styling-borders">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_custom_borders"
+                data-enables="#one_borders-values"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_custom_borders') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body" id="one_borders-values">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('border') %>, <%= i18n('thickness') %></label>
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="1_border_thickness_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="1_border_thickness_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label><%= i18n('border') %>, <%= i18n('color') %></label>
+                <select
+                  data-component="color-selector"
+                  name="1_border_color"
+                ></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question bubbles -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-bubbles"
+        ><h3 class="panel-title"><%= i18n('question_bubbles') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_styling-bubbles">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_simple_bubbles"
+                data-value-type="boolean"
+                data-enables="#one_bubble-borders"
+              />
+              <%= i18n('use_simple_bubbles') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_bubble_shadow"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_shadow') %>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_bubble_icon"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_icon') %>
+            </label>
+          </div>
+          <div class="form-group" id="one_bubble-borders">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_bubble_borders"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_borders') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <legend><%= i18n('color') %></legend>
+            <label>
+              <input type="radio" name="1_color_bubble" value="vattjom" />
+              Vattjom
+            </label>
+            <label>
+              <input type="radio" name="1_color_bubble" value="juniskar" />
+              Juniskär
+            </label>
+            <label>
+              <input type="radio" name="1_color_bubble" value="bjornstigen" />
+              Björnstigen
+            </label>
+            <label>
+              <input type="radio" name="1_color_bubble" value="gronsta" />
+              Grönsta
+            </label>
+            <label>
+              <input
+                type="radio"
+                data-enables="#one_color-bubble-values"
+                data-disables="#one_color-bubble-inverted"
+                name="1_color_bubble"
+                value="custom"
+              />
+              <%= i18n('use_custom') %>
+            </label>
+            <div class="row" id="one_color-bubble-inverted">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="1_color_bubble_inverted"
+                      data-value-type="boolean"
+                    />
+                    <%= i18n('inverted') %></label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row" id="one_color-bubble-values">
+              <div class="col-md-6">
+                <formfield class="form-group">
+                  <legend><%= i18n('lightmode') %></legend>
+                  <div class="form-group">
+                    <label><%= i18n('background') %></label>
+                    <select
+                      data-component="color-selector"
+                      name="1_color_bubble_surface_light"
+                    ></select>
+                  </div>
+                  <div class="form-group">
+                    <label
+                      ><%= i18n('background') %>, <%= i18n('hover') %></label
+                    >
+                    <select
+                      data-component="color-selector"
+                      name="1_color_bubble_surface_hover_light"
+                    ></select>
+                  </div>
+                  <div class="form-group">
+                    <label><%= i18n('text') %></label>
+                    <select
+                      data-component="color-selector"
+                      name="1_color_bubble_text_light"
+                    ></select>
+                  </div>
+                </formfield>
+              </div>
+              <div class="col-md-6">
+                <formfield class="form-group">
+                  <legend><%= i18n('darkmode') %></legend>
+                  <div class="form-group">
+                    <label><%= i18n('background') %></label>
+                    <select
+                      data-component="color-selector"
+                      name="1_color_bubble_surface_dark"
+                    ></select>
+                  </div>
+                  <div class="form-group">
+                    <label
+                      ><%= i18n('background') %>, <%= i18n('hover') %></label
+                    >
+                    <select
+                      data-component="color-selector"
+                      name="1_color_bubble_surface_hover_dark"
+                    ></select>
+                  </div>
+                  <div class="form-group">
+                    <label><%= i18n('text') %></label>
+                    <select
+                      data-component="color-selector"
+                      name="1_color_bubble_text_dark"
+                    ></select>
+                  </div>
+                </formfield>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <!-- Responsivitet -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-responsiveness"
+        ><h3 class="panel-title"><%= i18n('responsiveness') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_styling-responsiveness">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('small_screen_breakpoint') %></label>
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="1_mobile_breakpoint"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="1_mobile_breakpoint_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSS -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-css"
+        ><h3 class="panel-title"><%= i18n('css') %></h3>
+      </a>
+      <div class="panel-collapse" id="one_styling-css">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('css') %></label>
+                <textarea
+                  class="form-control"
+                  name="1_css"
+                  rows="10"
+                ></textarea>
               </div>
             </div>
           </div>
@@ -1214,3 +1277,1265 @@
     </div>
   </div>
 </div>
+<!-- END PRIMARY -->
+
+<!-- SECONDARY -->
+<div id="secondary-values">
+  <div class="panel-group" id="two_editorial">
+    <h2><%= i18n('editorial') %></h2>
+    <div class="panel panel-default">
+      <a
+        class="panel-heading"
+        role="button"
+        data-toggle="collapse"
+        data-target="#two_assistant-headers"
+        data-parent="#two_editorial"
+      >
+        <h3 class="panel-title"><%= i18n('headings') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_assistant-headers">
+        <div class="panel-body">
+          <div class="form-group">
+            <label><%= i18n('heading') %></label>
+            <input class="form-control" name="2_title" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('subheading') %></label>
+            <input class="form-control" name="2_subtitle" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('label') %></label>
+            <input class="form-control" name="2_label" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#two_assistant-readmore"
+        data-parent="#two_editorial"
+      >
+        <h3 class="panel-title"><%= i18n('read_more') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_assistant-readmore">
+        <div class="panel-body">
+          <div class="form-group">
+            <label><%= i18n('text') %></label>
+            <input class="form-control" name="2_read_more_text" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('link_text') %></label>
+            <input class="form-control" name="2_read_more_link_text" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('link_url') %></label>
+            <input class="form-control" name="2_read_more_link_url" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#two_pre-defined-question-panel"
+        data-parent="#two_editorial"
+      >
+        <h3 class="panel-title"><%= i18n('pre_defined_questions') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_pre-defined-question-panel">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_questions"
+                data-enables="#two_pre-defined-questions"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_pre_defined_questions') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body" id="two_pre-defined-questions">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('heading') %></label>
+                <input class="form-control" name="2_questions_title" />
+              </div>
+              <div class="form-group">
+                <label><%= i18n('number_of_questions') %></label>
+                <input
+                  class="form-control"
+                  data-component="number-spinner"
+                  data-min="1"
+                  data-max="5"
+                  data-step="1"
+                  name="2_questions_count"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('question') %> 1</label>
+                <input class="form-control" name="2_question_1" />
+              </div>
+              <div class="form-group">
+                <label><%= i18n('question') %> 2</label>
+                <input class="form-control" name="2_question_2" />
+              </div>
+              <div class="form-group">
+                <label><%= i18n('question') %> 3</label>
+                <input class="form-control" name="2_question_3" />
+              </div>
+              <div class="form-group">
+                <label><%= i18n('question') %> 4</label>
+                <input class="form-control" name="2_question_4" />
+              </div>
+              <div class="form-group">
+                <label><%= i18n('question') %> 5</label>
+                <input class="form-control" name="2_question_5" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-group" id="two_assistant-information">
+    <h2><%= i18n('assistant') %></h2>
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#two_assistant-settings"
+      >
+        <h3 class="panel-title"><%= i18n('settings') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_assistant-settings">
+        <div class="panel-body">
+          <div class="form-group">
+            <label><%= i18n('server_url') %></label>
+            <input class="form-control" name="2_server_url" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('assistant_id') %></label>
+            <input class="form-control" name="2_assistantId" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('app') %></label>
+            <input class="form-control" name="2_app" />
+          </div>
+
+          <div
+            class="panel-group"
+            id="two_advanced-settings-accordion"
+            data-accordion
+          >
+            <div class="panel panel-default">
+              <a
+                class="panel-heading collapsed"
+                role="button"
+                data-toggle="collapse"
+                data-parent="#two_advanced-settings-accordion"
+                data-target="#two_advanced-settings"
+                ><label class="panel-title"><%= i18n('advanced') %></label>
+              </a>
+              <div class="panel-collapse" id="two_advanced-settings">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="2_stream"
+                        data-value-type="boolean"
+                      />
+                      <%= i18n('stream_answers') %></label
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="2_shadowdom"
+                        data-value-type="boolean"
+                      />
+                      <%= i18n('use_shadow_dom') %></label
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="2_use_user"
+                        data-value-type="boolean"
+                      />
+                      <%= i18n('use_user') %></label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ASSISTANT INFORMATION -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#two_assistant-info"
+        data-parent="#two_assistant-information"
+      >
+        <h3 class="panel-title"><%= i18n('assistant_info') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_assistant-info">
+        <div class="panel-body">
+          <div class="form-group">
+            <label><%= i18n('name') %></label>
+            <input class="form-control" name="2_assistant_name" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('avatar') %></label>
+            <input
+              class="form-control"
+              data-component="image-selector"
+              data-removable
+              name="2_assistant_avatar"
+            />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('initials') %></label>
+            <input
+              class="form-control"
+              name="2_assistant_shortName"
+              maxlength="2"
+            />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('avatar_color') %></label>
+            <select
+              id="select"
+              name="2_assistant_avatar_color"
+              class="form-control"
+            >
+              <option value="vattjom">Vattjom</option>
+              <option value="juniskar">Juniskär</option>
+              <option value="bjornstigen">Björnstigen</option>
+              <option value="gronsta">Grönsta</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label
+              ><input
+                type="checkbox"
+                name="2_assistant_show_title"
+                data-value-type="boolean"
+              />
+              <%= i18n('show_name_in_feed') %></label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- USER INFORMATION -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#two_user-info"
+        data-parent="#two_assistant-information"
+      >
+        <h3 class="panel-title"><%= i18n('user_info') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_user-info">
+        <div class="panel-body">
+          <p><%= i18n('user_info_description') %></p>
+          <div class="form-group">
+            <label><%= i18n('name') %></label>
+            <input class="form-control" name="2_user_name" />
+          </div>
+
+          <div class="form-group">
+            <label><%= i18n('avatar') %></label>
+            <input
+              class="form-control"
+              data-component="image-selector"
+              data-removable
+              name="2_user_avatar"
+            />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('initials') %></label>
+            <input class="form-control" name="2_user_initials" maxlength="2" />
+          </div>
+          <div class="form-group">
+            <label><%= i18n('avatar_color') %></label>
+            <select name="2_user_avatar_color" class="form-control">
+              <option value="vattjom">Vattjom</option>
+              <option value="juniskar">Juniskär</option>
+              <option value="bjornstigen">Björnstigen</option>
+              <option value="gronsta">Grönsta</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label
+              ><input
+                type="checkbox"
+                name="2_user_show_title"
+                data-value-type="boolean"
+              />
+              <%= i18n('show_name_in_feed') %></label
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SYSTEM INFORMATION -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#two_system-info"
+        data-parent="#two_assistant-information"
+      >
+        <h3 class="panel-title"><%= i18n('system_info') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_system-info">
+        <div class="panel-body">
+          <p><strong><%= i18n('system_info_description') %></strong></p>
+
+          <fieldset class="form-group">
+            <label>
+              <input type="radio" name="2_system_show" value="assistant" />
+              <%= i18n('system_show_as_assistant') %>
+            </label>
+            <label>
+              <input
+                type="radio"
+                data-enables="#two_system-custom-setup"
+                name="2_system_show"
+                value="custom"
+              />
+              <%= i18n('system_show_as_custom') %>
+            </label>
+          </fieldset>
+
+          <div id="two_system-custom-setup">
+            <div class="form-group">
+              <label><%= i18n('name') %></label>
+              <input class="form-control" name="2_system_name" />
+            </div>
+
+            <div class="form-group">
+              <label><%= i18n('avatar') %></label>
+              <input
+                class="form-control"
+                data-component="image-selector"
+                data-removable
+                name="2_system_avatar"
+              />
+            </div>
+            <div class="form-group">
+              <label><%= i18n('initials') %></label>
+              <input
+                class="form-control"
+                name="2_system_initials"
+                maxlength="2"
+              />
+            </div>
+            <div class="form-group">
+              <label><%= i18n('avatar_color') %></label>
+              <select name="2_system_avatar_color" class="form-control">
+                <option value="vattjom">Vattjom</option>
+                <option value="juniskar">Juniskär</option>
+                <option value="bjornstigen">Björnstigen</option>
+                <option value="gronsta">Grönsta</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label
+                ><input
+                  type="checkbox"
+                  name="2_system_show_title"
+                  data-value-type="boolean"
+                />
+                <%= i18n('show_name_in_feed') %></label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UTSEENDE -->
+  <div class="panel-group" id="two_styling-accordion" data-accordion>
+    <h2><%= i18n('look') %></h2>
+    <!-- Sidhuvud -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-header"
+        ><h3 class="panel-title"><%= i18n('style') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_styling-header">
+        <div class="panel-body">
+          <fieldset>
+            <legend><%= i18n('style_variant') %></legend>
+            <label>
+              <input type="radio" name="2_variant" value="primary" />
+              <%= i18n('primary') %>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="2_variant"
+                value="secondary"
+                data-enables="#two_main-icon"
+              />
+              <%= i18n('secondary') %>
+            </label>
+          </fieldset>
+        </div>
+        <div class="panel-body" id="two_main-icon">
+          <div class="form-group">
+            <label><%= i18n('icon') %></label>
+            <input
+              class="form-control"
+              data-component="image-selector"
+              data-removable
+              name="2_header_icon"
+            />
+          </div>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <legend><%= i18n('color') %></legend>
+            <label>
+              <input type="radio" name="2_color_header" value="vattjom" />
+              Vattjom
+            </label>
+            <label>
+              <input type="radio" name="2_color_header" value="juniskar" />
+              Juniskär
+            </label>
+            <label>
+              <input type="radio" name="2_color_header" value="bjornstigen" />
+              Björnstigen
+            </label>
+            <label>
+              <input type="radio" name="2_color_header" value="gronsta" />
+              Grönsta
+            </label>
+            <label>
+              <input
+                type="radio"
+                data-enables=".two_color-header-values"
+                name="2_color_header"
+                value="custom"
+              />
+              <%= i18n('use_custom') %>
+            </label>
+          </fieldset>
+          <div class="row" id="two_color-header-inverted">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label
+                  ><input
+                    type="checkbox"
+                    name="2_color_header_inverted"
+                    data-value-type="boolean"
+                  />
+                  <%= i18n('inverted') %></label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row twp_color-header-values">
+            <div class="col-md-6">
+              <formfield class="form-group">
+                <legend><%= i18n('lightmode') %></legend>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('background') %>, <%= i18n('colored') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_background_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('background') %>, <%= i18n('neutral') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_contentbg_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%=
+                    i18n('primary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_primary_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%=
+                    i18n('secondary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_secondary_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
+                    %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_link_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
+                    %>, <%= i18n('hover') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_link_hover_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%=
+                    i18n('primary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_dark_primary_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%=
+                    i18n('secondary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_dark_secondary_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
+                    %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_dark_link_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
+                    %>, <%= i18n('hover') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_dark_link_hover_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label><%= i18n('button') %>, <%= i18n('primary') %></label>
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_surface_primary_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
+                    i18n('hover') %>,</label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_surface_hover_light"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
+                    i18n('disabled') %>,</label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_surface_disabled_light"
+                  ></select>
+                </div>
+              </formfield>
+            </div>
+            <div class="col-md-6">
+              <formfield class="form-group">
+                <legend><%= i18n('darkmode') %></legend>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('background') %>, <%= i18n('colored') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_background_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('background') %>, <%= i18n('neutral') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_contentbg_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%=
+                    i18n('primary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_primary_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%=
+                    i18n('secondary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_secondary_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
+                    %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_link_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('light') %>, <%= i18n('link')
+                    %>, <%= i18n('hover') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_link_hover_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%=
+                    i18n('primary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_dark_primary_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%=
+                    i18n('secondary') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_dark_secondary_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
+                    %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_dark_link_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('text') %>, <%= i18n('dark') %>, <%= i18n('link')
+                    %>, <%= i18n('hover') %></label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_text_dark_link_hover_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label><%= i18n('button') %>, <%= i18n('primary') %></label>
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_surface_primary_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
+                    i18n('hover') %>,</label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_surface_hover_dark"
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label
+                    ><%= i18n('button') %>, <%= i18n('primary') %>, <%=
+                    i18n('disabled') %>,</label
+                  >
+                  <select
+                    data-component="color-selector"
+                    name="2_color_header_surface_disabled_dark"
+                  ></select>
+                </div>
+              </formfield>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fonts -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-fonts"
+        ><h3 class="panel-title"><%= i18n('fonts') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_styling-fonts">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset class="form-group">
+                <legend><%= i18n('font_default') %></legend>
+                <label>
+                  <input type="radio" name="2_font_default" value="theme" />
+                  <%= i18n('use_from_theme') %>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    data-enables="#two_font-default-value"
+                    name="2_font_default"
+                    value="other"
+                  />
+                  <%= i18n('use_other') %>
+                </label>
+                <input
+                  class="form-control"
+                  id="two_font-default-value"
+                  name="2_font_default_value"
+                />
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset class="form-group">
+                <legend><%= i18n('font_header') %></legend>
+                <label>
+                  <input type="radio" name="2_font_header" value="theme" />
+                  <%= i18n('use_from_theme') %>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    data-enables="#two_font-header-value"
+                    name="2_font_header"
+                    value="other"
+                  />
+                  <%= i18n('use_other') %>
+                </label>
+                <input
+                  class="form-control"
+                  id="two_font-header-value"
+                  name="2_font_header_value"
+                />
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('base_font_size') %></label>
+                <input
+                  class="form-control"
+                  data-component="number-spinner"
+                  data-min="0"
+                  data-max="100"
+                  data-step="1"
+                  name="2_fontbase"
+                  data-postfix="px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Border radius -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-border-radius"
+        ><h3 class="panel-title"><%= i18n('border-radius') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_styling-border-radius">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_custom_border_radius"
+                data-enables="#two_border-radius-values"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_custom_border_radius') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body" id="two_border-radius-values">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('main-card') %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="2_border_radius_main_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="2_border_radius_main_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('input') %>, <%=
+                  i18n('big_buttons') %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="2_border_radius_input_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="2_border_radius_input_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('small_buttons')
+                  %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="2_border_radius_button_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="2_border_radius_button_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Borders -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-borders"
+        ><h3 class="panel-title"><%= i18n('borders') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_styling-borders">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_custom_borders"
+                data-enables="#two_borders-values"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_custom_borders') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body" id="two_borders-values">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('border') %>, <%= i18n('thickness') %></label>
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="2_border_thickness_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="2_border_thickness_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label><%= i18n('border') %>, <%= i18n('color') %></label>
+                <select
+                  data-component="color-selector"
+                  name="2_border_color"
+                ></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question bubbles -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-bubbles"
+        ><h3 class="panel-title"><%= i18n('question_bubbles') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_styling-bubbles">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_simple_bubbles"
+                data-value-type="boolean"
+                data-enables="#two_bubble-borders"
+              />
+              <%= i18n('use_simple_bubbles') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_bubble_shadow"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_shadow') %>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_bubble_icon"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_icon') %>
+            </label>
+          </div>
+          <div class="form-group" id="two_bubble-borders">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_bubble_borders"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_borders') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <legend><%= i18n('color') %></legend>
+            <label>
+              <input type="radio" name="2_color_bubble" value="vattjom" />
+              Vattjom
+            </label>
+            <label>
+              <input type="radio" name="2_color_bubble" value="juniskar" />
+              Juniskär
+            </label>
+            <label>
+              <input type="radio" name="2_color_bubble" value="bjornstigen" />
+              Björnstigen
+            </label>
+            <label>
+              <input type="radio" name="2_color_bubble" value="gronsta" />
+              Grönsta
+            </label>
+            <label>
+              <input
+                type="radio"
+                data-enables="#two_color-bubble-values"
+                data-disables="#two_color-bubble-inverted"
+                name="2_color_bubble"
+                value="custom"
+              />
+              <%= i18n('use_custom') %>
+            </label>
+            <div class="row" id="two_color-bubble-inverted">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="2_color_bubble_inverted"
+                      data-value-type="boolean"
+                    />
+                    <%= i18n('inverted') %></label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row" id="two_color-bubble-values">
+              <div class="col-md-6">
+                <formfield class="form-group">
+                  <legend><%= i18n('lightmode') %></legend>
+                  <div class="form-group">
+                    <label><%= i18n('background') %></label>
+                    <select
+                      data-component="color-selector"
+                      name="2_color_bubble_surface_light"
+                    ></select>
+                  </div>
+                  <div class="form-group">
+                    <label
+                      ><%= i18n('background') %>, <%= i18n('hover') %></label
+                    >
+                    <select
+                      data-component="color-selector"
+                      name="2_color_bubble_surface_hover_light"
+                    ></select>
+                  </div>
+                  <div class="form-group">
+                    <label><%= i18n('text') %></label>
+                    <select
+                      data-component="color-selector"
+                      name="2_color_bubble_text_light"
+                    ></select>
+                  </div>
+                </formfield>
+              </div>
+              <div class="col-md-6">
+                <formfield class="form-group">
+                  <legend><%= i18n('darkmode') %></legend>
+                  <div class="form-group">
+                    <label><%= i18n('background') %></label>
+                    <select
+                      data-component="color-selector"
+                      name="2_color_bubble_surface_dark"
+                    ></select>
+                  </div>
+                  <div class="form-group">
+                    <label
+                      ><%= i18n('background') %>, <%= i18n('hover') %></label
+                    >
+                    <select
+                      data-component="color-selector"
+                      name="2_color_bubble_surface_hover_dark"
+                    ></select>
+                  </div>
+                  <div class="form-group">
+                    <label><%= i18n('text') %></label>
+                    <select
+                      data-component="color-selector"
+                      name="2_color_bubble_text_dark"
+                    ></select>
+                  </div>
+                </formfield>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <!-- Responsivitet -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-responsiveness"
+        ><h3 class="panel-title"><%= i18n('responsiveness') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_styling-responsiveness">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('small_screen_breakpoint') %></label>
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="2_mobile_breakpoint"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="2_mobile_breakpoint_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSS -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-css"
+        ><h3 class="panel-title"><%= i18n('css') %></h3>
+      </a>
+      <div class="panel-collapse" id="two_styling-css">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('css') %></label>
+                <textarea
+                  class="form-control"
+                  name="2_css"
+                  rows="10"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END SECONDARY -->

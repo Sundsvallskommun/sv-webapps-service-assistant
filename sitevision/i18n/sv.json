@@ -41,6 +41,7 @@
   "title": "Titel",
   "avatar": "Avatar",
   "look": "Utseende",
+  "version": "Version",
 
   "users": "Användare",
 
@@ -50,6 +51,8 @@
   "font_family": "Typsnitt",
   "base_font_size": "Basfontstorlek",
 
+  "additional_styling": "CSS",
+  "css": "CSS",
   "color": "Färg",
   "colors": "Färger",
   "colored": "Färgad",

@@ -81,6 +81,7 @@ export interface Options {
     };
   };
   icon?: string;
+  css?: string;
 }
 
 interface AssistantDummieProps {
@@ -382,133 +383,141 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
 
   const inverted = options?.colors?.header?.inverted || false;
   return (
-    <div className={styles.dummy} style={cssVars}>
-      {isClient && (
-        <div
-          className="sk-ai-service-module"
-          data-variant={options?.variant}
-          data-inverted={inverted}
-          style={{
-            fontFamily: options?.fontface?.DEFAULT,
-            fontSize: `${
-              options?.fontbase ? (16 / options?.fontbase) * 16 : 16
-            }px`,
-          }}
-        >
+    <div>
+      {options?.css && <style>{options.css}</style>}
+      <div className={styles.dummy} style={cssVars}>
+        {isClient && (
           <div
-            className="sk-ai-service-module-row"
-            data-color="true"
+            className="sk-ai-service-module"
             data-variant={options?.variant}
             data-inverted={inverted}
+            style={{
+              fontFamily: options?.fontface?.DEFAULT,
+              fontSize: `${
+                options?.fontbase ? (16 / options?.fontbase) * 16 : 16
+              }px`,
+            }}
           >
             <div
-              className="sk-ai-service-module-content"
+              className="sk-ai-service-module-row"
+              data-color="true"
               data-variant={options?.variant}
               data-inverted={inverted}
             >
-              <header
-                className="sk-ai-service-module-header"
+              <div
+                className="sk-ai-service-module-content"
                 data-variant={options?.variant}
                 data-inverted={inverted}
               >
-                {options?.icon && options?.variant === "secondary" && (
-                  <span className="sk-ai-service-module-header-icon">
-                    <Avatar size="md" imageUrl={options?.icon}></Avatar>
-                  </span>
-                )}
-                {options?.title && HtmlParser(options.title)}
-              </header>
-              {options?.subtitle && HtmlParser(options.subtitle)}
-              <div className="sk-ai-service-module-form">
-                <div className="sk-form-control sk-ai-service-module-form-control">
-                  {options?.helperText && (
-                    <div className="sk-form-helper-text">
-                      {options?.helperText}
+                <header
+                  className="sk-ai-service-module-header"
+                  data-variant={options?.variant}
+                  data-inverted={inverted}
+                >
+                  {options?.icon && options?.variant === "secondary" && (
+                    <span className="sk-ai-service-module-header-icon">
+                      <Avatar size="md" imageUrl={options?.icon}></Avatar>
+                    </span>
+                  )}
+                  {options?.title && HtmlParser(options.title)}
+                </header>
+                {options?.subtitle && HtmlParser(options.subtitle)}
+                <div className="sk-ai-service-module-form">
+                  <div className="sk-form-control sk-ai-service-module-form-control">
+                    {options?.helperText && (
+                      <div className="sk-form-helper-text">
+                        {options?.helperText}
+                      </div>
+                    )}
+                    <label className="sk-form-label sk-ai-service-module-form-label">
+                      {options?.label}
+                    </label>
+
+                    <form className="sk-ai-service-module-form-input-wrapper">
+                      <div className="sk-form-input-group sk-form-input-group-lg sk-ai-service-module-form-input-group sk-ai-inputsection-group">
+                        <input className="sk-form-input sk-form-input-lg sk-ai-inputsection-input" />
+
+                        <div className="sk-form-input-addin sk-form-input-addin-right sk-form-input-addin-lg">
+                          <Button
+                            size="sm"
+                            className="sk-ai-inputsection-button"
+                          >
+                            Skicka
+                          </Button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  {options?.readmore && (
+                    <div
+                      className="sk-ai-service-module-form-readmore"
+                      data-inverted={inverted}
+                      data-variant={options?.variant}
+                    >
+                      {options?.readmore.text && `${options?.readmore.text} `}
+                      {options?.readmore.link && (
+                        <Link
+                          external
+                          href={options?.readmore.link.url}
+                          variant="tertiary"
+                          inverted={true}
+                        >
+                          {options?.readmore.link.text}
+                        </Link>
+                      )}
                     </div>
                   )}
-                  <label className="sk-form-label sk-ai-service-module-form-label">
-                    {options?.label}
-                  </label>
-
-                  <form className="sk-ai-service-module-form-input-wrapper">
-                    <div className="sk-form-input-group sk-form-input-group-lg sk-ai-service-module-form-input-group sk-ai-inputsection-group">
-                      <input className="sk-form-input sk-form-input-lg sk-ai-inputsection-input" />
-
-                      <div className="sk-form-input-addin sk-form-input-addin-right sk-form-input-addin-lg">
-                        <Button size="sm" className="sk-ai-inputsection-button">
-                          Skicka
-                        </Button>
-                      </div>
-                    </div>
-                  </form>
                 </div>
-                {options?.readmore && (
-                  <div
-                    className="sk-ai-service-module-form-readmore"
-                    data-inverted={inverted}
-                    data-variant={options?.variant}
-                  >
-                    {options?.readmore.text && `${options?.readmore.text} `}
-                    {options?.readmore.link && (
-                      <Link
-                        external
-                        href={options?.readmore.link.url}
-                        variant="tertiary"
-                        inverted={true}
-                      >
-                        {options?.readmore.link.text}
-                      </Link>
-                    )}
-                  </div>
-                )}
               </div>
             </div>
-          </div>
-          {options?.questions && (
-            <div
-              className="sk-ai-service-module-row"
-              data-color={options?.variant === "secondary" ? "true" : undefined}
-              data-variant={options?.variant}
-              data-inverted={inverted}
-            >
-              <aside
-                className="sk-ai-service-module-questions"
+            {options?.questions && (
+              <div
+                className="sk-ai-service-module-row"
+                data-color={
+                  options?.variant === "secondary" ? "true" : undefined
+                }
                 data-variant={options?.variant}
                 data-inverted={inverted}
               >
-                <div className="sk-ai-service-module-questions-title">
-                  {typeof options?.questionsTitle === "string" ? (
-                    <h3>{options?.questionsTitle}</h3>
-                  ) : (
-                    options?.questionsTitle
-                  )}
-                </div>
-                <ul className="sk-ai-service-module-questions-list">
-                  {options?.questions.map((item, index) => {
-                    return (
-                      <li key={`sk-ai-sm-question-${index}`}>
-                        <Bubble
-                          data-color={options?.colors?.bubble?.surface?.light}
-                          hideIcon={!options?.colors?.bubble?.icon}
-                          shadow={options?.colors?.bubble?.shadow}
-                          variant={
-                            options?.colors?.bubble?.simple
-                              ? "simple"
-                              : "default"
-                          }
-                          data-borders={options?.colors?.bubble?.borders}
-                        >
-                          {item}
-                        </Bubble>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </aside>
-            </div>
-          )}
-        </div>
-      )}
+                <aside
+                  className="sk-ai-service-module-questions"
+                  data-variant={options?.variant}
+                  data-inverted={inverted}
+                >
+                  <div className="sk-ai-service-module-questions-title">
+                    {typeof options?.questionsTitle === "string" ? (
+                      <h3>{options?.questionsTitle}</h3>
+                    ) : (
+                      options?.questionsTitle
+                    )}
+                  </div>
+                  <ul className="sk-ai-service-module-questions-list">
+                    {options?.questions.map((item, index) => {
+                      return (
+                        <li key={`sk-ai-sm-question-${index}`}>
+                          <Bubble
+                            data-color={options?.colors?.bubble?.surface?.light}
+                            hideIcon={!options?.colors?.bubble?.icon}
+                            shadow={options?.colors?.bubble?.shadow}
+                            variant={
+                              options?.colors?.bubble?.simple
+                                ? "simple"
+                                : "default"
+                            }
+                            data-borders={options?.colors?.bubble?.borders}
+                          >
+                            {item}
+                          </Bubble>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </aside>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
