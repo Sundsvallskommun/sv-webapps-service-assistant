@@ -42,6 +42,7 @@
   "avatar": "Avatar",
   "look": "Utseende",
   "version": "Version",
+  "version_settings": "Versionsinställningar",
 
   "users": "Användare",
 
@@ -50,6 +51,7 @@
   "font_header": "Rubriktypsnitt",
   "font_family": "Typsnitt",
   "base_font_size": "Basfontstorlek",
+  "global": "Globala inställningar (för båda versioner)",
 
   "additional_styling": "CSS",
   "css": "CSS",

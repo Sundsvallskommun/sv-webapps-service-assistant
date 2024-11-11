@@ -3,7 +3,7 @@ import { copyFile } from "copy-file";
 try {
   await copyFile(
     "../app/dist/js/assistant-service.js",
-    "./assets/assistant-service.js"
+    "./src/resources/assistant-service.js"
   );
 } catch (e) {
   throw Error(

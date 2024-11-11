@@ -16,27 +16,6 @@ export interface Options {
     header?: {
       inverted: boolean;
       color: string;
-      background?: Color;
-      contentbg?: Color;
-      surface?: {
-        primary?: Color;
-        hover?: Color;
-        disabled?: Color;
-      };
-      text?: {
-        light: {
-          primary?: Color;
-          secondary?: Color;
-          link?: Color;
-          "link-hover"?: Color;
-        };
-        dark: {
-          primary?: Color;
-          secondary?: Color;
-          link?: Color;
-          "link-hover"?: Color;
-        };
-      };
     };
     bubble?: {
       simple: boolean;
@@ -45,9 +24,6 @@ export interface Options {
       icon: boolean;
       color: string;
       inverted?: boolean;
-      surface?: Color;
-      "surface-hover"?: Color;
-      text?: Color;
     };
   };
   rounded: {
@@ -111,7 +87,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
       case "gronsta":
         return inverted ? "#AAD4BF" : "#00733B";
       case "custom":
-        return options?.colors?.header?.background?.light || "#CFE0EC";
+        return "var(--sk-ai-servicemodule-light-main-background, #FFFFFF)";
       default:
         return inverted ? "#005595" : "#CFE0EC";
     }
@@ -120,9 +96,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getMainPrimaryText = (color: string, inverted: boolean) => {
     switch (color) {
       case "custom":
-        return (
-          options?.colors?.header?.text?.light?.primary?.light || "#FFFFFF"
-        );
+        return "var(--sk-ai-servicemodule-light-main-text-primary, #FFFFFF)";
       default:
         return inverted ? "#1F1F25" : "#FFFFFF";
     }
@@ -130,10 +104,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getMainSecondaryText = (color: string, inverted: boolean) => {
     switch (color) {
       case "custom":
-        return (
-          options?.colors?.header?.text?.light?.primary?.light ||
-          "rgba(255, 255, 255, 0.88)"
-        );
+        return "var(--sk-ai-servicemodule-light-main-text-secondary, rgba(255, 255, 255, 0.88))";
       default:
         return inverted ? "#444450" : "rgba(255, 255, 255, 0.88)";
     }
@@ -142,11 +113,9 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getMainLinkText = (color: string, inverted: boolean) => {
     switch (color) {
       case "custom":
-        return inverted
-          ? options?.colors?.header?.text?.dark?.link?.light
-          : options?.colors?.header?.text?.light?.link?.light || `#CFE0EC`;
+        return "var(--sk-ai-servicemodule-light-main-text-link, #CFE0EC)";
       default:
-        return inverted ? `##005595` : `#CFE0EC`;
+        return inverted ? `#005595` : `#CFE0EC`;
     }
   };
 
@@ -163,7 +132,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
       case "gronsta":
         return inverted ? "#00733B" : "#C9E4D7";
       case "custom":
-        return options?.colors?.bubble?.surface?.light || "#CFE0EC";
+        return "var(--sk-ai-servicemodule-light-bubble-background, #CFE0EC)";
       default:
         return inverted ? "#005595" : "#CFE0EC";
     }
@@ -172,7 +141,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getBubbleText = (color: string, inverted: boolean) => {
     switch (color) {
       case "custom":
-        return options?.colors?.bubble?.text?.light || "#CFE0EC";
+        return "var(--sk-ai-servicemodule-light-bubble-text, #1F1F25)";
       default:
         return inverted ? "#FFFFFF" : "#1F1F25";
     }
@@ -181,7 +150,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getDarkText = (color: string) => {
     switch (color) {
       case "custom":
-        return options?.colors?.header?.text?.dark?.primary?.light || "#1F1F25";
+        return "var(--sk-ai-servicemodule-light-text-dark, #1F1F25)";
       default:
         return "#1F1F25";
     }
@@ -189,7 +158,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getInvertedDarkText = (color: string) => {
     switch (color) {
       case "custom":
-        return options?.colors?.header?.text?.dark?.primary?.dark || "#ffffff";
+        return "var(--sk-ai-servicemodule-dark-text-dark, #FFFFFF)";
       default:
         return "#ffffff";
     }
@@ -197,9 +166,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getDarkSecondaryText = (color: string) => {
     switch (color) {
       case "custom":
-        return (
-          options?.colors?.header?.text?.dark?.secondary?.light || "#444450"
-        );
+        return "var(--sk-ai-servicemodule-light-text-secondary-dark, #444450)";
       default:
         return "#444450";
     }
@@ -208,9 +175,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getLightText = (color: string) => {
     switch (color) {
       case "custom":
-        return (
-          options?.colors?.header?.text?.light?.primary?.light || "#ffffff"
-        );
+        return "var(--sk-ai-servicemodule-light-text-light, #FFFFFF)";
       default:
         return "#ffffff";
     }
@@ -218,7 +183,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getInvertedLightText = (color: string) => {
     switch (color) {
       case "custom":
-        return options?.colors?.header?.text?.light?.primary?.dark || "#1F1F25";
+        return "var(--sk-ai-servicemodule-dark-text-light, #1F1F25)";
       default:
         return "#1F1F25";
     }
@@ -227,10 +192,8 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getLightSecondaryText = (color: string) => {
     switch (color) {
       case "custom":
-        return (
-          options?.colors?.header?.text?.light?.secondary?.light ||
-          "rgba(255,255,255,0.88)"
-        );
+        return "var(--sk-ai-servicemodule-light-text-secondary-light, rgba(255,255,255,0.88))";
+
       default:
         return "rgba(255,255,255,0.88)";
     }
@@ -238,10 +201,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getInvertedLightSecondaryText = (color: string) => {
     switch (color) {
       case "custom":
-        return (
-          options?.colors?.header?.text?.light?.secondary?.dark ||
-          "rgba(28,28,40,0.88)"
-        );
+        return "var(--sk-ai-servicemodule-dark-text-secondary-light, #444450)";
       default:
         return "rgba(28,28,40,0.88)";
     }
@@ -250,7 +210,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getContentBg = (color: string) => {
     switch (color) {
       case "custom":
-        return options?.colors?.header?.contentbg?.light || "#FFFFFF";
+        return "var(--sk-ai-servicemodule-light-content-background, #FFFFFF)";
       default:
         return "#FFFFFF";
     }
@@ -259,10 +219,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getPrimarySurface = (color: string) => {
     switch (color) {
       case "custom":
-        return (
-          options?.colors?.header?.surface?.primary?.light ||
-          "rgba(28,28,40,0.95)"
-        );
+        return "var(--sk-ai-servicemodule-light-primary-surface, rgba(28,28,40,0.95))";
       default:
         return "rgba(28,28,40,0.95)";
     }
@@ -271,10 +228,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getInvertedPrimarySurface = (color: string) => {
     switch (color) {
       case "custom":
-        return (
-          options?.colors?.header?.surface?.primary?.dark ||
-          "rgba(255,255,255,0.95)"
-        );
+        return "var(--sk-ai-servicemodule-dark-primary-surface-light, rgba(255,255,255,0.95))";
       default:
         return "rgba(255,255,255,0.95)";
     }
@@ -496,7 +450,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
                       return (
                         <li key={`sk-ai-sm-question-${index}`}>
                           <Bubble
-                            data-color={options?.colors?.bubble?.surface?.light}
+                            data-color={options?.colors?.bubble?.color}
                             hideIcon={!options?.colors?.bubble?.icon}
                             shadow={options?.colors?.bubble?.shadow}
                             variant={

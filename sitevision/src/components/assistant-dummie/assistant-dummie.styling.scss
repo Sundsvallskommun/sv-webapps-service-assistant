@@ -198,12 +198,11 @@
           line-height: 1.5rem;
           border-radius: var(--rounded-button);
         }
-        border: var(--border-width) solid;
-        border-color: var(--border-color);
+        border: var(--border-width) solid var(--border-color);
         &::placeholder {
           color: var(--placeholder-color);
         }
-        background-color: var(--bg-background-content);
+        background: var(--bg-background-content);
 
         .sk-form-input {
           border-radius: 0;
