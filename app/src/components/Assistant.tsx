@@ -18,7 +18,7 @@ export const Assistant = () => {
     header: options?.title ? HtmlParser(options.title) : undefined,
     children: options?.subtitle ? HtmlParser(options.subtitle) : undefined,
     label: options?.label,
-    readmore: options?.readmore,
+    readmore: options?.readmore?.link?.url ? options.readmore : undefined,
     headerIcon: options?.icon ? (
       <Avatar size="md" className="w-40 h-40" imageUrl={options.icon} />
     ) : undefined,

@@ -11,7 +11,7 @@
         data-toggle="collapse"
         data-target="#assistant-settings"
       >
-        <h3 class="panel-title"><%= i18n('settings') %></h3>
+        <h4 class="panel-title"><%= i18n('settings') %></h4>
       </a>
       <div class="panel-collapse" id="assistant-settings">
         <div class="panel-body">
@@ -83,7 +83,7 @@
       data-toggle="collapse"
       data-target="#styling-fonts"
       data-parent="global_settings"
-      ><h3 class="panel-title"><%= i18n('fonts') %></h3>
+      ><h4 class="panel-title"><%= i18n('fonts') %></h4>
     </a>
     <div class="panel-collapse" id="styling-fonts">
       <div class="panel-body">
@@ -165,7 +165,7 @@
       data-toggle="collapse"
       data-target="#styling-responsiveness"
       data-parent="global_settings"
-      ><h3 class="panel-title"><%= i18n('responsiveness') %></h3>
+      ><h4 class="panel-title"><%= i18n('responsiveness') %></h4>
     </a>
     <div class="panel-collapse" id="styling-responsiveness">
       <div class="panel-body">
@@ -202,10 +202,45 @@
       </div>
     </div>
   </div>
+
+  <!-- Dark mode -->
+  <div class="panel panel-default">
+    <a
+      class="panel-heading collapsed"
+      role="button"
+      data-toggle="collapse"
+      data-target="#styling-colorscheme"
+      data-parent="global_settings"
+      ><h4 class="panel-title"><%= i18n('colorscheme') %></h4>
+    </a>
+    <div class="panel-collapse" id="styling-colorscheme">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <fieldset class="form-group">
+              <legend><%= i18n('colorscheme') %></legend>
+              <label>
+                <input type="radio" name="colorscheme" value="system" />
+                <%= i18n('follow_system') %>
+              </label>
+              <label>
+                <input type="radio" name="colorscheme" value="light" />
+                <%= i18n('lightmode') %>
+              </label>
+              <label>
+                <input type="radio" name="colorscheme" value="dark" />
+                <%= i18n('darkmode') %>
+              </label>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="global-primary-values">
-  <h2><%= i18n('primary') % <%= i18n('version') %></h2>
+  <h2><%= i18n('primary') %> <%= i18n('version') %></h2>
   <!-- UTSEENDE -->
   <div class="panel-group" id="one_styling-accordion" data-accordion>
     <h3><%= i18n('look') %></h3>
@@ -217,7 +252,7 @@
         data-toggle="collapse"
         data-parent="#one_styling-accordion"
         data-target="#one_styling-header"
-        ><h3 class="panel-title"><%= i18n('style') %></h3>
+        ><h4 class="panel-title"><%= i18n('style') %></h4>
       </a>
       <div class="panel-collapse" id="one_styling-header">
         <div class="panel-body">
@@ -268,10 +303,6 @@
               <input type="radio" name="1_color_header" value="gronsta" />
               Grönsta
             </label>
-            <label>
-              <input type="radio" name="1_color_header" value="custom" />
-              <%= i18n('use_custom') %>
-            </label>
           </fieldset>
           <div class="row" id="one_color-header-inverted">
             <div class="col-md-6">
@@ -299,7 +330,7 @@
         data-toggle="collapse"
         data-parent="#one_styling-accordion"
         data-target="#one_styling-border-radius"
-        ><h3 class="panel-title"><%= i18n('border-radius') %></h3>
+        ><h4 class="panel-title"><%= i18n('border-radius') %></h4>
       </a>
       <div class="panel-collapse" id="one_styling-border-radius">
         <div class="panel-body">
@@ -418,7 +449,7 @@
         data-toggle="collapse"
         data-parent="#one_styling-accordion"
         data-target="#one_styling-borders"
-        ><h3 class="panel-title"><%= i18n('borders') %></h3>
+        ><h4 class="panel-title"><%= i18n('borders') %></h4>
       </a>
       <div class="panel-collapse" id="one_styling-borders">
         <div class="panel-body">
@@ -484,7 +515,7 @@
         data-toggle="collapse"
         data-parent="#one_styling-accordion"
         data-target="#one_styling-bubbles"
-        ><h3 class="panel-title"><%= i18n('question_bubbles') %></h3>
+        ><h4 class="panel-title"><%= i18n('question_bubbles') %></h4>
       </a>
       <div class="panel-collapse" id="one_styling-bubbles">
         <div class="panel-body">
@@ -551,10 +582,6 @@
               <input type="radio" name="1_color_bubble" value="gronsta" />
               Grönsta
             </label>
-            <label>
-              <input type="radio" name="1_color_bubble" value="custom" />
-              <%= i18n('use_custom') %>
-            </label>
             <div class="row" id="one_color-bubble-inverted">
               <div class="col-md-6">
                 <div class="form-group">
@@ -582,7 +609,7 @@
         data-toggle="collapse"
         data-parent="#one_styling-accordion"
         data-target="#one_styling-css"
-        ><h3 class="panel-title"><%= i18n('css') %></h3>
+        ><h4 class="panel-title"><%= i18n('css') %></h4>
       </a>
       <div class="panel-collapse" id="one_styling-css">
         <div class="panel-body">
@@ -606,7 +633,7 @@
 
 <!-- SECONDARY -->
 <div id="global-secondary-values">
-  <h2><%= i18n('secondary') % <%= i18n('version') %></h2>
+  <h2><%= i18n('secondary') %> <%= i18n('version') %></h2>
   <!-- UTSEENDE -->
   <div class="panel-group" id="two_styling-accordion" data-accordion>
     <h3><%= i18n('look') %></h3>
@@ -618,7 +645,7 @@
         data-toggle="collapse"
         data-parent="#two_styling-accordion"
         data-target="#two_styling-header"
-        ><h3 class="panel-title"><%= i18n('style') %></h3>
+        ><h4 class="panel-title"><%= i18n('style') %></h4>
       </a>
       <div class="panel-collapse" id="two_styling-header">
         <div class="panel-body">
@@ -669,10 +696,6 @@
               <input type="radio" name="2_color_header" value="gronsta" />
               Grönsta
             </label>
-            <label>
-              <input type="radio" name="2_color_header" value="custom" />
-              <%= i18n('use_custom') %>
-            </label>
           </fieldset>
           <div class="row" id="two_color-header-inverted">
             <div class="col-md-6">
@@ -700,7 +723,7 @@
         data-toggle="collapse"
         data-parent="#two_styling-accordion"
         data-target="#two_styling-border-radius"
-        ><h3 class="panel-title"><%= i18n('border-radius') %></h3>
+        ><h4 class="panel-title"><%= i18n('border-radius') %></h4>
       </a>
       <div class="panel-collapse" id="two_styling-border-radius">
         <div class="panel-body">
@@ -819,7 +842,7 @@
         data-toggle="collapse"
         data-parent="#two_styling-accordion"
         data-target="#two_styling-borders"
-        ><h3 class="panel-title"><%= i18n('borders') %></h3>
+        ><h4 class="panel-title"><%= i18n('borders') %></h4>
       </a>
       <div class="panel-collapse" id="two_styling-borders">
         <div class="panel-body">
@@ -885,7 +908,7 @@
         data-toggle="collapse"
         data-parent="#two_styling-accordion"
         data-target="#two_styling-bubbles"
-        ><h3 class="panel-title"><%= i18n('question_bubbles') %></h3>
+        ><h4 class="panel-title"><%= i18n('question_bubbles') %></h4>
       </a>
       <div class="panel-collapse" id="two_styling-bubbles">
         <div class="panel-body">
@@ -952,10 +975,6 @@
               <input type="radio" name="2_color_bubble" value="gronsta" />
               Grönsta
             </label>
-            <label>
-              <input type="radio" name="2_color_bubble" value="custom" />
-              <%= i18n('use_custom') %>
-            </label>
             <div class="row" id="two_color-bubble-inverted">
               <div class="col-md-6">
                 <div class="form-group">
@@ -982,7 +1001,7 @@
         data-toggle="collapse"
         data-parent="#two_styling-accordion"
         data-target="#two_styling-css"
-        ><h3 class="panel-title"><%= i18n('css') %></h3>
+        ><h4 class="panel-title"><%= i18n('css') %></h4>
       </a>
       <div class="panel-collapse" id="two_styling-css">
         <div class="panel-body">

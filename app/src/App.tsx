@@ -6,7 +6,12 @@ import {
   useAssistantStore,
   useSessions,
 } from "@sk-web-gui/ai";
-import { defaultTheme, extendTheme, GuiProvider } from "@sk-web-gui/react";
+import {
+  ColorSchemeMode,
+  defaultTheme,
+  extendTheme,
+  GuiProvider,
+} from "@sk-web-gui/react";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { Assistant } from "./components/Assistant";
 
@@ -86,6 +91,7 @@ function App({
 
       const style = document?.createElement("style");
       style.textContent = options.css;
+      // styleroot?.insertBefore(style, styleroot.lastChild);
       styleroot?.appendChild(style);
     }
   }, [options?.css]);
@@ -99,8 +105,6 @@ function App({
         return color?.inverted
           ? "var(--sk-colors-primary-surface-DEFAULT)"
           : "var(--sk-colors-inverted-primary-surface-DEFAULT)";
-      case "custom":
-        return `var(--sk-ai-servicemodule-${mode}-bubble-background, #CFE0EC)`;
       default:
         return color?.inverted
           ? `var(--sk-colors-${color?.color}-surface-primary-DEFAULT)`
@@ -117,8 +121,6 @@ function App({
         return color?.inverted
           ? "var(--sk-colors-primary-surface-hover)"
           : "var(--sk-colors-inverted-primary-surface-hover)";
-      case "custom":
-        `var(--sk-ai-servicemodule-${mode}-bubble-background-hover, #CFE0EC)`;
       default:
         return color?.inverted
           ? `var(--sk-colors-${color?.color}-surface-primary-hover)`
@@ -131,8 +133,6 @@ function App({
     mode: "light" | "dark"
   ) => {
     switch (color?.color) {
-      case "custom":
-        return `var(--sk-ai-servicemodule-${mode}-bubble-text, #1F1F25)`;
       default:
         return color?.inverted
           ? `var(--sk-colors-light-primary)`
@@ -151,8 +151,6 @@ function App({
         return inverted
           ? "var(--sk-colors-primary-surface)"
           : "var(--sk-colors-inverted-primary-surface)";
-      case "custom":
-        return `var(--sk-ai-servicemodule-${mode}-main-background, #FFFFFF)`;
       default:
         return inverted
           ? `var(--sk-colors-inverted-${color?.color}-surface-primary-DEFAULT)`
@@ -167,8 +165,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return `var(--sk-ai-servicemodule-${mode}-main-text-primary, #FFFFFF)`;
       default:
         return inverted
           ? `var(--sk-colors-dark-primary)`
@@ -183,8 +179,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return `var(--sk-ai-servicemodule-${mode}-main-text-secondary, rgba(255, 255, 255, 0.88))`;
       default:
         return inverted
           ? `var(--sk-colors-dark-secondary)`
@@ -199,8 +193,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return `var(--sk-ai-servicemodule-${mode}-main-text-link, #CFE0EC)`;
       default:
         return inverted
           ? `var(--sk-colors-vattjom-surface-primary-DEFAULT)`
@@ -215,8 +207,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return `var(--sk-ai-servicemodule-${mode}-main-text-link-dark, var(--sk-colors-vattjom-surface-primary-DEFAULT))`;
       default:
         return inverted
           ? `var(--sk-colors-inverted-vattjom-surface-primary-DEFAULT)`
@@ -231,9 +221,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return `var(--sk-ai-servicemodule-${mode}-main-text-link-hover, var(--sk-colors-vattjom-surface-primary-hover))`;
-
       default:
         return inverted
           ? `var(--sk-colors-vattjom-surface-primary-hover)`
@@ -248,8 +235,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return `var(--sk-ai-servicemodule-${mode}-main-text-link-dark-hover, var(--sk-colors-inverted-vattjom-surface-primary-hover))`;
       default:
         return inverted
           ? `var(--sk-colors-inverted-vattjom-surface-primary-hover)`
@@ -262,12 +247,6 @@ function App({
     mode: "light" | "dark"
   ) => {
     switch (color?.color) {
-      case "custom":
-        return {
-          DEFAULT: `var(--sk-ai-servicemodule-${mode}-text-light, #FFFFFF)`,
-          primary: `var(--sk-ai-servicemodule-${mode}-text-light, #FFFFFF)`,
-          secondary: `var(--sk-ai-servicemodule-${mode}-text-secondary-light, rgba(255,255,255,0.88))`,
-        };
       default:
         return undefined;
     }
@@ -278,12 +257,6 @@ function App({
     mode: "light" | "dark"
   ) => {
     switch (color?.color) {
-      case "custom":
-        return {
-          DEFAULT: `var(--sk-ai-servicemodule-${mode}-text-dark, #1F1F25)`,
-          primary: `var(--sk-ai-servicemodule-${mode}-text-dark, #1F1F25)`,
-          secondary: `var(--sk-ai-servicemodule-${mode}-text-secondary-dark, #444450)`,
-        };
       default:
         return undefined;
     }
@@ -294,11 +267,6 @@ function App({
     mode: "light" | "dark"
   ) => {
     switch (color?.color) {
-      case "custom":
-        return {
-          DEFAULT: `var(--sk-ai-servicemodule-${mode}-content-background, #FFFFFF)`,
-          content: `var(--sk-ai-servicemodule-${mode}-content-background, #FFFFFF)`,
-        };
       default:
         return {};
     }
@@ -309,12 +277,6 @@ function App({
     mode: "light" | "dark"
   ) => {
     switch (color?.color) {
-      case "custom":
-        return {
-          DEFAULT: `var(--sk-ai-servicemodule-${mode}-primary-surface, rgba(28,28,40,0.95))`,
-          hover: `var(--sk-ai-servicemodule-${mode}-primary-surface-hover, rgba(28,28,40,0.95))`,
-          disabled: `var(--sk-ai-servicemodule-${mode}-primary-surface-disabled, rgba(28,28,40,0.95))`,
-        };
       default:
         return undefined;
     }
@@ -504,7 +466,11 @@ function App({
   );
 
   return (
-    <GuiProvider theme={theme} htmlFontSize={options?.fontbase || 16}>
+    <GuiProvider
+      theme={theme}
+      htmlFontSize={options?.fontbase || 16}
+      colorScheme={options?.colorscheme || ColorSchemeMode.System}
+    >
       <Suspense fallback="loading">{loaded && <Assistant />}</Suspense>
     </GuiProvider>
   );

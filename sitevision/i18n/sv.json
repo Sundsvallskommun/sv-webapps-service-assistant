@@ -58,6 +58,7 @@
   "color": "Färg",
   "colors": "Färger",
   "colored": "Färgad",
+  "colorscheme": "Färgläge",
   "black": "Svart",
   "header": "Sidhuvud",
   "question_bubble": "Frågebubbla",
@@ -65,12 +66,13 @@
   "olor": "Färg",
   "hover": "Pekare över",
   "text": "Text",
-  "primary": "primär",
-  "secondary": "sekundär",
+  "primary": "Primär",
+  "secondary": "Sekundär",
   "neutral": "neutral",
 
   "lightmode": "Ljust färgläge (Light mode)",
   "darkmode": "Mörkt färgläge (Dark mode)",
+  "follow_system": "Följ användarens inställningar",
 
   "use_from_theme": "Använd från temat",
   "use_from_app": "Använd appens standard",

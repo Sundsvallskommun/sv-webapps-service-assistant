@@ -120,10 +120,10 @@ router.get("/", (req, res) => {
   };
 
   const readmore = {
-    text: globalAppData.get(`${version}_read_more_text`) as string,
+    text: appData.get(`read_more_text`) as string,
     link: {
-      text: globalAppData.get(`${version}_read_more_link_text`) as string,
-      url: globalAppData.get(`${version}_read_more_link_url`) as string,
+      text: appData.get(`read_more_link_text`) as string,
+      url: appData.get(`read_more_link_url`) as string,
     },
   };
 
@@ -156,6 +156,7 @@ router.get("/", (req, res) => {
     assistant: assistantOptions,
     user,
     system,
+    colorscheme: globalAppData.get("colorscheme") as string,
     title: appData.get(`title`) as string,
     subtitle: appData.get(`subtitle`) as string,
     label: appData.get(`label`) as string,

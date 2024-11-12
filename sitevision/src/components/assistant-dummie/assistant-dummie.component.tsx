@@ -5,11 +5,8 @@ import type { DefaultColor } from "../../common/defaultColors";
 import styles from "./assistant-dummie.styling.scss";
 import HtmlParser from "react-html-parser";
 
-interface Color {
-  light: string;
-  dark: string;
-}
 export interface Options {
+  colorscheme: string;
   variant: string;
   fontface: Record<string, string>;
   colors: {
@@ -79,41 +76,47 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
       case "white":
         return inverted ? "#2F2F3C" : "#FFFFFF";
       case "vattjom":
-        return inverted ? "#CFE0EC" : "#005595";
+        return inverted
+          ? "var(--sk-colors-inverted-vattjom-surface-primary-DEFAULT,#CFE0EC)"
+          : "var(--sk-colors-vattjom-surface-primary-DEFAULT, #005595)";
       case "juniskar":
-        return inverted ? "#E9BEE0" : "#A90074";
+        return inverted
+          ? "var(--sk-colors-inverted-juniskar-surface-primary-DEFAULT,#E9BEE0)"
+          : "var(--sk-colors-juniskar-surface-primary-DEFAULT,#A90074)";
       case "bjornstigen":
-        return inverted ? "#D6C4DE" : "#5B1F78";
+        return inverted
+          ? "var(--sk-colors-inverted-bjornstigen-surface-primary-DEFAULT,#D6C4DE)"
+          : "var(--sk-colors-bjornstigen-surface-primary-DEFAULT,#5B1F78)";
       case "gronsta":
-        return inverted ? "#AAD4BF" : "#00733B";
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-main-background, #FFFFFF)";
+        return inverted
+          ? "var(--sk-colors-inverted-gronsta-surface-primary-DEFAULT,#AAD4BF)"
+          : "var(--sk-colors-gronsta-surface-primary-DEFAULT,#00733B)";
       default:
-        return inverted ? "#005595" : "#CFE0EC";
+        return inverted
+          ? "var(--sk-colors-inverted-vattjom-surface-primary-DEFAULT,#CFE0EC)"
+          : "var(--sk-colors-vattjom-surface-primary-DEFAULT, #005595)";
     }
   };
 
   const getMainPrimaryText = (color: string, inverted: boolean) => {
     switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-main-text-primary, #FFFFFF)";
       default:
-        return inverted ? "#1F1F25" : "#FFFFFF";
+        return inverted
+          ? "var(--sk-colors-inverted-light-primary, #1F1F25)"
+          : "var(--sk-colors-light-primary, #FFFFFF)";
     }
   };
   const getMainSecondaryText = (color: string, inverted: boolean) => {
     switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-main-text-secondary, rgba(255, 255, 255, 0.88))";
       default:
-        return inverted ? "#444450" : "rgba(255, 255, 255, 0.88)";
+        return inverted
+          ? "var(--sk-colors-inverted-light-secondary, #444450)"
+          : "var(--sk-colors-light-secondary, rgba(255, 255, 255, 0.88))";
     }
   };
 
   const getMainLinkText = (color: string, inverted: boolean) => {
     switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-main-text-link, #CFE0EC)";
       default:
         return inverted ? `#005595` : `#CFE0EC`;
     }
@@ -122,120 +125,64 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   const getBubbleBackground = (color: string, inverted: boolean) => {
     switch (color) {
       case "white":
-        return inverted ? "rgba(28,28,40,0.95)" : "rgba(255,255,255,0.95)";
+        return inverted
+          ? "var(--sk-colors-primary-surface-DEFAULT, rgba(28,28,40,0.88))"
+          : "var(--sk-colors-primary-surface-DEFAULT, rgba(255,255,255,0.95))";
       case "vattjom":
-        return inverted ? "#005595" : "#CFE0EC";
+        return inverted
+          ? "var(--sk-colors-vattjom-surface-primary-DEFAULT, #005595)"
+          : "var(--sk-colors-inverted-vattjom-surface-primary-DEFAULT,#CFE0EC)";
       case "juniskar":
-        return inverted ? "#A90074" : "#F1D5EA";
+        return inverted
+          ? "var(--sk-colors-juniskar-surface-primary-DEFAULT,#A90074)"
+          : "var(--sk-colors-inverted-juniskar-surface-primary-DEFAULT,#E9BEE0)";
       case "bjornstigen":
-        return inverted ? "#5B1F78" : "#E4D8E9";
+        return inverted
+          ? "var(--sk-colors-bjornstigen-surface-primary-DEFAULT,#5B1F78)"
+          : "var(--sk-colors-inverted-bjornstigen-surface-primary-DEFAULT,#D6C4DE)";
       case "gronsta":
-        return inverted ? "#00733B" : "#C9E4D7";
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-bubble-background, #CFE0EC)";
+        return inverted
+          ? "var(--sk-colors-gronsta-surface-primary-DEFAULT,#00733B)"
+          : "var(--sk-colors-inverted-gronsta-surface-primary-DEFAULT,#AAD4BF)";
       default:
-        return inverted ? "#005595" : "#CFE0EC";
+        return inverted
+          ? "var(--sk-colors-vattjom-surface-primary-DEFAULT, #005595)"
+          : "var(--sk-colors-inverted-vattjom-surface-primary-DEFAULT,#CFE0EC)";
     }
   };
 
   const getBubbleText = (color: string, inverted: boolean) => {
     switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-bubble-text, #1F1F25)";
       default:
-        return inverted ? "#FFFFFF" : "#1F1F25";
-    }
-  };
-
-  const getDarkText = (color: string) => {
-    switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-text-dark, #1F1F25)";
-      default:
-        return "#1F1F25";
-    }
-  };
-  const getInvertedDarkText = (color: string) => {
-    switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-dark-text-dark, #FFFFFF)";
-      default:
-        return "#ffffff";
-    }
-  };
-  const getDarkSecondaryText = (color: string) => {
-    switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-text-secondary-dark, #444450)";
-      default:
-        return "#444450";
-    }
-  };
-
-  const getLightText = (color: string) => {
-    switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-text-light, #FFFFFF)";
-      default:
-        return "#ffffff";
-    }
-  };
-  const getInvertedLightText = (color: string) => {
-    switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-dark-text-light, #1F1F25)";
-      default:
-        return "#1F1F25";
-    }
-  };
-
-  const getLightSecondaryText = (color: string) => {
-    switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-text-secondary-light, rgba(255,255,255,0.88))";
-
-      default:
-        return "rgba(255,255,255,0.88)";
-    }
-  };
-  const getInvertedLightSecondaryText = (color: string) => {
-    switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-dark-text-secondary-light, #444450)";
-      default:
-        return "rgba(28,28,40,0.88)";
+        return inverted
+          ? "var(--sk-colors-light-primary, #FFFFFF)"
+          : "var(--sk-colors-inverted-light-primary, #1F1F25)";
     }
   };
 
   const getContentBg = (color: string) => {
     switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-content-background, #FFFFFF)";
       default:
-        return "#FFFFFF";
+        return "var(--sk-colors-background-content, #FFFFFF)";
     }
   };
 
   const getPrimarySurface = (color: string) => {
     switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-light-primary-surface, rgba(28,28,40,0.95))";
       default:
-        return "rgba(28,28,40,0.95)";
+        return "var(--sk-colors-primary-surface-DEFAULT, rgba(28,28,40,0.95))";
     }
   };
 
   const getInvertedPrimarySurface = (color: string) => {
     switch (color) {
-      case "custom":
-        return "var(--sk-ai-servicemodule-dark-primary-surface-light, rgba(255,255,255,0.95))";
       default:
-        return "rgba(255,255,255,0.95)";
+        return "var(--sk-colors-inverted-primary-surface-DEFAULT, rgba(255,255,255,0.95))";
     }
   };
 
   const cssVars = {
-    "--bg-color-main-surface": getMainBackground(
+    "--sk-colors-header-background": getMainBackground(
       options?.colors?.header?.color || "vattjom",
       options?.variant === "secondary"
         ? !options?.colors?.header?.inverted
@@ -264,30 +211,14 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
     "--bg-background-content": getContentBg(
       options?.colors?.header?.color || "vattjom"
     ),
-    "--text-dark-primary": getDarkText(
-      options?.colors?.header?.color || "vattjom"
-    ),
-    "--text-inverted-dark-primary": getInvertedDarkText(
-      options?.colors?.header?.color || "vattjom"
-    ),
-    "--text-light-primary": getLightText(
-      options?.colors?.header?.color || "vattjom"
-    ),
-    "--text-inverted-light-primary": getInvertedLightText(
-      options?.colors?.header?.color || "vattjom"
-    ),
-    "--text-dark-secondary": getDarkSecondaryText(
-      options?.colors?.header?.color || "vattjom"
-    ),
-    "--text-light-secondary": getLightSecondaryText(
-      options?.colors?.header?.color || "vattjom"
-    ),
-    "--text-inverted-light-secondary": getInvertedLightSecondaryText(
-      options?.colors?.header?.color || "vattjom"
-    ),
-    "--bg-inverted-background-content": "#2F2F3C",
-    "--bg-color-surface": "#005595",
-    "--bg-inverted-color-surface": "#CFE0EC",
+    "--sk-colors-dark-primary": "#1F1F25",
+    "--sk-colors-inverted-dark-primary": "#ffffff",
+    "--sk-colors-light-primary": "#FFFFFF",
+    "--sk-colors-inverted-light-primary": "#1F1F25",
+    "--sk-colors-dark-secondary": "#444450",
+    "--sk-colors-light-secondary": "rgba(255,255,255,0.88)",
+    "--sk-colors-inverted-light-secondary": "rgba(28,28,40,0.88)",
+    "--sk-colors-inverted-background-content": "#2F2F3C",
     "--bg-bubble-surface": getBubbleBackground(
       options?.colors?.bubble?.color || "vattjom",
       options?.colors?.bubble?.inverted || false
@@ -305,19 +236,19 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
 
     "--border-color": options?.border?.use
       ? options?.border?.color
-      : "rgba(28,28,40,0.3)",
+      : "var(--sk-colors-divider, rgba(28,28,40,0.3))",
     "--border-width": options?.border?.use ? options?.border?.thickness : "1px",
 
     //Border radius
-    "--rounded-groups": options?.rounded?.use
+    "--sk-radius-groups-DEFAULT": options?.rounded?.use
       ? options?.rounded.main
       : options?.variant === "primary"
       ? "1rem"
       : "1.25rem",
-    "--rounded-button": options?.rounded?.use
+    "--sk-radius-button-lg": options?.rounded?.use
       ? options?.rounded.input
       : "0.75rem",
-    "--rounded-button-sm": options?.rounded?.use
+    "--sk-radius-button-sm": options?.rounded?.use
       ? options?.rounded.button
       : "0.625rem",
 
@@ -337,7 +268,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
 
   const inverted = options?.colors?.header?.inverted || false;
   return (
-    <div>
+    <div className={options?.colorscheme}>
       {options?.css && <style>{options.css}</style>}
       <div className={styles.dummy} style={cssVars}>
         {isClient && (
@@ -402,7 +333,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
                       </div>
                     </form>
                   </div>
-                  {options?.readmore && (
+                  {options?.readmore?.link?.url && (
                     <div
                       className="sk-ai-service-module-form-readmore"
                       data-inverted={inverted}

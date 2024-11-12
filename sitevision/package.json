@@ -1,6 +1,6 @@
 {
   "name": "sv-webapps-service-assistant",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "type": "module",
   "dependencies": {
     "@sitevision/api": "^2024.4.2",

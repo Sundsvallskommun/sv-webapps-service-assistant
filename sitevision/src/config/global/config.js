@@ -52,54 +52,6 @@ $(function () {
 
     togglePanel(button);
   });
-
-  const initialNumberOfEvents1 = parseInt(
-    $('input[name="1_questions_count"]').attr("value")
-  );
-
-  for (let index = 0; index < 5; index++) {
-    const show = index < initialNumberOfEvents1;
-
-    $(`input[name="1_question_${index + 1}"]`)
-      .parent()
-      .attr("style", `display: ${show ? "block" : "none"}`);
-  }
-
-  $('input[name="1_questions_count"]').on("change", (event) => {
-    const numberOfEvents = parseInt(event.target.value);
-
-    for (let index = 0; index < 5; index++) {
-      const show = index < numberOfEvents;
-
-      $(`input[name="1_question_${index + 1}"]`)
-        .parent()
-        .attr("style", `display: ${show ? "block" : "none"}`);
-    }
-  });
-
-  const initialNumberOfEvents2 = parseInt(
-    $('input[name="2_questions_count"]').attr("value")
-  );
-
-  for (let index = 0; index < 5; index++) {
-    const show = index < initialNumberOfEvents2;
-
-    $(`input[name="2_question_${index + 1}"]`)
-      .parent()
-      .attr("style", `display: ${show ? "block" : "none"}`);
-  }
-
-  $('input[name="2_questions_count"]').on("change", (event) => {
-    const numberOfEvents = parseInt(event.target.value);
-
-    for (let index = 0; index < 5; index++) {
-      const show = index < numberOfEvents;
-
-      $(`input[name="2_question_${index + 1}"]`)
-        .parent()
-        .attr("style", `display: ${show ? "block" : "none"}`);
-    }
-  });
 });
 
 //Data disables
