@@ -35,6 +35,8 @@
 }
 
 .sk-ai-service-module {
+  z-index: 100;
+  position: relative;
   &-row {
     &[data-color],
     &[data-color][data-inverted] {

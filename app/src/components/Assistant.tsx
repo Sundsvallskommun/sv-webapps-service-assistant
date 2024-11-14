@@ -1,13 +1,17 @@
 import { AIServiceModule, useAssistantStore } from "@sk-web-gui/ai";
 import { Avatar } from "@sk-web-gui/react";
 import HtmlParser from "react-html-parser";
+import { useMediaQuery } from "usehooks-ts";
 
 export const Assistant = () => {
   const options = useAssistantStore((state) => state.options);
-
+  const isMobile = useMediaQuery(
+    `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`
+  );
   const props: React.ComponentPropsWithoutRef<
     typeof AIServiceModule.Component
   > = {
+    isMobile,
     questionsTitle: options?.questionsTitle,
     questions: options?.questions,
     inverted:

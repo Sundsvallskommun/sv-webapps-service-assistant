@@ -87,11 +87,10 @@ function App({
       const isShadow = rootElement.getAttribute("data-shadow") === "true";
       const firstChild = rootElement.firstChild as HTMLElement;
 
-      const styleroot = isShadow ? firstChild?.shadowRoot : firstChild;
+      const styleroot = isShadow ? firstChild?.shadowRoot : rootElement;
 
       const style = document?.createElement("style");
       style.textContent = options.css;
-      // styleroot?.insertBefore(style, styleroot.lastChild);
       styleroot?.appendChild(style);
     }
   }, [options?.css]);

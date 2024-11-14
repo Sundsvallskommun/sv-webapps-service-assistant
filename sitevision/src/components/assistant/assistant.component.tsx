@@ -39,7 +39,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
   ]);
 
   React.useEffect(() => {
-    require("../../resources/assistant-service");
+    require("../../../assets/assistant-service");
     setAssistantStoreName(settings.hash);
   }, []);
 

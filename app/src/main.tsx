@@ -72,7 +72,7 @@ for (let index = 0; index < containerArray.length; index++) {
       style.textContent = css;
 
       // apply the style
-      container.appendChild(style);
+      container.parentElement.appendChild(style);
 
       initializeReactApp(container, container);
     } else {
