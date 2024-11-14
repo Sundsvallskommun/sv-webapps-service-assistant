@@ -65,3 +65,6 @@
     @apply border-customwidth border-customcolor;
   }
 }
+.sk-ai-service-module-assistant-expanded {
+  z-index: 10;
+}
