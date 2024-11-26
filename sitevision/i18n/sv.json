@@ -42,6 +42,7 @@
   "avatar": "Avatar",
   "look": "Utseende",
   "version": "Version",
+  "version_settings": "Versionsinställningar",
 
   "users": "Användare",
 
@@ -50,25 +51,27 @@
   "font_header": "Rubriktypsnitt",
   "font_family": "Typsnitt",
   "base_font_size": "Basfontstorlek",
+  "global": "Globala inställningar (för båda versioner)",
 
   "additional_styling": "CSS",
   "css": "CSS",
   "color": "Färg",
   "colors": "Färger",
   "colored": "Färgad",
+  "colorscheme": "Färgläge",
   "black": "Svart",
   "header": "Sidhuvud",
   "question_bubble": "Frågebubbla",
   "background": "Bakgrund",
-  "olor": "Färg",
   "hover": "Pekare över",
   "text": "Text",
-  "primary": "primär",
-  "secondary": "sekundär",
+  "primary": "Primär",
+  "secondary": "Sekundär",
   "neutral": "neutral",
 
   "lightmode": "Ljust färgläge (Light mode)",
   "darkmode": "Mörkt färgläge (Dark mode)",
+  "follow_system": "Följ användarens inställningar",
 
   "use_from_theme": "Använd från temat",
   "use_from_app": "Använd appens standard",

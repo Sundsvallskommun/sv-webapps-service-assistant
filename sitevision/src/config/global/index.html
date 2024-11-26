@@ -1,0 +1,1024 @@
+<!-- Global -->
+<div class="panel-group" id="global_settings">
+  <h2><%= i18n('global') %></h2>
+
+  <div class="panel-group" id="assistant-information">
+    <h3><%= i18n('assistant') %></h3>
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-target="#assistant-settings"
+      >
+        <h4 class="panel-title"><%= i18n('settings') %></h4>
+      </a>
+      <div class="panel-collapse" id="assistant-settings">
+        <div class="panel-body">
+          <div class="form-group">
+            <label><%= i18n('server_url') %></label>
+            <input class="form-control" name="server_url" />
+          </div>
+
+          <div
+            class="panel-group"
+            id="advanced-settings-accordion"
+            data-accordion
+          >
+            <div class="panel panel-default">
+              <a
+                class="panel-heading collapsed"
+                role="button"
+                data-toggle="collapse"
+                data-parent="#advanced-settings-accordion"
+                data-target="#advanced-settings"
+                ><label class="panel-title"><%= i18n('advanced') %></label>
+              </a>
+              <div class="panel-collapse" id="advanced-settings">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="stream"
+                        data-value-type="boolean"
+                      />
+                      <%= i18n('stream_answers') %></label
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="shadowdom"
+                        data-value-type="boolean"
+                      />
+                      <%= i18n('use_shadow_dom') %></label
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label
+                      ><input
+                        type="checkbox"
+                        name="use_user"
+                        data-value-type="boolean"
+                      />
+                      <%= i18n('use_user') %></label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fonts -->
+  <div class="panel panel-default">
+    <a
+      class="panel-heading collapsed"
+      role="button"
+      data-toggle="collapse"
+      data-target="#styling-fonts"
+      data-parent="global_settings"
+      ><h4 class="panel-title"><%= i18n('fonts') %></h4>
+    </a>
+    <div class="panel-collapse" id="styling-fonts">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <fieldset class="form-group">
+              <legend><%= i18n('font_default') %></legend>
+              <label>
+                <input type="radio" name="font_default" value="theme" />
+                <%= i18n('use_from_theme') %>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  data-enables="font-default-value"
+                  name="font_default"
+                  value="other"
+                />
+                <%= i18n('use_other') %>
+              </label>
+              <input
+                class="form-control"
+                id="font-default-value"
+                name="font_default_value"
+              />
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset class="form-group">
+              <legend><%= i18n('font_header') %></legend>
+              <label>
+                <input type="radio" name="font_header" value="theme" />
+                <%= i18n('use_from_theme') %>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  data-enables="#font-header-value"
+                  name="font_header"
+                  value="other"
+                />
+                <%= i18n('use_other') %>
+              </label>
+              <input
+                class="form-control"
+                id="font-header-value"
+                name="font_header_value"
+              />
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label><%= i18n('base_font_size') %></label>
+              <input
+                class="form-control"
+                data-component="number-spinner"
+                data-min="0"
+                data-max="100"
+                data-step="1"
+                name="fontbase"
+                data-postfix="px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Responsivitet -->
+  <div class="panel panel-default">
+    <a
+      class="panel-heading collapsed"
+      role="button"
+      data-toggle="collapse"
+      data-target="#styling-responsiveness"
+      data-parent="global_settings"
+      ><h4 class="panel-title"><%= i18n('responsiveness') %></h4>
+    </a>
+    <div class="panel-collapse" id="styling-responsiveness">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label><%= i18n('small_screen_breakpoint') %></label>
+              <div class="input-group websize-selector bootstrap-touchspin">
+                <input
+                  class="form-control"
+                  data-component="number-spinner"
+                  data-min="0"
+                  data-max="10000"
+                  data-step="1"
+                  name="mobile_breakpoint"
+                />
+                <span
+                  class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                >
+                  <select
+                    name="mobile_breakpoint_unit"
+                    class="btn btn-default dropdown-toggle unit-button"
+                  >
+                    <option value="px">px</option>
+                    <option value="em">em</option>
+                    <option value="rem">rem</option>
+                    <option value="%">%</option>
+                  </select>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dark mode -->
+  <div class="panel panel-default">
+    <a
+      class="panel-heading collapsed"
+      role="button"
+      data-toggle="collapse"
+      data-target="#styling-colorscheme"
+      data-parent="global_settings"
+      ><h4 class="panel-title"><%= i18n('colorscheme') %></h4>
+    </a>
+    <div class="panel-collapse" id="styling-colorscheme">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <fieldset class="form-group">
+              <legend><%= i18n('colorscheme') %></legend>
+              <label>
+                <input type="radio" name="colorscheme" value="system" />
+                <%= i18n('follow_system') %>
+              </label>
+              <label>
+                <input type="radio" name="colorscheme" value="light" />
+                <%= i18n('lightmode') %>
+              </label>
+              <label>
+                <input type="radio" name="colorscheme" value="dark" />
+                <%= i18n('darkmode') %>
+              </label>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="global-primary-values">
+  <h2><%= i18n('primary') %> <%= i18n('version') %></h2>
+  <!-- UTSEENDE -->
+  <div class="panel-group" id="one_styling-accordion" data-accordion>
+    <h3><%= i18n('look') %></h3>
+    <!-- Sidhuvud -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-header"
+        ><h4 class="panel-title"><%= i18n('style') %></h4>
+      </a>
+      <div class="panel-collapse" id="one_styling-header">
+        <div class="panel-body">
+          <fieldset>
+            <legend><%= i18n('style_variant') %></legend>
+            <label>
+              <input type="radio" name="1_variant" value="primary" />
+              <%= i18n('primary') %>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="1_variant"
+                value="secondary"
+                data-enables="#one_main-icon"
+              />
+              <%= i18n('secondary') %>
+            </label>
+          </fieldset>
+        </div>
+        <div class="panel-body" id="one_main-icon">
+          <div class="form-group">
+            <label><%= i18n('icon') %></label>
+            <input
+              class="form-control"
+              data-component="image-selector"
+              data-removable
+              name="1_header_icon"
+            />
+          </div>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <legend><%= i18n('color') %></legend>
+            <label>
+              <input type="radio" name="1_color_header" value="vattjom" />
+              Vattjom
+            </label>
+            <label>
+              <input type="radio" name="1_color_header" value="juniskar" />
+              Juniskär
+            </label>
+            <label>
+              <input type="radio" name="1_color_header" value="bjornstigen" />
+              Björnstigen
+            </label>
+            <label>
+              <input type="radio" name="1_color_header" value="gronsta" />
+              Grönsta
+            </label>
+          </fieldset>
+          <div class="row" id="one_color-header-inverted">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label
+                  ><input
+                    type="checkbox"
+                    name="1_color_header_inverted"
+                    data-value-type="boolean"
+                  />
+                  <%= i18n('inverted') %></label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Border radius -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-border-radius"
+        ><h4 class="panel-title"><%= i18n('border-radius') %></h4>
+      </a>
+      <div class="panel-collapse" id="one_styling-border-radius">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_custom_border_radius"
+                data-enables="#one_border-radius-values"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_custom_border_radius') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body" id="one_border-radius-values">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('main-card') %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="1_border_radius_main_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="1_border_radius_main_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('input') %>, <%=
+                  i18n('big_buttons') %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="1_border_radius_input_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="1_border_radius_input_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('small_buttons')
+                  %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="1_border_radius_button_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="1_border_radius_button_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Borders -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-borders"
+        ><h4 class="panel-title"><%= i18n('borders') %></h4>
+      </a>
+      <div class="panel-collapse" id="one_styling-borders">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_custom_borders"
+                data-enables="#one_borders-values"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_custom_borders') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body" id="one_borders-values">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('border') %>, <%= i18n('thickness') %></label>
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="1_border_thickness_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="1_border_thickness_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label><%= i18n('border') %>, <%= i18n('color') %></label>
+                <select
+                  data-component="color-selector"
+                  name="1_border_color"
+                ></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question bubbles -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-bubbles"
+        ><h4 class="panel-title"><%= i18n('question_bubbles') %></h4>
+      </a>
+      <div class="panel-collapse" id="one_styling-bubbles">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_simple_bubbles"
+                data-value-type="boolean"
+                data-enables="#one_bubble-borders"
+              />
+              <%= i18n('use_simple_bubbles') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_bubble_shadow"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_shadow') %>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_bubble_icon"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_icon') %>
+            </label>
+          </div>
+          <div class="form-group" id="one_bubble-borders">
+            <label>
+              <input
+                type="checkbox"
+                name="1_use_bubble_borders"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_borders') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <legend><%= i18n('color') %></legend>
+            <label>
+              <input type="radio" name="1_color_bubble" value="vattjom" />
+              Vattjom
+            </label>
+            <label>
+              <input type="radio" name="1_color_bubble" value="juniskar" />
+              Juniskär
+            </label>
+            <label>
+              <input type="radio" name="1_color_bubble" value="bjornstigen" />
+              Björnstigen
+            </label>
+            <label>
+              <input type="radio" name="1_color_bubble" value="gronsta" />
+              Grönsta
+            </label>
+            <div class="row" id="one_color-bubble-inverted">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="1_color_bubble_inverted"
+                      data-value-type="boolean"
+                    />
+                    <%= i18n('inverted') %></label
+                  >
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSS -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#one_styling-accordion"
+        data-target="#one_styling-css"
+        ><h4 class="panel-title"><%= i18n('css') %></h4>
+      </a>
+      <div class="panel-collapse" id="one_styling-css">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('css') %></label>
+                <textarea
+                  class="form-control"
+                  name="1_css"
+                  rows="10"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECONDARY -->
+<div id="global-secondary-values">
+  <h2><%= i18n('secondary') %> <%= i18n('version') %></h2>
+  <!-- UTSEENDE -->
+  <div class="panel-group" id="two_styling-accordion" data-accordion>
+    <h3><%= i18n('look') %></h3>
+    <!-- Sidhuvud -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-header"
+        ><h4 class="panel-title"><%= i18n('style') %></h4>
+      </a>
+      <div class="panel-collapse" id="two_styling-header">
+        <div class="panel-body">
+          <fieldset>
+            <legend><%= i18n('style_variant') %></legend>
+            <label>
+              <input type="radio" name="2_variant" value="primary" />
+              <%= i18n('primary') %>
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="2_variant"
+                value="secondary"
+                data-enables="#two_main-icon"
+              />
+              <%= i18n('secondary') %>
+            </label>
+          </fieldset>
+        </div>
+        <div class="panel-body" id="two_main-icon">
+          <div class="form-group">
+            <label><%= i18n('icon') %></label>
+            <input
+              class="form-control"
+              data-component="image-selector"
+              data-removable
+              name="2_header_icon"
+            />
+          </div>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <legend><%= i18n('color') %></legend>
+            <label>
+              <input type="radio" name="2_color_header" value="vattjom" />
+              Vattjom
+            </label>
+            <label>
+              <input type="radio" name="2_color_header" value="juniskar" />
+              Juniskär
+            </label>
+            <label>
+              <input type="radio" name="2_color_header" value="bjornstigen" />
+              Björnstigen
+            </label>
+            <label>
+              <input type="radio" name="2_color_header" value="gronsta" />
+              Grönsta
+            </label>
+          </fieldset>
+          <div class="row" id="two_color-header-inverted">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label
+                  ><input
+                    type="checkbox"
+                    name="2_color_header_inverted"
+                    data-value-type="boolean"
+                  />
+                  <%= i18n('inverted') %></label
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Border radius -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-border-radius"
+        ><h4 class="panel-title"><%= i18n('border-radius') %></h4>
+      </a>
+      <div class="panel-collapse" id="two_styling-border-radius">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_custom_border_radius"
+                data-enables="#two_border-radius-values"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_custom_border_radius') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body" id="two_border-radius-values">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('main-card') %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="2_border_radius_main_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="2_border_radius_main_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('input') %>, <%=
+                  i18n('big_buttons') %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="2_border_radius_input_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="2_border_radius_input_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  ><%= i18n('border-radius') %>, <%= i18n('small_buttons')
+                  %></label
+                >
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="2_border_radius_button_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="2_border_radius_button_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Borders -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-borders"
+        ><h4 class="panel-title"><%= i18n('borders') %></h4>
+      </a>
+      <div class="panel-collapse" id="two_styling-borders">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_custom_borders"
+                data-enables="#two_borders-values"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_custom_borders') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body" id="two_borders-values">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('border') %>, <%= i18n('thickness') %></label>
+                <div class="input-group websize-selector bootstrap-touchspin">
+                  <input
+                    class="form-control"
+                    data-component="number-spinner"
+                    data-min="0"
+                    data-max="10000"
+                    data-step="1"
+                    name="2_border_thickness_value"
+                  />
+                  <span
+                    class="input-group-addon bootstrap-touchspin-postfix dropdown"
+                  >
+                    <select
+                      name="2_border_thickness_unit"
+                      class="btn btn-default dropdown-toggle unit-button"
+                    >
+                      <option value="px">px</option>
+                      <option value="em">em</option>
+                      <option value="rem">rem</option>
+                      <option value="%">%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label><%= i18n('border') %>, <%= i18n('color') %></label>
+                <select
+                  data-component="color-selector"
+                  name="2_border_color"
+                ></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question bubbles -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-bubbles"
+        ><h4 class="panel-title"><%= i18n('question_bubbles') %></h4>
+      </a>
+      <div class="panel-collapse" id="two_styling-bubbles">
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_simple_bubbles"
+                data-value-type="boolean"
+                data-enables="#two_bubble-borders"
+              />
+              <%= i18n('use_simple_bubbles') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_bubble_shadow"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_shadow') %>
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_bubble_icon"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_icon') %>
+            </label>
+          </div>
+          <div class="form-group" id="two_bubble-borders">
+            <label>
+              <input
+                type="checkbox"
+                name="2_use_bubble_borders"
+                data-value-type="boolean"
+              />
+              <%= i18n('use_bubble_borders') %>
+            </label>
+          </div>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <legend><%= i18n('color') %></legend>
+            <label>
+              <input type="radio" name="2_color_bubble" value="vattjom" />
+              Vattjom
+            </label>
+            <label>
+              <input type="radio" name="2_color_bubble" value="juniskar" />
+              Juniskär
+            </label>
+            <label>
+              <input type="radio" name="2_color_bubble" value="bjornstigen" />
+              Björnstigen
+            </label>
+            <label>
+              <input type="radio" name="2_color_bubble" value="gronsta" />
+              Grönsta
+            </label>
+            <div class="row" id="two_color-bubble-inverted">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="2_color_bubble_inverted"
+                      data-value-type="boolean"
+                    />
+                    <%= i18n('inverted') %></label
+                  >
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <!-- CSS -->
+    <div class="panel panel-default">
+      <a
+        class="panel-heading collapsed"
+        role="button"
+        data-toggle="collapse"
+        data-parent="#two_styling-accordion"
+        data-target="#two_styling-css"
+        ><h4 class="panel-title"><%= i18n('css') %></h4>
+      </a>
+      <div class="panel-collapse" id="two_styling-css">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label><%= i18n('css') %></label>
+                <textarea
+                  class="form-control"
+                  name="2_css"
+                  rows="10"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

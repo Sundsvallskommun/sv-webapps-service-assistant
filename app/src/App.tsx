@@ -6,7 +6,12 @@ import {
   useAssistantStore,
   useSessions,
 } from "@sk-web-gui/ai";
-import { defaultTheme, extendTheme, GuiProvider } from "@sk-web-gui/react";
+import {
+  ColorSchemeMode,
+  defaultTheme,
+  extendTheme,
+  GuiProvider,
+} from "@sk-web-gui/react";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { Assistant } from "./components/Assistant";
 
@@ -82,7 +87,7 @@ function App({
       const isShadow = rootElement.getAttribute("data-shadow") === "true";
       const firstChild = rootElement.firstChild as HTMLElement;
 
-      const styleroot = isShadow ? firstChild?.shadowRoot : firstChild;
+      const styleroot = isShadow ? firstChild?.shadowRoot : rootElement;
 
       const style = document?.createElement("style");
       style.textContent = options.css;
@@ -99,8 +104,6 @@ function App({
         return color?.inverted
           ? "var(--sk-colors-primary-surface-DEFAULT)"
           : "var(--sk-colors-inverted-primary-surface-DEFAULT)";
-      case "custom":
-        return options.colors?.bubble?.surface?.[mode];
       default:
         return color?.inverted
           ? `var(--sk-colors-${color?.color}-surface-primary-DEFAULT)`
@@ -117,8 +120,6 @@ function App({
         return color?.inverted
           ? "var(--sk-colors-primary-surface-hover)"
           : "var(--sk-colors-inverted-primary-surface-hover)";
-      case "custom":
-        return options.colors?.bubble?.["surface-hover"]?.[mode];
       default:
         return color?.inverted
           ? `var(--sk-colors-${color?.color}-surface-primary-hover)`
@@ -131,8 +132,6 @@ function App({
     mode: "light" | "dark"
   ) => {
     switch (color?.color) {
-      case "custom":
-        return options.colors?.bubble?.text?.[mode];
       default:
         return color?.inverted
           ? `var(--sk-colors-light-primary)`
@@ -151,11 +150,6 @@ function App({
         return inverted
           ? "var(--sk-colors-primary-surface)"
           : "var(--sk-colors-inverted-primary-surface)";
-      case "custom":
-        return (
-          color?.background?.[mode] ||
-          "var(--sk-colors-inverted-primary-surface)"
-        );
       default:
         return inverted
           ? `var(--sk-colors-inverted-${color?.color}-surface-primary-DEFAULT)`
@@ -170,8 +164,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return color?.text?.primary?.[mode] || `var(--sk-colors-light-primary)`;
       default:
         return inverted
           ? `var(--sk-colors-dark-primary)`
@@ -186,10 +178,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return (
-          color?.text?.secondary?.[mode] || `var(--sk-colors-light-secondary)`
-        );
       default:
         return inverted
           ? `var(--sk-colors-dark-secondary)`
@@ -204,11 +192,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return (
-          color?.text?.light?.link?.[mode] ||
-          `var(--sk-colors-vattjom-surface-primary-DEFAULT)`
-        );
       default:
         return inverted
           ? `var(--sk-colors-vattjom-surface-primary-DEFAULT)`
@@ -223,11 +206,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return (
-          color?.text?.dark?.link?.[mode] ||
-          `var(--sk-colors-inverted-vattjom-surface-primary-DEFAULT)`
-        );
       default:
         return inverted
           ? `var(--sk-colors-inverted-vattjom-surface-primary-DEFAULT)`
@@ -242,11 +220,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return (
-          color?.text?.light?.["link-hover"]?.[mode] ||
-          `var(--sk-colors-vattjom-surface-primary-hover)`
-        );
       default:
         return inverted
           ? `var(--sk-colors-vattjom-surface-primary-hover)`
@@ -261,11 +234,6 @@ function App({
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
     switch (color?.color) {
-      case "custom":
-        return (
-          color?.text?.dark?.["link-hover"]?.[mode] ||
-          `var(--sk-colors-inverted-vattjom-surface-primary-hover)`
-        );
       default:
         return inverted
           ? `var(--sk-colors-inverted-vattjom-surface-primary-hover)`
@@ -278,12 +246,6 @@ function App({
     mode: "light" | "dark"
   ) => {
     switch (color?.color) {
-      case "custom":
-        return {
-          DEFAULT: color?.text?.light?.primary?.[mode],
-          primary: color?.text?.light?.primary?.[mode],
-          secondary: color?.text?.light?.secondary?.[mode],
-        };
       default:
         return undefined;
     }
@@ -294,12 +256,6 @@ function App({
     mode: "light" | "dark"
   ) => {
     switch (color?.color) {
-      case "custom":
-        return {
-          DEFAULT: color?.text?.dark?.primary?.[mode],
-          primary: color?.text?.dark?.primary?.[mode],
-          secondary: color?.text?.dark?.secondary?.[mode],
-        };
       default:
         return undefined;
     }
@@ -310,11 +266,6 @@ function App({
     mode: "light" | "dark"
   ) => {
     switch (color?.color) {
-      case "custom":
-        return {
-          DEFAULT: color?.contentbg?.[mode],
-          content: color?.contentbg?.[mode],
-        };
       default:
         return {};
     }
@@ -325,12 +276,6 @@ function App({
     mode: "light" | "dark"
   ) => {
     switch (color?.color) {
-      case "custom":
-        return {
-          DEFAULT: color?.surface?.primary?.[mode],
-          hover: color?.surface?.hover?.[mode],
-          disabled: color?.surface?.disabled?.[mode],
-        };
       default:
         return undefined;
     }
@@ -520,7 +465,11 @@ function App({
   );
 
   return (
-    <GuiProvider theme={theme} htmlFontSize={options?.fontbase || 16}>
+    <GuiProvider
+      theme={theme}
+      htmlFontSize={options?.fontbase || 16}
+      colorScheme={options?.colorscheme || ColorSchemeMode.System}
+    >
       <Suspense fallback="loading">{loaded && <Assistant />}</Suspense>
     </GuiProvider>
   );

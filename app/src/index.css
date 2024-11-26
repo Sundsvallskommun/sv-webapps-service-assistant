@@ -35,6 +35,8 @@
 }
 
 .sk-ai-service-module {
+  z-index: 100;
+  position: relative;
   &-row {
     &[data-color],
     &[data-color][data-inverted] {
@@ -62,4 +64,7 @@
   &-group {
     @apply border-customwidth border-customcolor;
   }
+}
+.sk-ai-service-module-assistant-expanded {
+  z-index: 10;
 }

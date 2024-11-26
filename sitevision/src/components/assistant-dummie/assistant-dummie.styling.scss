@@ -7,7 +7,7 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      border-radius: var(--rounded-button);
+      border-radius: var(--sk-radius-button-lg);
       overflow: hidden;
       width: 2.5rem;
       height: 2.5rem;
@@ -34,7 +34,7 @@
       justify-content: center;
       flex-shrink: 0;
       vertical-align: middle;
-      border-radius: var(--rounded-button);
+      border-radius: var(--sk-radius-button-lg);
 
       &-sm {
         font-size: 0.875rem;
@@ -46,7 +46,7 @@
         gap: 0.375rem;
         max-height: 2rem;
         height: 2rem;
-        border-radius: var(--rounded-button-sm);
+        border-radius: var(--sk-radius-button-sm);
         svg,
         .sk-icon {
           height: 1rem;
@@ -55,13 +55,13 @@
       }
 
       &-primary {
-        color: var(--text-light-primary);
+        color: var(--sk-colors-light-primary);
 
         &[data-color="primary"] {
           background-color: var(--bg-primary-surface);
 
           &[data-inverted="true"] {
-            color: var(--text-inverted-light-primary);
+            color: var(--sk-colors-inverted-light-primary);
             background-color: var(--bg-inverted-primary-surface);
           }
         }
@@ -76,9 +76,9 @@
       width: fit-content;
       position: relative;
       border: 0;
-      border-top-left-radius: var(--rounded-button);
-      border-top-right-radius: var(--rounded-button);
-      border-bottom-right-radius: var(--rounded-button);
+      border-top-left-radius: var(--sk-radius-button-lg);
+      border-top-right-radius: var(--sk-radius-button-lg);
+      border-bottom-right-radius: var(--sk-radius-button-lg);
       padding-top: 0.625rem;
       padding-right: 1.75rem;
       padding-bottom: 0.625rem;
@@ -166,10 +166,10 @@
 
     .sk-form-input {
       flex-grow: 0;
-      color: var(--text-dark-primary);
+      color: var(--sk-colors-dark-primary);
 
       &.sk-form-input-lg {
-        border-radius: var(--rounded-button);
+        border-radius: var(--sk-radius-button-lg);
         padding-left: 1.25rem;
         padding-right: 1.25rem;
         padding-top: 0.6875rem;
@@ -191,19 +191,18 @@
         display: flex;
         position: relative;
         align-items: center;
-        color: var(--text-dark-secondary);
+        color: var(--sk-colors-dark-secondary);
 
         &.sk-form-input-group-lg {
           font-size: 1.125rem;
           line-height: 1.5rem;
-          border-radius: var(--rounded-button);
+          border-radius: var(--sk-radius-button-lg);
         }
-        border: var(--border-width) solid;
-        border-color: var(--border-color);
+        border: var(--border-width) solid var(--border-color);
         &::placeholder {
           color: var(--placeholder-color);
         }
-        background-color: var(--bg-background-content);
+        background: var(--bg-background-content);
 
         .sk-form-input {
           border-radius: 0;
@@ -240,16 +239,16 @@
       font-family: var(--font-DEFAULT);
       display: flex;
       gap: 0;
-      border-radius: var(--rounded-groups);
+      border-radius: var(--sk-radius-groups-DEFAULT);
       box-shadow: var(--drop-shadow);
 
       &[data-variant="primary"] {
         background-color: var(--bg-background-content);
-        color: var(--text-light-primary);
+        color: var(--sk-colors-light-primary);
         flex-direction: row;
         &[data-inverted="true"] {
-          color: var(--text-inverted-light-primary);
-          background-color: var(--bg-inverted-background-content);
+          color: var(--sk-colors-inverted-light-primary);
+          background-color: var(--sk-colors-inverted-background-content);
         }
       }
 
@@ -258,9 +257,9 @@
         border-color: var(--border-color);
         background: transparent;
         flex-direction: column;
-        color: var(--text-dark-primary);
+        color: var(--sk-colors-dark-primary);
         &[data-inverted="true"] {
-          color: var(--text-inverted-dark-primary);
+          color: var(--sk-colors-inverted-dark-primary);
         }
       }
 
@@ -294,17 +293,17 @@
           }
         }
         &[data-color="true"] {
-          background-color: var(--bg-color-main-surface);
+          background-color: var(--sk-colors-header-background);
           &[data-variant="primary"] {
-            color: var(--text-light-primary);
+            color: var(--sk-colors-light-primary);
             &[data-inverted="true"] {
-              color: var(--text-inverted-light-primary);
+              color: var(--sk-colors-inverted-light-primary);
             }
           }
           &[data-variant="secondary"] {
-            color: var(--text-dark-primary);
+            color: var(--sk-colors-dark-primary);
             &[data-inverted="true"] {
-              color: var(--text-inverted-dark-primary);
+              color: var(--sk-colors-inverted-dark-primary);
             }
           }
         }
@@ -409,15 +408,15 @@
           font-size: 0.875rem;
           line-height: 1.125rem;
           &[data-variant="primary"] {
-            color: var(--text-light-secondary);
+            color: var(--sk-colors-light-secondary);
             &[data-inverted="true"] {
-              color: var(--text-inverted-light-secondary);
+              color: var(--sk-colors-inverted-light-secondary);
             }
           }
           &[data-variant="secondary"] {
-            color: var(--text-dark-secondary);
+            color: var(--sk-colors-dark-secondary);
             &[data-inverted="true"] {
-              color: var(--text-inverted-dark-secondary);
+              color: var(--sk-colors-inverted-dark-secondary);
             }
           }
           .sk-link {
@@ -438,11 +437,11 @@
         flex-direction: column;
         gap: 1.75rem;
         padding-bottom: 0.5rem;
-        color: var(--text-dark-primary);
+        color: var(--sk-colors-dark-primary);
 
         &-title,
         &-title > * {
-          color: var(--text-dark-primary);
+          color: var(--sk-colors-dark-primary);
           font-family: var(--font-DEFAULT);
           font-size: 1.125rem;
           line-height: 2rem;
@@ -459,7 +458,7 @@
         }
 
         &[data-inverted="true"] {
-          color: var(--text-inverted-dark-primary);
+          color: var(--sk-colors-inverted-dark-primary);
         }
 
         &[data-variant="primary"] {
