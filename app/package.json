@@ -1,7 +1,7 @@
 {
   "name": "serviceassistant",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,15 +12,16 @@
     "copybuild": "node copybuild"
   },
   "dependencies": {
-    "@sk-web-gui/ai": "^0.10.1",
-    "@sk-web-gui/core": "^3.8.0",
-    "@sk-web-gui/react": "^1.2.32",
+    "@sk-web-gui/ai": "^0.10.3",
+    "@sk-web-gui/core": "^3.9.1",
+    "@sk-web-gui/react": "^1.2.36",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.7",
     "@types/node": "^22.7.5",
     "dayjs": "^1.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.54.2",
     "react-html-parser": "^2.0.2",
     "usehooks-ts": "^3.1.0"
   },

@@ -43,6 +43,8 @@
   "look": "Utseende",
   "version": "Version",
   "version_settings": "Versionsinställningar",
+  "remember_session": "Behåll session vid navigering",
+  "app_session_id": "Sessionsnamn",
 
   "users": "Användare",
 

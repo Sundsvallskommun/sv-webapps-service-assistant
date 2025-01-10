@@ -41,6 +41,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
   React.useEffect(() => {
     require("../../../assets/assistant-service");
     setAssistantStoreName(settings.hash);
+    //eslint-disable-next-line
   }, []);
 
   React.useEffect(() => {

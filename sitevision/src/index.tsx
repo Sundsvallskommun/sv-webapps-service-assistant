@@ -167,6 +167,8 @@ router.get("/", (req, res) => {
     icon: icon ? icon?.props?.src : undefined,
     border,
     css: globalAppData.get(`${version}_css`) as string,
+    rememberSession: (appData.get(`remember_session`) as boolean) ?? false,
+    appSessionId: (appData.get(`app_session_id`) as string) || "default",
   };
 
   const viewMode = versionUtil.getCurrentVersion();
