@@ -55,6 +55,8 @@ export interface Options {
   };
   icon?: string;
   css?: string;
+  appSessionId?: string;
+  remeberSession?: boolean;
 }
 
 interface AssistantDummieProps {

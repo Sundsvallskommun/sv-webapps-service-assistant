@@ -22,7 +22,9 @@
     "title": "Hej, hur kan vi hjälpa dig idag?",
     "subtitle": "",
     "label": "Ställ en fråga till vår AI-assistent",
-    "variant": "primary"
+    "variant": "primary",
+    "remember_session": false,
+    "app_session_id": "1"
   },
   "globalAppData": {
     "salt": "",

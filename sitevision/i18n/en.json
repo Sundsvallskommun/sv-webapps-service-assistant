@@ -20,6 +20,8 @@
   "use_user": "Include username",
   "styling": "Styling",
   "style": "Style",
+  "remember_session": "Keep session alive",
+  "app_session_id": "Session name",
 
   "name": "Name",
   "title": "Title",
