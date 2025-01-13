@@ -41,7 +41,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
   React.useEffect(() => {
     require("../../../assets/assistant-service");
     setAssistantStoreName(settings.hash);
-    //eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {
@@ -50,7 +50,8 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
       ...assistant,
     };
     setInfo(info);
-  }, [assistant, setInfo, oldInfo]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [assistant, setInfo]);
 
   React.useEffect(() => {
     if (settings) {
@@ -60,7 +61,8 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
       };
       setSettings(newSettings);
     }
-  }, [settings, setSettings, oldSettings]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [settings, setSettings]);
 
   React.useEffect(() => {
     if (options) {
