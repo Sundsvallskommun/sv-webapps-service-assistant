@@ -12,7 +12,7 @@ export const initializeReactApp = (appElement, rootElement) => {
       <App
         id={appElement.getAttribute("id")}
         user={appElement.getAttribute("data-user")}
-        hash={appElement.getAttribute("data-hash")}
+        hash={appElement.getAttribute("data-hash") || import.meta.env.VITE_HASH}
         assistantId={
           appElement.getAttribute("data-assistant") ||
           import.meta.env.VITE_DEFAULT_ASSISTANT_ID
