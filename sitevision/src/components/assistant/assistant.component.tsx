@@ -40,7 +40,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
 
   React.useEffect(() => {
     require("../../../assets/assistant-service");
-    setAssistantStoreName(settings.hash);
+    setAssistantStoreName(`sk-ai-sv-service-assistant-${settings.hash}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

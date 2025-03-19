@@ -16,7 +16,7 @@ const useAppSessionStore = createWithEqualityFn(
       setSessionIds: (sessionIds) => set({ sessionIds }),
     }),
     {
-      name: "sk-ai-sv-sessions",
+      name: "sk-ai-sv-service-sessions",
       storage: createJSONStorage(() => sessionStorage),
     }
   )
