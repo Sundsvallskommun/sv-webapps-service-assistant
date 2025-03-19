@@ -40,7 +40,7 @@ function App({
   const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    setAssistantStoreName(id || "sk-ai-sv-service-assistant");
+    setAssistantStoreName(`sk-ai-sv-service-assistant-${id}`);
 
     if (import.meta.env.DEV) {
       const settings: AssistantSettings = {
@@ -52,7 +52,7 @@ function App({
       };
 
       const info: AssistantInfo = {
-        name: import.meta.env.VITE_ASSISTANT_NAME || "Hörnassistenten",
+        name: import.meta.env.VITE_ASSISTANT_NAME || "Serviceassistenten",
         shortName: "AI",
         title: "Sundsvalls AI-assistent.",
         description: {

@@ -24,7 +24,8 @@ export const Assistant = () => {
     if (!rememberSession) {
       setSessionId("");
     }
-  }, [rememberSession]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (session?.id && session.id !== sessionId) {
