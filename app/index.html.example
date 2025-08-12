@@ -19,7 +19,7 @@
       <script type="module" src="/src/main.tsx"></script>
 
       <div
-        id="sk-service-assistant"
+        class="sk-service-assistant"
         data-user=""
         data-hash=""
         data-assistant=""

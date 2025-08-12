@@ -14,6 +14,7 @@ import {
 } from "@sk-web-gui/react";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { Assistant } from "./components/Assistant";
+import { Options } from "./types/options";
 
 function App({
   user,
@@ -26,15 +27,20 @@ function App({
   assistantId?: string | null;
   id?: string;
 }) {
-  const [setSettings, settings, setInfo, setStream, setApiBaseUrl, options] =
+  const [setSettings, settings, setInfo, setStream, setApiBaseUrl, setApikey] =
     useAssistantStore((state) => [
       state.setSettings,
       state.settings,
       state.setInfo,
       state.setStream,
       state.setApiBaseUrl,
-      state.options,
+      state.setApikey,
     ]);
+
+  const options = useAssistantStore(
+    (state) => state.options
+  ) as unknown as Options;
+
   const newSession = useSessions((state) => state.newSession);
 
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -42,11 +48,11 @@ function App({
   useEffect(() => {
     setAssistantStoreName(`sk-ai-sv-service-assistant-${id}`);
 
-    if (import.meta.env.DEV) {
+    if (import.meta.env.MODE === "development") {
       const settings: AssistantSettings = {
         user: user || "",
         assistantId: assistantId || "",
-
+        is_group_chat: import.meta.env.VITE_GROUPCHAT === "true",
         hash: hash || "",
         app: import.meta.env.VITE_APPLICATION,
       };
@@ -63,6 +69,7 @@ function App({
         avatar: `${import.meta.env.VITE_BASE_PATH}assets/assistanticon.png`,
       };
       setStream(import.meta.env.VITE_STREAM_DEFAULT);
+      setApikey(import.meta.env.VITE_API_KEY);
       setApiBaseUrl(import.meta.env.VITE_API_BASE_URL);
       setSettings(settings);
       setInfo(info);
@@ -152,8 +159,12 @@ function App({
           : "var(--sk-colors-inverted-primary-surface)";
       default:
         return inverted
-          ? `var(--sk-colors-inverted-${color?.color}-surface-primary-DEFAULT)`
-          : `var(--sk-colors-${color?.color}-surface-primary-DEFAULT)`;
+          ? `var(--sk-colors-inverted-${
+              color?.color ?? "vattjom"
+            }-surface-primary-DEFAULT)`
+          : `var(--sk-colors-${
+              color?.color ?? "vattjom"
+            }-surface-primary-DEFAULT)`;
     }
   };
 
@@ -467,7 +478,7 @@ function App({
   return (
     <GuiProvider
       theme={theme}
-      htmlFontSize={options?.fontbase || 16}
+      htmlFontSize={options?.fontbase || 10}
       colorScheme={options?.colorscheme || ColorSchemeMode.System}
     >
       <Suspense fallback="loading">{loaded && <Assistant />}</Suspense>

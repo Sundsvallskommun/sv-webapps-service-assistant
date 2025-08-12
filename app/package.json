@@ -12,11 +12,9 @@
     "copybuild": "node copybuild"
   },
   "dependencies": {
-    "@sk-web-gui/ai": "^0.10.3",
-    "@sk-web-gui/core": "^3.9.1",
-    "@sk-web-gui/react": "^1.2.36",
-    "@tailwindcss/container-queries": "^0.1.1",
-    "@tailwindcss/forms": "^0.5.7",
+    "@sk-web-gui/ai": "^2.0.0",
+    "@sk-web-gui/core": "^3.14.0",
+    "@sk-web-gui/react": "^2.0.1",
     "@types/node": "^22.7.5",
     "dayjs": "^1.11.10",
     "react": "^18.2.0",
@@ -32,15 +30,15 @@
     "@typescript-eslint/eslint-plugin": "^8.8.1",
     "@typescript-eslint/parser": "^8.8.1",
     "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.21",
     "copy-file": "^11.0.0",
-    "cssnano": "^7.0.5",
+    "cssnano": "^7.1.0",
     "eslint": "^9.12.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "postcss": "^8.4.32",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.2.2",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.2",
     "vite": "^5.0.13"
   }
 }

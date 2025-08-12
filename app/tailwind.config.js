@@ -52,6 +52,8 @@ export default {
   },
 
   presets: [
-    Core({ plugin: { cssBase: false, components: ["AIServiceModule"] } }),
+    Core({
+      plugin: { cssBase: true, components: ["AIServiceModule"] },
+    }),
   ],
 };
