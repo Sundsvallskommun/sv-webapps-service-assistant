@@ -2,6 +2,7 @@
   "appData": {
     "use_user": false,
     "assistantId": "",
+    "is_group_chat": false,
     "assistant_name": "Assistent",
     "assistant_shortName": "AI",
     "assistant_description": "",

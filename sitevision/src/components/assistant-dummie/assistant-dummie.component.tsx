@@ -1,63 +1,9 @@
 import { Bubble, type AssistantInfo } from "@sk-web-gui/ai";
 import { Avatar, Button, Link } from "@sk-web-gui/react";
 import React from "react";
-import type { DefaultColor } from "../../common/defaultColors";
 import styles from "./assistant-dummie.styling.scss";
 import HtmlParser from "react-html-parser";
-
-export interface Options {
-  colorscheme: string;
-  variant: string;
-  fontface: Record<string, string>;
-  colors: {
-    header?: {
-      inverted: boolean;
-      color: string;
-    };
-    bubble?: {
-      simple: boolean;
-      borders: boolean;
-      shadow: boolean;
-      icon: boolean;
-      color: string;
-      inverted?: boolean;
-    };
-  };
-  rounded: {
-    use: boolean;
-    main?: string;
-    input?: string;
-    button?: string;
-  };
-  border: {
-    use?: boolean;
-    thickness?: string;
-    color?: string;
-  };
-  assistant: {
-    color?: DefaultColor;
-    showTitle?: boolean;
-  };
-
-  title?: string;
-  subtitle?: string;
-  label?: string;
-  fontbase?: number;
-  questionsTitle?: string;
-  questions?: string[];
-  helperText?: string;
-  readmore?: {
-    text?: string;
-    link?: {
-      text: string;
-      url: string;
-    };
-  };
-  icon?: string;
-  css?: string;
-  appSessionId?: string;
-  remeberSession?: boolean;
-}
+import type { Options } from "../../types/options";
 
 interface AssistantDummieProps {
   assistant: AssistantInfo;
