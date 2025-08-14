@@ -4,7 +4,7 @@ import imageRenderer from "@sitevision/api/server/ImageRenderer";
 import portletContextUtil from "@sitevision/api/server/PortletContextUtil";
 import properties from "@sitevision/api/server/Properties";
 import versionUtil from "@sitevision/api/server/VersionUtil";
-import type { AssistantInfo } from "@sk-web-gui/ai";
+import type { AssistantInfo, AssistantSettings } from "@sk-web-gui/ai";
 import * as React from "react";
 import { renderToString } from "react-dom/server";
 import ReactHtmlParser from "react-html-parser";
@@ -12,6 +12,7 @@ import { ServerSideApp } from "./components/serverside-app/serverside-app.compon
 import { getHash } from "./utils/hash.service";
 import type { DefaultColor } from "./common/defaultColors";
 import globalAppData from "@sitevision/api/server/globalAppData";
+import type { Options } from "./types/options";
 
 router.get("/", (req, res) => {
   const salt = globalAppData.get("salt") as string;
@@ -138,7 +139,7 @@ router.get("/", (req, res) => {
     ) as string,
   };
 
-  const options = {
+  const options: Options = {
     fontface: {
       DEFAULT:
         globalAppData.get(`font_default`) === "theme"
@@ -184,14 +185,16 @@ router.get("/", (req, res) => {
     : "";
 
   const assistantId = appData.get(`assistantId`) as string;
+  const is_group_chat = appData.get(`is_group_chat`) as boolean;
   const app = appData.get(`app`) as string;
   const stream = globalAppData.get(`stream`) as boolean;
   const hash = getHash(username, assistantId, app, salt);
 
   const apiBaseUrl = globalAppData.get(`server_url`) as string;
-  const settings = {
+  const settings: AssistantSettings = {
     user: username,
     assistantId,
+    is_group_chat,
     app,
     hash,
   };
