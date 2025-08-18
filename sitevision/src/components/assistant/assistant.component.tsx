@@ -1,12 +1,16 @@
-import type { AssistantInfo, AssistantSettings } from "@sk-web-gui/ai";
+import type {
+  AdditionalAssistantOptions,
+  AssistantInfo,
+  AssistantSettings,
+} from "@sk-web-gui/ai";
 import { setAssistantStoreName, useAssistantStore } from "@sk-web-gui/ai";
 import * as React from "react";
-import type { Options } from "../assistant-dummie/assistant-dummie.component";
+import type { Options } from "../../types/options";
 
 export interface AssistantProps {
   assistant: AssistantInfo;
   settings: AssistantSettings;
-  options: Options;
+  options: AdditionalAssistantOptions & Options;
   apiBaseUrl: string;
   stream: boolean;
   shadowdom?: boolean;
