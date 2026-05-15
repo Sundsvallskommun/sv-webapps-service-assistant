@@ -108,5 +108,7 @@
   "responsiveness": "Responsivitet",
   "small_screen_breakpoint": "Brytpunkt för små skärmar",
 
-  "editorial": "Redaktionellt"
+  "editorial": "Redaktionellt",
+
+  "use_version_2": "Använd conversation version 2"
 }

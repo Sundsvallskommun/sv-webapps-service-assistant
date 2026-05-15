@@ -17,7 +17,7 @@ import type { Options } from "./types/options";
 router.get("/", (req, res) => {
   const salt = globalAppData.get("salt") as string;
   const version = appData.get("version") as string;
-
+  const version2 = globalAppData.get("version2") as boolean;
   const avatar = appData.getNode(`assistant_avatar`);
   const avatarRender = imageRenderer;
   avatarRender.setImage(avatar);
@@ -209,6 +209,7 @@ router.get("/", (req, res) => {
       options,
       stream,
       apiBaseUrl,
+      version2,
     }
   );
 });

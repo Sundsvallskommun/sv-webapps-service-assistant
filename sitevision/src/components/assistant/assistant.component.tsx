@@ -14,6 +14,7 @@ export interface AssistantProps {
   apiBaseUrl: string;
   stream: boolean;
   shadowdom?: boolean;
+  version2?: boolean;
 }
 
 export const Assistant: React.FunctionComponent<AssistantProps> = ({
@@ -23,6 +24,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
   apiBaseUrl,
   stream,
   shadowdom = true,
+  version2,
 }) => {
   const [
     oldInfo,
@@ -32,6 +34,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
     setOptions,
     setApiBaseUrl,
     setStream,
+    setConversationVersion,
   ] = useAssistantStore((state) => [
     state.info,
     state.setInfo,
@@ -40,6 +43,7 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
     state.setOptions,
     state.setApiBaseUrl,
     state.setStream,
+    state.setConversationVersion,
   ]);
 
   React.useEffect(() => {
@@ -47,6 +51,10 @@ export const Assistant: React.FunctionComponent<AssistantProps> = ({
     setAssistantStoreName(`sk-ai-sv-service-assistant-${settings.hash}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  React.useEffect(() => {
+    setConversationVersion(version2 ? 2 : 1);
+  }, [version2, setConversationVersion]);
 
   React.useEffect(() => {
     const info: AssistantInfo = {
