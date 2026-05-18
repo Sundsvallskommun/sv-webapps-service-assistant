@@ -27,18 +27,26 @@ function App({
   assistantId?: string | null;
   id?: string;
 }) {
-  const [setSettings, settings, setInfo, setStream, setApiBaseUrl, setApikey] =
-    useAssistantStore((state) => [
-      state.setSettings,
-      state.settings,
-      state.setInfo,
-      state.setStream,
-      state.setApiBaseUrl,
-      state.setApikey,
-    ]);
+  const [
+    setSettings,
+    settings,
+    setInfo,
+    setStream,
+    setApiBaseUrl,
+    setApikey,
+    setConversationVersion,
+  ] = useAssistantStore((state) => [
+    state.setSettings,
+    state.settings,
+    state.setInfo,
+    state.setStream,
+    state.setApiBaseUrl,
+    state.setApikey,
+    state.setConversationVersion,
+  ]);
 
   const options = useAssistantStore(
-    (state) => state.options
+    (state) => state.options,
   ) as unknown as Options;
 
   const newSession = useSessions((state) => state.newSession);
@@ -47,7 +55,7 @@ function App({
 
   useEffect(() => {
     setAssistantStoreName(`sk-ai-sv-service-assistant-${id}`);
-
+    setConversationVersion(2);
     if (import.meta.env.MODE === "development") {
       const settings: AssistantSettings = {
         user: user || "",
@@ -104,7 +112,7 @@ function App({
 
   const getBubbleSurface = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     switch (color?.color) {
       case "white":
@@ -120,7 +128,7 @@ function App({
 
   const getBubbleSurfaceHover = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     switch (color?.color) {
       case "white":
@@ -136,7 +144,7 @@ function App({
 
   const getBubbleText = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     switch (color?.color) {
       default:
@@ -148,7 +156,7 @@ function App({
 
   const getHeaderBackground = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
@@ -170,7 +178,7 @@ function App({
 
   const getHeaderPrimaryText = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
@@ -184,7 +192,7 @@ function App({
 
   const getHeaderSecondaryText = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
@@ -198,7 +206,7 @@ function App({
 
   const getHeaderLinkText = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
@@ -212,7 +220,7 @@ function App({
 
   const getDarkLinkText = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
@@ -226,7 +234,7 @@ function App({
 
   const getHeaderLinkHoverText = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
@@ -240,7 +248,7 @@ function App({
 
   const getDarkLinkHoverText = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     const inverted =
       options?.variant === "secondary" ? !color?.inverted : !!color?.inverted;
@@ -254,7 +262,7 @@ function App({
 
   const getLightColors = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     switch (color?.color) {
       default:
@@ -264,7 +272,7 @@ function App({
 
   const getDarkColors = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     switch (color?.color) {
       default:
@@ -274,7 +282,7 @@ function App({
 
   const getContentBackground = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     switch (color?.color) {
       default:
@@ -284,7 +292,7 @@ function App({
 
   const getPrimarySurface = (
     color: AdditionalAssistantOptions,
-    mode: "light" | "dark"
+    mode: "light" | "dark",
   ) => {
     switch (color?.color) {
       default:
@@ -378,22 +386,22 @@ function App({
               header: {
                 background: getHeaderBackground(
                   options?.colors.header,
-                  "light"
+                  "light",
                 ),
 
                 text: {
                   primary: getHeaderPrimaryText(
                     options?.colors.header,
-                    "light"
+                    "light",
                   ),
                   secondary: getHeaderSecondaryText(
                     options?.colors.header,
-                    "light"
+                    "light",
                   ),
                   link: getHeaderLinkText(options?.colors.header, "light"),
                   "link-hover": getHeaderLinkHoverText(
                     options?.colors.header,
-                    "light"
+                    "light",
                   ),
                 },
               },
@@ -402,14 +410,14 @@ function App({
                 surface: getBubbleSurface(options?.colors?.bubble, "light"),
                 "surface-hover": getBubbleSurfaceHover(
                   options?.colors?.bubble,
-                  "light"
+                  "light",
                 ),
                 text: getBubbleText(options?.colors?.bubble, "light"),
               },
               "dark-link": getDarkLinkText(options?.colors?.header, "light"),
               "dark-link-hover": getDarkLinkHoverText(
                 options?.colors?.header,
-                "light"
+                "light",
               ),
             },
           },
@@ -445,12 +453,12 @@ function App({
                   primary: getHeaderPrimaryText(options?.colors.header, "dark"),
                   secondary: getHeaderSecondaryText(
                     options?.colors.header,
-                    "dark"
+                    "dark",
                   ),
                   link: getHeaderLinkText(options?.colors.header, "dark"),
                   "link-hover": getHeaderLinkHoverText(
                     options?.colors.header,
-                    "dark"
+                    "dark",
                   ),
                 },
               },
@@ -458,21 +466,21 @@ function App({
                 surface: getBubbleSurface(options?.colors?.bubble, "dark"),
                 "surface-hover": getBubbleSurfaceHover(
                   options?.colors?.bubble,
-                  "dark"
+                  "dark",
                 ),
                 text: getBubbleText(options?.colors?.bubble, "dark"),
               },
               "dark-link": getDarkLinkText(options?.colors?.header, "dark"),
               "dark-link-hover": getDarkLinkHoverText(
                 options?.colors?.header,
-                "dark"
+                "dark",
               ),
             },
           },
         },
       }),
     //eslint-disable-next-line
-    [settings]
+    [settings],
   );
 
   return (
