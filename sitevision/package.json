@@ -3,6 +3,7 @@
   "version": "1.3.0",
   "type": "module",
   "dependencies": {
+    "@shared": "file:../shared",
     "@sitevision/api": "^2024.4.2",
     "@sitevision/sitevision-scripts": "^3.5.0",
     "@sk-web-gui/ai": "^4.4.2",

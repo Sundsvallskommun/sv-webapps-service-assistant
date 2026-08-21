@@ -5,7 +5,7 @@ import type {
 } from "@sk-web-gui/ai";
 import { setAssistantStoreName, useAssistantStore } from "@sk-web-gui/ai";
 import * as React from "react";
-import type { Options } from "../../types/options";
+import type { Options } from "@shared";
 
 export interface AssistantProps {
   assistant: AssistantInfo;

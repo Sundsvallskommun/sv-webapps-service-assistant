@@ -3,7 +3,7 @@ import { Avatar, Button, Link } from "@sk-web-gui/react";
 import React from "react";
 import styles from "./assistant-dummie.styling.scss";
 import HtmlParser from "react-html-parser";
-import type { Options } from "../../types/options";
+import type { Options } from "@shared";
 
 interface AssistantDummieProps {
   assistant: AssistantInfo;
@@ -325,7 +325,7 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
                     )}
                   </div>
                   <ul className="sk-ai-service-module-questions-list">
-                    {options?.questions.map((item, index) => {
+                    {options?.questions?.map((item: string, index: number) => {
                       return (
                         <li key={`sk-ai-sm-question-${index}`}>
                           <Bubble

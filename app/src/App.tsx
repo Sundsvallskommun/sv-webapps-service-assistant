@@ -14,7 +14,7 @@ import {
 } from "@sk-web-gui/react";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { Assistant } from "./components/Assistant";
-import { Options } from "./types/options";
+import { Options } from "@shared";
 
 function App({
   user,
