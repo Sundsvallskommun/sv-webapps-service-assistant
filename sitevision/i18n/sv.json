@@ -45,6 +45,7 @@
   "version": "Version",
   "version_settings": "Versionsinställningar",
   "remember_session": "Behåll session vid navigering",
+  "show_references": "Visa referenser i chatflödet",
   "app_session_id": "Sessionsnamn",
 
   "users": "Användare",

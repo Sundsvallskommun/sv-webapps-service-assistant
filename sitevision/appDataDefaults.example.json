@@ -25,6 +25,7 @@
     "label": "Ställ en fråga till vår AI-assistent",
     "variant": "primary",
     "remember_session": false,
+    "show_references": true,
     "app_session_id": "1"
   },
   "globalAppData": {

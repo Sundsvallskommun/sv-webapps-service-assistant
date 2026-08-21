@@ -167,6 +167,13 @@
     .sk-form-input {
       flex-grow: 0;
       color: var(--sk-colors-dark-primary);
+      border: var(--border-width) solid;
+      border-color: var(--border-color);
+      background-color: var(--bg-background-content);
+
+      &::placeholder {
+        color: var(--placeholder-color);
+      }
 
       &.sk-form-input-lg {
         border-radius: var(--sk-radius-button-lg);
@@ -180,29 +187,22 @@
         height: 3rem;
       }
 
-      border: var(--border-width) solid;
-      border-color: var(--border-color);
-      &::placeholder {
-        color: var(--placeholder-color);
-      }
-      background-color: var(--bg-background-content);
-
       &-group {
         display: flex;
         position: relative;
         align-items: center;
         color: var(--sk-colors-dark-secondary);
+        border: var(--border-width) solid var(--border-color);
+        background: var(--bg-background-content);
 
         &.sk-form-input-group-lg {
           font-size: 1.125rem;
           line-height: 1.5rem;
           border-radius: var(--sk-radius-button-lg);
         }
-        border: var(--border-width) solid var(--border-color);
         &::placeholder {
           color: var(--placeholder-color);
         }
-        background: var(--bg-background-content);
 
         .sk-form-input {
           border-radius: 0;
@@ -227,7 +227,7 @@
             margin-left: -1.25rem;
             padding-right: 1rem;
           }
-          svg: {
+          svg {
             width: 1.375rem;
             height: 1.375rem;
           }
@@ -424,7 +424,7 @@
             .sk-icon {
               height: 1rem;
               line-height: 1rem;
-              svg: {
+              svg {
                 height: 100%;
               }
             }

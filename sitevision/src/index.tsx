@@ -164,6 +164,7 @@ router.get("/", (_req, res) => {
     fontbase,
     variant: globalAppData.get(`${version}_variant`) as Options["variant"],
     readmore,
+    showReferences: (appData.get(`show_references`) as boolean) ?? true,
     rounded,
     icon: icon ? icon?.props?.src : undefined,
     border,

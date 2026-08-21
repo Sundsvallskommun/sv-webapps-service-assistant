@@ -53,6 +53,7 @@ export interface Options {
       url: string;
     };
   };
+  showReferences?: boolean;
   icon?: string;
   css?: string;
   appSessionId?: string;
