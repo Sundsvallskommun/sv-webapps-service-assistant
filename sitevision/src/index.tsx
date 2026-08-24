@@ -10,11 +10,11 @@ import { renderToString } from "react-dom/server";
 import ReactHtmlParser from "react-html-parser";
 import { ServerSideApp } from "./components/serverside-app/serverside-app.component";
 import { getHash } from "./utils/hash.service";
-import type { DefaultColor } from "./common/defaultColors";
 import globalAppData from "@sitevision/api/server/globalAppData";
-import type { Options } from "./types/options";
+import type { Options, DefaultColor } from "@shared";
+import type { ColorSchemeMode } from "@sk-web-gui/react";
 
-router.get("/", (req, res) => {
+router.get("/", (_req, res) => {
   const salt = globalAppData.get("salt") as string;
   const version = appData.get("version") as string;
   const version2 = globalAppData.get("version2") as boolean;
@@ -157,13 +157,14 @@ router.get("/", (req, res) => {
     assistant: assistantOptions,
     user,
     system,
-    colorscheme: globalAppData.get("colorscheme") as string,
+    colorscheme: globalAppData.get("colorscheme") as ColorSchemeMode,
     title: appData.get(`title`) as string,
     subtitle: appData.get(`subtitle`) as string,
     label: appData.get(`label`) as string,
     fontbase,
-    variant: globalAppData.get(`${version}_variant`) as string,
+    variant: globalAppData.get(`${version}_variant`) as Options["variant"],
     readmore,
+    showReferences: (appData.get(`show_references`) as boolean) ?? true,
     rounded,
     icon: icon ? icon?.props?.src : undefined,
     border,

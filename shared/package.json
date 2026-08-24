@@ -1,0 +1,12 @@
+{
+  "name": "sv-webapps-service-assistant-shared",
+  "version": "1.0.2",
+  "type": "module",
+  "prettier": {},
+  "devDependencies": {
+    "@sk-web-gui/ai": "^4.6.0",
+    "@sk-web-gui/react": "^3.1.2",
+    "react": "^19.2.8",
+    "@types/react": "^19.2.18"
+  }
+}

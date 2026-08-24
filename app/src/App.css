@@ -35,7 +35,6 @@
     &[data-color],
     &[data-color][data-inverted] {
       @apply bg-header-background;
-      /* @apply text-header-text-primary; */
     }
   }
 

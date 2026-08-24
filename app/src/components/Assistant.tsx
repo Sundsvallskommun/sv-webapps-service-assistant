@@ -4,15 +4,15 @@ import HtmlParser from "react-html-parser";
 import { useMediaQuery } from "usehooks-ts";
 import { useAppSessions } from "../services/useAppSessions";
 import { useEffect } from "react";
-import { Options } from "../types/options";
+import { Options } from "@shared";
 
 export const Assistant = () => {
   const options = useAssistantStore(
-    (state) => state.options
+    (state) => state.options,
   ) as unknown as Options;
   const settings = useAssistantStore((state) => state.settings);
   const isMobile = useMediaQuery(
-    `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`
+    `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`,
   );
 
   const rememberSession = options?.rememberSession || false;
@@ -51,6 +51,7 @@ export const Assistant = () => {
     children: options?.subtitle ? HtmlParser(options.subtitle) : undefined,
     label: options?.label,
     readmore: options?.readmore?.link?.url ? options.readmore : undefined,
+    showReferences: options?.showReferences ?? true,
     headerIcon: options?.icon ? (
       <Avatar size="md" className="w-40 h-40" imageUrl={options.icon} />
     ) : undefined,

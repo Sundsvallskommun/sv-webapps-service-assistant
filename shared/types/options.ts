@@ -1,8 +1,12 @@
+import { DefaultColor } from "./defaultColors";
 import { ColorSchemeMode } from "@sk-web-gui/react";
+import { AIServiceModule } from "@sk-web-gui/ai";
 
 export interface Options {
   colorscheme: ColorSchemeMode;
-  variant: "primary" | "secondary";
+  variant: React.ComponentPropsWithoutRef<
+    typeof AIServiceModule.Component
+  >["variant"];
   fontface: Record<string, string>;
   mobileBreakpoint?: string;
   colors: {
@@ -31,7 +35,7 @@ export interface Options {
     color?: string;
   };
   assistant: {
-    color?: string;
+    color?: DefaultColor;
     showTitle?: boolean;
   };
 
@@ -49,6 +53,7 @@ export interface Options {
       url: string;
     };
   };
+  showReferences?: boolean;
   icon?: string;
   css?: string;
   appSessionId?: string;
@@ -59,7 +64,7 @@ export interface Options {
 }
 
 interface User {
-  color: string;
+  color: DefaultColor;
   title: string;
   avatar?: string | React.ReactElement;
   initials: string;
