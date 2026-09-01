@@ -1,96 +1,370 @@
-$(function () {
-  $('[data-toggle="collapse"]').each((i, el) => {
-    const target = $(el).attr("data-target");
-    const closed = $(el).hasClass("collapsed");
-
-    $(el).attr("aria-controls", target?.replace("#", ""));
-    $(el).attr("aria-expanded", !closed);
-    $(target).attr("aria-expanded", !closed);
-
-    const targetClosed = $(target).hasClass("collapse");
-
-    if (targetClosed !== closed) {
-      if (closed) {
-        $(target).addClass("collapse");
-      } else {
-        $(target).removeClass("collapse");
-      }
-    }
-  });
-
-  function togglePanel(button) {
-    const target = $(button).attr("data-target");
-    const closed = $(target).hasClass("collapse");
-    if (closed) {
-      $(target).removeClass("collapse");
-      $(button).removeClass("collapsed");
-      $(target).attr("aria-expanded", "true");
-      $(button).attr("aria-expanded", "true");
-    } else {
-      $(target).addClass("collapse");
-      $(button).addClass("collapsed");
-      $(target).attr("aria-expanded", "false");
-      $(button).attr("aria-expanded", "false");
-    }
+const getTarget = (root, selector) => {
+  if (!selector) {
+    return null;
   }
 
-  $('[data-toggle="collapse"]').on("click", (event) => {
-    const button = event.currentTarget;
-    const closed = $(button).hasClass("collapsed");
-    const parent = $(button).attr("data-parent");
+  return root.querySelector(selector);
+};
 
-    if (parent && $(parent)?.is("[data-accordion]") && closed) {
-      $(`${parent} [data-toggle="collapse"]`).each((i, sibling) => {
-        if (sibling !== button) {
-          const siblingClosed = $(sibling).hasClass("collapsed");
-          if (!siblingClosed) {
-            togglePanel(sibling);
+const setPanelState = (button, target, isExpanded) => {
+  button.classList.toggle("collapsed", !isExpanded);
+  button.setAttribute("aria-expanded", String(isExpanded));
+
+  target.classList.toggle("collapse", !isExpanded);
+  target.setAttribute("aria-expanded", String(isExpanded));
+};
+
+const initializeCollapsePanels = (root = document) => {
+  Array.from(root.querySelectorAll('[data-toggle="collapse"]')).forEach(
+    (button) => {
+      const target = getTarget(root, button.getAttribute("data-target"));
+
+      if (!target) {
+        return;
+      }
+
+      const isExpanded = !button.classList.contains("collapsed");
+      const targetId = target.getAttribute("id");
+
+      if (targetId) {
+        button.setAttribute("aria-controls", targetId);
+      }
+
+      setPanelState(button, target, isExpanded);
+
+      button.addEventListener("click", () => {
+        const parentSelector = button.getAttribute("data-parent");
+        const shouldExpand = target.classList.contains("collapse");
+
+        if (parentSelector && shouldExpand) {
+          const parent = root.querySelector(parentSelector);
+
+          if (parent?.hasAttribute("data-accordion")) {
+            Array.from(
+              parent.querySelectorAll('[data-toggle="collapse"]')
+            ).forEach((siblingButton) => {
+              if (siblingButton === button) {
+                return;
+              }
+
+              const siblingTarget = getTarget(
+                root,
+                siblingButton.getAttribute("data-target")
+              );
+
+              if (
+                siblingTarget &&
+                !siblingTarget.classList.contains("collapse")
+              ) {
+                setPanelState(siblingButton, siblingTarget, false);
+              }
+            });
           }
         }
+
+        setPanelState(button, target, shouldExpand);
       });
     }
+  );
+};
 
-    togglePanel(button);
-  });
-
-  function setQuestions(numberOfEvents) {
-    for (let index = 0; index < 5; index++) {
-      const show = index < numberOfEvents;
-
-      $(`input[name="question_${index + 1}"]`)
-        .parent()
-        .attr("style", `display: ${show ? "block" : "none"}`);
-    }
+const setElementVisibility = (element, isVisible) => {
+  if (!element) {
+    return;
   }
 
-  $(document).ready(() => {
-    const value = $('input[name="questions_count"]').val();
-    const initialNumberOfEvents1 = parseInt(value, 10);
-    setQuestions(initialNumberOfEvents1);
+  element.hidden = !isVisible;
+  element.style.display = isVisible ? "" : "none";
+};
+
+const updateQuestionFieldVisibility = (root, numberOfQuestions) => {
+  for (let index = 0; index < 5; index++) {
+    const questionInput = root.querySelector(
+      `input[name="question_${index + 1}"]`
+    );
+    const questionField = questionInput?.closest(".form-group");
+
+    if (questionField) {
+      setElementVisibility(questionField, index < numberOfQuestions);
+    }
+  }
+};
+
+const initializeQuestionFields = (root = document) => {
+  const questionCountInput = root.querySelector(
+    'input[name="questions_count"]'
+  );
+
+  if (!questionCountInput) {
+    return;
+  }
+
+  const parseQuestionCount = (rawValue) => parseInt(rawValue || "0", 10) || 0;
+  const getQuestionCount = () =>
+    parseQuestionCount(
+      questionCountInput.value || questionCountInput.getAttribute("value")
+    );
+  let currentQuestionCount = getQuestionCount();
+
+  const syncQuestionFields = () => {
+    updateQuestionFieldVisibility(root, currentQuestionCount);
+  };
+  const handleQuestionCountUpdate = (event) => {
+    const nextValue = event?.target?.value;
+
+    if (nextValue !== undefined) {
+      questionCountInput.setAttribute("value", String(nextValue));
+      currentQuestionCount = parseQuestionCount(nextValue);
+    } else {
+      currentQuestionCount = getQuestionCount();
+    }
+
+    syncQuestionFields();
+  };
+  const syncQuestionFieldsFromInput = () => {
+    const nextQuestionCount = getQuestionCount();
+
+    if (nextQuestionCount === currentQuestionCount) {
+      return;
+    }
+
+    currentQuestionCount = nextQuestionCount;
+    syncQuestionFields();
+  };
+
+  syncQuestionFields();
+  questionCountInput.addEventListener("change", handleQuestionCountUpdate);
+  questionCountInput.addEventListener("input", handleQuestionCountUpdate);
+  questionCountInput.addEventListener("blur", handleQuestionCountUpdate);
+  questionCountInput.addEventListener("keyup", handleQuestionCountUpdate);
+  questionCountInput.addEventListener("click", handleQuestionCountUpdate);
+
+  const valueObserver = new MutationObserver(() => {
+    syncQuestionFieldsFromInput();
+  });
+  valueObserver.observe(questionCountInput, {
+    attributes: true,
+    attributeFilter: ["value"],
   });
 
-  $('input[name="questions_count"]').on("change", (event) => {
-    const numberOfEvents = parseInt(event.target.value);
+  setInterval(syncQuestionFieldsFromInput, 150);
 
-    setQuestions(numberOfEvents);
+  [0, 50, 150, 300].forEach((delay) => {
+    setTimeout(() => {
+      currentQuestionCount = getQuestionCount();
+      syncQuestionFields();
+    }, delay);
   });
-  $('input[name="use_questions"]').on("change", () => {
-    const numberOfEvents = parseInt($('input[name="questions_count"]').val());
-    setQuestions(numberOfEvents);
+};
+
+const syncEnabledTargets = (root, inputName) => {
+  const controllerInputs = Array.from(
+    root.querySelectorAll(`input[name="${inputName}"][data-enables]`)
+  );
+  const metadataToggle = root.querySelector(
+    `input[name="${inputName}__useMetadata"][data-metadata-toggle]`
+  );
+
+  controllerInputs.forEach((controllerInput) => {
+    const target = getTarget(root, controllerInput.getAttribute("data-enables"));
+
+    if (!target) {
+      return;
+    }
+
+    setElementVisibility(
+      target,
+      controllerInput.checked || Boolean(metadataToggle?.checked)
+    );
   });
-});
+};
 
-//Data disables
-$(function () {
-  $("input[data-disables]").each((i, el) => {
-    const name = $(el).attr("name");
+const initializeEnabledFields = (root = document) => {
+  const handledNames = new Set();
 
-    $(`input[name=${name}]`).on("change", () => {
-      $(`input[name=${name}][data-disables]`).each((i, disableEl) => {
-        const target = $(disableEl).attr("data-disables");
-        const show = !$(disableEl).is(":checked");
-        $(target).attr("style", show ? "" : "display: none");
-      });
+  Array.from(root.querySelectorAll("input[data-enables]")).forEach((input) => {
+    const inputName = input.getAttribute("name");
+
+    if (!inputName || handledNames.has(inputName)) {
+      return;
+    }
+
+    const metadataToggle = root.querySelector(
+      `input[name="${inputName}__useMetadata"][data-metadata-toggle]`
+    );
+
+    handledNames.add(inputName);
+
+    const syncFieldTargets = () => {
+      syncEnabledTargets(root, inputName);
+    };
+
+    Array.from(root.querySelectorAll(`input[name="${inputName}"]`)).forEach(
+      (relatedInput) => {
+        relatedInput.addEventListener("change", syncFieldTargets);
+      }
+    );
+    metadataToggle?.addEventListener("change", syncFieldTargets);
+
+    syncFieldTargets();
+    [0, 50, 150, 300].forEach((delay) => {
+      setTimeout(syncFieldTargets, delay);
     });
   });
-});
+};
+
+const getManualElements = (
+  fieldContainer,
+  manualControl,
+  metadataToggleContainer
+) => {
+  const manualElements = [manualControl];
+  let sibling = manualControl.nextElementSibling;
+
+  while (sibling && sibling !== metadataToggleContainer) {
+    manualElements.push(sibling);
+    sibling = sibling.nextElementSibling;
+  }
+
+  return manualElements;
+};
+
+const applyMetadataFieldState = (fieldContainer) => {
+  const manualControl = fieldContainer.querySelector("[data-metadata-manual]");
+  const metadataToggle = fieldContainer.querySelector("[data-metadata-toggle]");
+  const metadataToggleContainer =
+    fieldContainer.querySelector(":scope > .checkbox");
+  const metadataSelectorContainer = fieldContainer.querySelector(
+    "[data-metadata-selector-container]"
+  );
+
+  if (
+    !manualControl ||
+    !metadataToggle ||
+    !metadataToggleContainer ||
+    !metadataSelectorContainer
+  ) {
+    return;
+  }
+
+  const useMetadata = metadataToggle.checked;
+  getManualElements(
+    fieldContainer,
+    manualControl,
+    metadataToggleContainer
+  ).forEach((element) => {
+    setElementVisibility(element, !useMetadata);
+  });
+  setElementVisibility(metadataSelectorContainer, useMetadata);
+};
+
+const getGeneratedLabelText = (manualControl) => {
+  const labelClone = manualControl.cloneNode(true);
+
+  Array.from(labelClone.querySelectorAll("input")).forEach((input) => {
+    input.remove();
+  });
+
+  return labelClone.textContent?.trim() || "";
+};
+
+const initializeMetadataFieldLayout = (fieldContainer) => {
+  const existingHeaderRow = fieldContainer.querySelector(
+    ":scope > [data-metadata-header-row]"
+  );
+
+  if (existingHeaderRow) {
+    return;
+  }
+
+  const manualControl = fieldContainer.querySelector("[data-metadata-manual]");
+  const metadataToggleContainer =
+    fieldContainer.querySelector(":scope > .checkbox");
+
+  if (!manualControl || !metadataToggleContainer) {
+    return;
+  }
+
+  const isCheckboxField = manualControl.tagName === "LABEL";
+  const primaryLabel = isCheckboxField
+    ? (() => {
+        const generatedLabel = document.createElement("label");
+        generatedLabel.setAttribute("data-metadata-generated-label", "");
+        generatedLabel.textContent = getGeneratedLabelText(manualControl);
+        return generatedLabel;
+      })()
+    : fieldContainer.querySelector(":scope > label");
+  const metadataToggleLabel =
+    metadataToggleContainer.querySelector(":scope > label");
+  const metadataSelectorContainer = metadataToggleContainer.querySelector(
+    "[data-metadata-selector-container]"
+  );
+
+  if (!primaryLabel || !metadataToggleLabel || !metadataSelectorContainer) {
+    return;
+  }
+
+  const headerRow = document.createElement("div");
+  headerRow.setAttribute("data-metadata-header-row", "");
+  headerRow.style.display = "flex";
+  headerRow.style.alignItems = "center";
+  headerRow.style.justifyContent = "space-between";
+  headerRow.style.gap = "12px";
+  headerRow.style.flexWrap = "wrap";
+  headerRow.style.marginBottom = "6px";
+
+  metadataToggleLabel.style.margin = "0";
+  metadataToggleLabel.style.flexShrink = "0";
+  metadataToggleContainer.style.margin = "0";
+
+  fieldContainer.insertBefore(headerRow, fieldContainer.firstChild);
+  headerRow.appendChild(primaryLabel);
+  headerRow.appendChild(metadataToggleLabel);
+  metadataToggleContainer.insertBefore(
+    metadataSelectorContainer,
+    metadataToggleContainer.firstChild
+  );
+};
+
+const initializeMetadataFields = (root = document) => {
+  Array.from(root.querySelectorAll("[data-metadata-field]")).forEach(
+    (fieldContainer) => {
+      const metadataToggle = fieldContainer.querySelector(
+        "[data-metadata-toggle]"
+      );
+
+      if (!metadataToggle) {
+        return;
+      }
+
+      initializeMetadataFieldLayout(fieldContainer);
+      applyMetadataFieldState(fieldContainer);
+      metadataToggle.addEventListener("change", () => {
+        applyMetadataFieldState(fieldContainer);
+      });
+
+      [0, 50, 150, 300].forEach((delay) => {
+        setTimeout(() => {
+          applyMetadataFieldState(fieldContainer);
+        }, delay);
+      });
+    }
+  );
+};
+
+const initializeConfig = (root = document) => {
+  initializeCollapsePanels(root);
+  initializeEnabledFields(root);
+  initializeQuestionFields(root);
+  initializeMetadataFields(root);
+};
+
+if (typeof document !== "undefined") {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => initializeConfig(), {
+      once: true,
+    });
+  } else {
+    initializeConfig();
+  }
+}

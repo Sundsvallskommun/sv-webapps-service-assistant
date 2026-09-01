@@ -1,6 +1,6 @@
 {
   "name": "sv-webapps-service-assistant",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "type": "module",
   "dependencies": {
     "@shared": "file:../shared",
@@ -36,7 +36,7 @@
     "autoprefixer"
   ],
   "devDependencies": {
-    "@types/node": "18.19.87",
+    "@types/node": "26.4.0",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
     "@types/react-html-parser": "^2.0.7",

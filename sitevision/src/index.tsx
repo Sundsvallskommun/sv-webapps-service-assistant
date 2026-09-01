@@ -11,47 +11,121 @@ import ReactHtmlParser from "react-html-parser";
 import { ServerSideApp } from "./components/serverside-app/serverside-app.component";
 import { getHash } from "./utils/hash.service";
 import globalAppData from "@sitevision/api/server/globalAppData";
-import type { Options, DefaultColor } from "@shared";
+import type { DefaultColor, Options } from "@shared";
 import type { ColorSchemeMode } from "@sk-web-gui/react";
+import {
+  getResolvedAppDataBoolean,
+  getResolvedAppDataNode,
+  getResolvedAppDataValue,
+} from "./utils/appDataResolver";
+
+const defaultColors = [
+  "vattjom",
+  "juniskar",
+  "bjornstigen",
+  "gronsta",
+] as const;
+const defaultAssistantColor: DefaultColor = "vattjom";
+const defaultUserColor: DefaultColor = "bjornstigen";
+const defaultSystemColor: DefaultColor = "vattjom";
+const defaultUserTitle = "Du";
+const defaultUserInitials = "DU";
+const defaultSystemTitle = "Felmeddelande";
+const defaultSystemInitials = "AI";
 
 router.get("/", (_req, res) => {
   const salt = globalAppData.get("salt") as string;
   const version = appData.get("version") as string;
   const version2 = globalAppData.get("version2") as boolean;
-  const avatar = appData.getNode(`assistant_avatar`);
-  const avatarRender = imageRenderer;
-  avatarRender.setImage(avatar);
+
+  const resolvedAssistantId = getResolvedAppDataValue("assistantId") || "";
+  const resolvedGroupChat = getResolvedAppDataBoolean("is_group_chat") || false;
+  const resolvedApp = getResolvedAppDataValue("app") || "";
+  const resolvedRememberSession =
+    getResolvedAppDataBoolean("remember_session") || false;
+  const resolvedShowReferences = getResolvedAppDataBoolean("show_references");
+  const resolvedAppSessionId =
+    getResolvedAppDataValue("app_session_id") || "default";
+
+  const resolvedAssistantName = getResolvedAppDataValue("assistant_name");
+  const resolvedAssistantShortName = getResolvedAppDataValue(
+    "assistant_shortName"
+  );
+  const resolvedAssistantAvatar = getResolvedAppDataNode("assistant_avatar");
+  const resolvedAssistantAvatarColor = getResolvedAppDataValue(
+    "assistant_avatar_color",
+    { allowedValues: defaultColors }
+  ) as DefaultColor | undefined;
+  const resolvedAssistantShowTitle =
+    getResolvedAppDataBoolean("assistant_show_title") || false;
+
+  const resolvedUserName = getResolvedAppDataValue("user_name");
+  const resolvedUserInitials = getResolvedAppDataValue("user_initials");
+  const resolvedUserAvatar = getResolvedAppDataNode("user_avatar");
+  const resolvedUserAvatarColor = getResolvedAppDataValue("user_avatar_color", {
+    allowedValues: defaultColors,
+  }) as DefaultColor | undefined;
+  const resolvedUserShowTitle =
+    getResolvedAppDataBoolean("user_show_title") || false;
+
+  const resolvedSystemName = getResolvedAppDataValue("system_name");
+  const resolvedSystemInitials = getResolvedAppDataValue("system_initials");
+  const resolvedSystemAvatar = getResolvedAppDataNode("system_avatar");
+  const resolvedSystemAvatarColor = getResolvedAppDataValue(
+    "system_avatar_color",
+    { allowedValues: defaultColors }
+  ) as DefaultColor | undefined;
+  const resolvedSystemShowTitle =
+    getResolvedAppDataBoolean("system_show_title") || false;
+
+  const resolvedUseQuestions =
+    getResolvedAppDataBoolean("use_questions") || false;
+  const resolvedQuestionsTitle = getResolvedAppDataValue("questions_title");
+  const resolvedTitle = getResolvedAppDataValue("title");
+  const resolvedSubtitle = getResolvedAppDataValue("subtitle");
+  const resolvedLabel = getResolvedAppDataValue("label");
+  const resolvedReadMoreText = getResolvedAppDataValue("read_more_text");
+  const resolvedReadMoreLinkText = getResolvedAppDataValue(
+    "read_more_link_text"
+  );
+  const resolvedReadMoreLinkUrl = getResolvedAppDataValue("read_more_link_url");
+
+  const assistantAvatarRenderer = imageRenderer;
+  if (resolvedAssistantAvatar) {
+    assistantAvatarRenderer.setImage(resolvedAssistantAvatar);
+  }
 
   const assistant: AssistantInfo = {
-    name: appData.get(`assistant_name`) as string,
-    shortName: appData.get(`assistant_shortName`) as string,
-    avatar: avatar ? ReactHtmlParser(avatarRender.render())[0] : undefined,
+    name: resolvedAssistantName || "",
+    shortName: resolvedAssistantShortName || "",
+    avatar: resolvedAssistantAvatar
+      ? ReactHtmlParser(assistantAvatarRenderer.render())[0]
+      : undefined,
   };
 
-  const useQuestions = appData.get(`use_questions`) as boolean;
-  const numberOfQuestions = parseInt(appData.get(`questions_count`) as string);
-  const questions = useQuestions
+  const numberOfQuestions = parseInt(appData.get("questions_count") as string);
+  const questions = resolvedUseQuestions
     ? [
-        appData.get(`question_1`) as string,
-        appData.get(`question_2`) as string,
-        appData.get(`question_3`) as string,
-        appData.get(`question_4`) as string,
-        appData.get(`question_5`) as string,
+        getResolvedAppDataValue("question_1"),
+        getResolvedAppDataValue("question_2"),
+        getResolvedAppDataValue("question_3"),
+        getResolvedAppDataValue("question_4"),
+        getResolvedAppDataValue("question_5"),
       ]
         .slice(0, numberOfQuestions)
-        .filter((quest) => !!quest)
+        .filter((quest): quest is string => Boolean(quest))
     : undefined;
-  const questionsTitle = useQuestions
-    ? (appData.get(`questions_title`) as string)
+  const questionsTitle = resolvedUseQuestions
+    ? resolvedQuestionsTitle
     : undefined;
 
   const mobileBreakpoint = `${globalAppData.get(
-    `mobile_breakpoint`
-  )}${globalAppData.get(`mobile_breakpoint_unit`)}`;
+    "mobile_breakpoint"
+  )}${globalAppData.get("mobile_breakpoint_unit")}`;
 
   const assistantOptions = {
-    color: appData.get(`assistant_avatar_color`) as DefaultColor,
-    showTitle: appData.get(`$assistant_show_title`) as boolean,
+    color: resolvedAssistantAvatarColor || defaultAssistantColor,
+    showTitle: resolvedAssistantShowTitle,
   };
 
   const mainIcon = globalAppData.getNode(`${version}_header_icon`);
@@ -59,37 +133,38 @@ router.get("/", (_req, res) => {
   mainIconRenderer.setImage(mainIcon);
   const icon = ReactHtmlParser(mainIconRenderer.render())[0];
 
-  const userAvatar = appData.getNode(`user_avatar`);
-  const userAvatarRender = imageRenderer;
-  userAvatarRender.setImage(userAvatar);
-
+  const userAvatarRenderer = imageRenderer;
+  if (resolvedUserAvatar) {
+    userAvatarRenderer.setImage(resolvedUserAvatar);
+  }
   const user = {
-    color: appData.get(`user_avatar_color`) as DefaultColor,
-    title: appData.get(`user_name`) as string,
-    avatar: userAvatar
-      ? ReactHtmlParser(userAvatarRender.render())[0]
+    color: resolvedUserAvatarColor || (defaultUserColor as DefaultColor),
+    title: resolvedUserName || defaultUserTitle,
+    avatar: resolvedUserAvatar
+      ? ReactHtmlParser(userAvatarRenderer.render())[0]
       : undefined,
-    initials: appData.get(`user_initials`) as string,
-    showTitle: appData.get(`user_show_title`) as boolean,
+    initials: resolvedUserInitials || defaultUserInitials,
+    showTitle: resolvedUserShowTitle,
   };
 
-  const systemAvatar = appData.getNode(`system_avatar`);
-  const systemAvatarRender = imageRenderer;
-  systemAvatarRender.setImage(systemAvatar);
+  const systemAvatarRenderer = imageRenderer;
+  if (resolvedSystemAvatar) {
+    systemAvatarRenderer.setImage(resolvedSystemAvatar);
+  }
   const system =
-    appData.get(`system_show`) === "custom"
+    appData.get("system_show") === "custom"
       ? {
-          color: appData.get(`system_avatar_color`) as DefaultColor,
-          title: appData.get(`system_name`) as string,
-          avatar: systemAvatar
-            ? ReactHtmlParser(systemAvatarRender.render())[0]
+          color: resolvedSystemAvatarColor || defaultSystemColor,
+          title: resolvedSystemName || defaultSystemTitle,
+          avatar: resolvedSystemAvatar
+            ? ReactHtmlParser(systemAvatarRenderer.render())[0]
             : undefined,
-          initials: appData.get(`system_initials`) as string,
-          showTitle: appData.get(`system_show_title`) as boolean,
+          initials: resolvedSystemInitials || defaultSystemInitials,
+          showTitle: resolvedSystemShowTitle,
         }
       : undefined;
 
-  const fontbase = parseFloat(globalAppData.get(`fontbase`) as string);
+  const fontbase = parseFloat(globalAppData.get("fontbase") as string);
 
   const header = {
     inverted: !!globalAppData.get(
@@ -121,11 +196,14 @@ router.get("/", (_req, res) => {
   };
 
   const readmore = {
-    text: appData.get(`read_more_text`) as string,
-    link: {
-      text: appData.get(`read_more_link_text`) as string,
-      url: appData.get(`read_more_link_url`) as string,
-    },
+    text: resolvedReadMoreText,
+    link:
+      resolvedReadMoreLinkText && resolvedReadMoreLinkUrl
+        ? {
+            text: resolvedReadMoreLinkText,
+            url: resolvedReadMoreLinkUrl,
+          }
+        : undefined,
   };
 
   const border = {
@@ -142,13 +220,13 @@ router.get("/", (_req, res) => {
   const options: Options = {
     fontface: {
       DEFAULT:
-        globalAppData.get(`font_default`) === "theme"
+        globalAppData.get("font_default") === "theme"
           ? "var(--env-font-family)"
-          : (globalAppData.get(`font_default_value`) as string),
+          : (globalAppData.get("font_default_value") as string),
       header:
-        globalAppData.get(`font_header`) === "theme"
+        globalAppData.get("font_header") === "theme"
           ? "var(--env-font-family)"
-          : (globalAppData.get(`font_header_value`) as string),
+          : (globalAppData.get("font_header_value") as string),
     },
     questions,
     questionsTitle,
@@ -158,45 +236,42 @@ router.get("/", (_req, res) => {
     user,
     system,
     colorscheme: globalAppData.get("colorscheme") as ColorSchemeMode,
-    title: appData.get(`title`) as string,
-    subtitle: appData.get(`subtitle`) as string,
-    label: appData.get(`label`) as string,
+    title: resolvedTitle,
+    subtitle: resolvedSubtitle,
+    label: resolvedLabel,
     fontbase,
     variant: globalAppData.get(`${version}_variant`) as Options["variant"],
     readmore,
-    showReferences: (appData.get(`show_references`) as boolean) ?? true,
+    showReferences: resolvedShowReferences ?? true,
     rounded,
     icon: icon ? icon?.props?.src : undefined,
     border,
     css: globalAppData.get(`${version}_css`) as string,
-    rememberSession: (appData.get(`remember_session`) as boolean) ?? false,
-    appSessionId: (appData.get(`app_session_id`) as string) || "default",
+    rememberSession: resolvedRememberSession,
+    appSessionId: resolvedAppSessionId,
   };
 
   const viewMode = versionUtil.getCurrentVersion();
   const isEditing = viewMode === versionUtil.OFFLINE_VERSION;
 
-  const shadowdom = globalAppData.get(`shadowdom`) as boolean;
+  const shadowdom = globalAppData.get("shadowdom") as boolean;
 
-  const useUser = appData.get(`use_user`) as boolean;
+  const useUser = appData.get("use_user") as boolean;
   const currentUser = portletContextUtil.getCurrentUser();
 
   const username = useUser
     ? (properties.get(currentUser, "name") as string) || ""
     : "";
 
-  const assistantId = appData.get(`assistantId`) as string;
-  const is_group_chat = appData.get(`is_group_chat`) as boolean;
-  const app = appData.get(`app`) as string;
-  const stream = globalAppData.get(`stream`) as boolean;
-  const hash = getHash(username, assistantId, app, salt);
+  const stream = globalAppData.get("stream") as boolean;
+  const hash = getHash(username, resolvedAssistantId, resolvedApp, salt);
 
-  const apiBaseUrl = globalAppData.get(`server_url`) as string;
+  const apiBaseUrl = globalAppData.get("server_url") as string;
   const settings: AssistantSettings = {
     user: username,
-    assistantId,
-    is_group_chat,
-    app,
+    assistantId: resolvedAssistantId,
+    is_group_chat: resolvedGroupChat,
+    app: resolvedApp,
     hash,
   };
 

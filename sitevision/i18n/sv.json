@@ -47,16 +47,13 @@
   "remember_session": "Behåll session vid navigering",
   "show_references": "Visa referenser i chatflödet",
   "app_session_id": "Sessionsnamn",
-
   "users": "Användare",
-
   "fonts": "Typsnitt",
   "font_default": "Standardtypsnitt",
   "font_header": "Rubriktypsnitt",
   "font_family": "Typsnitt",
   "base_font_size": "Basfontstorlek",
   "global": "Globala inställningar (för båda versioner)",
-
   "additional_styling": "CSS",
   "css": "CSS",
   "color": "Färg",
@@ -72,28 +69,23 @@
   "primary": "Primär",
   "secondary": "Sekundär",
   "neutral": "neutral",
-
   "lightmode": "Ljust färgläge (Light mode)",
   "darkmode": "Mörkt färgläge (Dark mode)",
   "follow_system": "Följ användarens inställningar",
-
   "use_from_theme": "Använd från temat",
   "use_from_app": "Använd appens standard",
   "use_other": "Använd annat",
   "use_custom": "Använd egen",
+  "use_metadata": "Använd metadata",
   "use_assistant_titles": "Använd assistentens namn och titel",
-
   "show_name_in_feed": "Visa namn i chatflöde",
-
   "menu": "Meny",
   "button": "Knapp",
   "buttons": "Knappar",
   "new_question": "Ny fråga",
-
   "light": "ljus",
   "dark": "mörk",
   "inverted": "Inverterade färger",
-
   "pre_defined_questions": "Fördefinierade frågor",
   "use_pre_defined_questions": "Använd fördefinierade frågor",
   "heading": "Rubrik",
@@ -105,11 +97,8 @@
   "link_text": "Länktext",
   "question": "Fråga",
   "number_of_questions": "Antal frågor",
-
   "responsiveness": "Responsivitet",
   "small_screen_breakpoint": "Brytpunkt för små skärmar",
-
   "editorial": "Redaktionellt",
-
   "use_version_2": "Använd conversation version 2"
 }
