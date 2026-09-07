@@ -15,7 +15,7 @@
   "assistant_info": "Assistant information",
   "description": "Description",
   "initials": "Initials (used if avatar image is missing)",
-  "avatar_color": "Bakgrundsfärg, avatar (används om avatarbild saknas)",
+  "avatar_color": "Background color, avatar (used if avatar image is missing)",
   "stream_answers": "Stream answers",
   "use_shadow_dom": "Use shadow dom",
   "use_user": "Include username",
@@ -24,19 +24,15 @@
   "remember_session": "Keep session alive",
   "show_references": "Show references in chat feed",
   "app_session_id": "Session name",
-
   "name": "Name",
   "title": "Title",
   "avatar": "Avatar",
-
   "users": "Users",
-
   "fonts": "Fonts",
   "font_default": "Default font",
   "font_header": "Header font",
   "font_family": "Font family",
   "base_font_size": "Base font size",
-
   "colors": "Colors",
   "black": "Black",
   "header": "Header",
@@ -47,32 +43,31 @@
   "text": "Text",
   "primary": "Primary",
   "secondary": "Secondary",
-
   "lightmode": "Light mode",
   "darkmode": "Dark mode",
-
   "use_from_theme": "Use from theme",
   "use_from_app": "Use app standard",
   "use_other": "Use other",
   "use_custom": "Use custom",
+  "use_metadata": "Use metadata",
   "use_assistant_titles": "Use assistant name and title",
-
   "show_name_in_feed": "Show name in chat feed",
-
   "menu": "Menu",
   "button": "Button",
   "buttons": "Buttons",
   "new_question": "New question",
-
   "light": "Light",
   "dark": "Dark",
   "inverted": "Inverted colors",
-
   "pre_defined_questions": "Pre-defined questions",
   "use_pre_defined_questions": "Use pre-defined questions",
   "heading": "Heading",
   "subheading": "Subtitle",
   "headings": "Headings",
+  "label": "Label",
+  "read_more": "'Read more' link",
+  "link_url": "Link (url)",
+  "link_text": "Link text",
   "question": "Question",
   "number_of_questions": "Number of questions",
   "positioning": "Positioning",
@@ -85,9 +80,8 @@
   "distance_from_right": "Distance from right",
   "distance_from_top": "Distance from top (in fullscreen)",
   "distance_from_bottom": "Distance from bottom",
-
   "responsiveness": "Responsiveness",
   "small_screen_breakpoint": "Breakpoint for small screens",
-
+  "editorial": "Editorial",
   "use_version_2": "Use conversation version 2"
 }
