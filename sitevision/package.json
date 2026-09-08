@@ -1,13 +1,13 @@
 {
   "name": "sv-webapps-service-assistant",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "type": "module",
   "dependencies": {
     "@shared": "file:../shared",
     "@sitevision/api": "^2026.8.1",
     "@sitevision/sitevision-scripts": "^3.5.0",
-    "@sk-web-gui/ai": "^4.6.0",
-    "@sk-web-gui/react": "^3.1.2",
+    "@sk-web-gui/ai": "^4.7.0",
+    "@sk-web-gui/react": "^3.1.3",
     "cross-env": "^10.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -36,7 +36,7 @@
     "autoprefixer"
   ],
   "devDependencies": {
-    "@types/node": "26.4.0",
+    "@types/node": "24.13.3",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.1",
     "@types/react-html-parser": "^2.0.7",
