@@ -24,6 +24,17 @@
   word-break: break-word;
 }
 
+/* Heading levels express structure; preserve the module's existing typography. */
+.sk-serviceroot .sk-ai-service-module-header > :is(h1, h2, h3, h4, h5, h6) {
+  font: inherit;
+  margin: 0;
+}
+
+.sk-serviceroot .sk-ai-service-module-questions-title > :is(h1, h2, h3, h4, h5, h6) {
+  @apply text-h3-sm md:text-h3-md xl:text-h3-lg;
+  margin: 0;
+}
+
 .sk-ai-assistant-presentation-header-title {
   @apply font-header;
 }

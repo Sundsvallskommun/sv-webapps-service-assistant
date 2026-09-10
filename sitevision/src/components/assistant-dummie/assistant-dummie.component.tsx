@@ -4,6 +4,11 @@ import React from "react";
 import styles from "./assistant-dummie.styling.scss";
 import HtmlParser from "react-html-parser";
 import type { Options } from "@shared";
+import {
+  getHeadingLevel,
+  getQuestionsHeadingLevel,
+  headingParserOptions,
+} from "@shared";
 
 interface AssistantDummieProps {
   assistant: AssistantInfo;
@@ -14,6 +19,9 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
   options,
 }) => {
   const [isClient, setIsClient] = React.useState<boolean>(false);
+  const Heading = getHeadingLevel(options?.headingLevel);
+  const QuestionsHeading = getQuestionsHeadingLevel(options?.headingLevel);
+  const questionsTitle = options?.questionsTitle ?? "Vanliga frågor";
 
   React.useEffect(() => {
     setIsClient(!!window && !!document);
@@ -252,7 +260,11 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
                       <Avatar size="md" imageUrl={options?.icon}></Avatar>
                     </span>
                   )}
-                  {options?.title && HtmlParser(options.title)}
+                  <Heading>
+                    {options?.title
+                      ? HtmlParser(options.title, headingParserOptions)
+                      : "Hej, vad vill du ha hjälp med?"}
+                  </Heading>
                 </header>
                 {options?.subtitle && HtmlParser(options.subtitle)}
                 <div className="sk-ai-service-module-form">
@@ -262,21 +274,29 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
                         {options?.helperText}
                       </div>
                     )}
-                    <label className="sk-form-label sk-ai-service-module-form-label">
-                      {options?.label}
-                    </label>
+                    <form>
+                      <label
+                        htmlFor="sv-service-module-dummie-input"
+                        className="sk-form-label sk-ai-service-module-form-label"
+                      >
+                        {options?.label}
+                      </label>
 
-                    <form className="sk-ai-service-module-form-input-wrapper">
-                      <div className="sk-form-input-group sk-form-input-group-lg sk-ai-service-module-form-input-group sk-ai-inputsection-group">
-                        <input className="sk-form-input sk-form-input-lg sk-ai-inputsection-input" />
+                      <div className="sk-ai-service-module-form-input-wrapper">
+                        <div className="sk-form-input-group sk-form-input-group-lg sk-ai-service-module-form-input-group sk-ai-inputsection-group">
+                          <input
+                            id="sv-service-module-dummie-input"
+                            className="sk-form-input sk-form-input-lg sk-ai-inputsection-input"
+                          />
 
-                        <div className="sk-form-input-addin sk-form-input-addin-right sk-form-input-addin-lg">
-                          <Button
-                            size="sm"
-                            className="sk-ai-inputsection-button"
-                          >
-                            Skicka
-                          </Button>
+                          <div className="sk-form-input-addin sk-form-input-addin-right sk-form-input-addin-lg">
+                            <Button
+                              size="sm"
+                              className="sk-ai-inputsection-button"
+                            >
+                              Skicka
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </form>
@@ -318,10 +338,8 @@ export const AssistantDummie: React.FC<AssistantDummieProps> = ({
                   data-inverted={inverted}
                 >
                   <div className="sk-ai-service-module-questions-title">
-                    {typeof options?.questionsTitle === "string" ? (
-                      <h3>{options?.questionsTitle}</h3>
-                    ) : (
-                      options?.questionsTitle
+                    {questionsTitle && (
+                      <QuestionsHeading>{questionsTitle}</QuestionsHeading>
                     )}
                   </div>
                   <ul className="sk-ai-service-module-questions-list">

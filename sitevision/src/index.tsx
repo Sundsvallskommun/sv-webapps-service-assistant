@@ -12,6 +12,7 @@ import { ServerSideApp } from "./components/serverside-app/serverside-app.compon
 import { getHash } from "./utils/hash.service";
 import globalAppData from "@sitevision/api/server/globalAppData";
 import type { DefaultColor, Options } from "@shared";
+import { getHeadingLevel, headingLevels } from "@shared";
 import type { ColorSchemeMode } from "@sk-web-gui/react";
 import {
   getResolvedAppDataBoolean,
@@ -237,6 +238,9 @@ router.get("/", (_req, res) => {
     system,
     colorscheme: globalAppData.get("colorscheme") as ColorSchemeMode,
     title: resolvedTitle,
+    headingLevel: getHeadingLevel(
+      getResolvedAppDataValue("heading_level", { allowedValues: headingLevels })
+    ),
     subtitle: resolvedSubtitle,
     label: resolvedLabel,
     fontbase,

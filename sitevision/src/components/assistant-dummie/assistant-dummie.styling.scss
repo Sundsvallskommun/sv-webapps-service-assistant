@@ -334,13 +334,14 @@
       &-header {
         position: relative;
         font-weight: bold;
-        &,
         > * {
           margin: 0;
           width: 100%;
           font-family: var(--font-header);
           font-size: 2.5rem;
           line-height: 3rem;
+          font-weight: bold;
+          color: inherit;
         }
 
         &[data-variant="secondary"],

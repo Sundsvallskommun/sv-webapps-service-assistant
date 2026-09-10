@@ -1,3 +1,6 @@
+import fs from "fs";
+import path from "path";
+
 const loadConfigModule = async () => {
   jest.resetModules();
   await import("./config.js");
@@ -9,6 +12,42 @@ const flushUi = async () => {
 };
 
 describe("sitevision config metadata behavior", () => {
+  test("heading selector defaults to h2 and preserves the manual value when switching metadata", async () => {
+    document.body.innerHTML = fs
+      .readFileSync(path.join(__dirname, "index.html"), "utf8")
+      .replace(/<%[\s\S]*?%>/g, "");
+    const select = document.querySelector('select[name="heading_level"]');
+    const toggle = document.querySelector(
+      'input[name="heading_level__useMetadata"]'
+    );
+    const metadata = document.querySelector(
+      'select[name="heading_level__metadata"]'
+    );
+    expect(Array.from(select.options, (option) => option.value)).toEqual([
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+    ]);
+    expect(select.value).toBe("h2");
+    select.value = "h5";
+    await loadConfigModule();
+    await flushUi();
+    expect(select.value).toBe("h5");
+    toggle.checked = true;
+    toggle.dispatchEvent(new Event("change", { bubbles: true }));
+    expect(select.hidden).toBe(true);
+    expect(metadata.closest("[data-metadata-selector-container]").hidden).toBe(
+      false
+    );
+    toggle.checked = false;
+    toggle.dispatchEvent(new Event("change", { bubbles: true }));
+    expect(select.hidden).toBe(false);
+    expect(select.value).toBe("h5");
+  });
+
   beforeEach(() => {
     jest.useFakeTimers();
     document.body.innerHTML = "";
