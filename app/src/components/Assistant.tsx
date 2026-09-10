@@ -3,14 +3,22 @@ import { Avatar } from "@sk-web-gui/react";
 import HtmlParser from "react-html-parser";
 import { useMediaQuery } from "usehooks-ts";
 import { useAppSessions } from "../services/useAppSessions";
-import { useEffect } from "react";
-import { Options } from "@shared";
+import React, { useEffect } from "react";
+import type { Options } from "@shared";
+import {
+  getHeadingLevel,
+  getQuestionsHeadingLevel,
+  headingParserOptions,
+} from "@shared";
 
 export const Assistant = () => {
   const options = useAssistantStore(
     (state) => state.options,
   ) as unknown as Options;
   const settings = useAssistantStore((state) => state.settings);
+  const Heading = getHeadingLevel(options?.headingLevel);
+  const QuestionsHeading = getQuestionsHeadingLevel(options?.headingLevel);
+  const questionsTitle = options?.questionsTitle ?? "Vanliga frågor";
   const isMobile = useMediaQuery(
     `screen and (max-width: ${options?.mobileBreakpoint || "1023px"})`,
   );
@@ -40,14 +48,22 @@ export const Assistant = () => {
     typeof AIServiceModule.Component
   > = {
     isMobile,
-    questionsTitle: options?.questionsTitle,
+    questionsTitle: questionsTitle ? (
+      <QuestionsHeading>{questionsTitle}</QuestionsHeading>
+    ) : questionsTitle,
     questions: options?.questions,
     inverted:
       options?.variant === "secondary"
         ? !options?.colors?.header?.inverted
         : options?.colors?.header?.inverted,
     variant: options?.variant,
-    header: options?.title ? HtmlParser(options.title) : undefined,
+    header: (
+      <Heading>
+        {options?.title
+          ? HtmlParser(options.title, headingParserOptions)
+          : "Hej, vad vill du ha hjälp med?"}
+      </Heading>
+    ),
     children: options?.subtitle ? HtmlParser(options.subtitle) : undefined,
     label: options?.label,
     readmore: options?.readmore?.link?.url ? options.readmore : undefined,

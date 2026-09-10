@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "lib": ["ES2016", "DOM"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "declaration": true,
+    "rootDir": ".",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noEmitOnError": true
+  },
+  "include": ["index.ts", "headings.ts", "types/**/*.ts"]
+}
