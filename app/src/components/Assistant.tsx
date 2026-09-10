@@ -58,6 +58,7 @@ export const Assistant = () => {
     session,
     onSendQuery: sendQuery,
     onNewSession: newSession,
+    inlineReferenceMode: "inline",
   };
 
   return <AIServiceModule {...props} />;
