@@ -1620,7 +1620,7 @@
   integrity sha512-ua5U6V66gDcbLZe4P2QeyNgPp4YWD1ymGA6j3n+s8CGExtrCPe64v+g4mvpT8Bnb985R96e4zFT61+m0YCwqMg==
 
 "@shared@file:../shared":
-  version "1.0.3"
+  version "1.1.0"
 
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"

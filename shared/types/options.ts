@@ -1,6 +1,7 @@
-import { DefaultColor } from "./defaultColors";
-import { ColorSchemeMode } from "@sk-web-gui/react";
-import { AIServiceModule } from "@sk-web-gui/ai";
+import type { DefaultColor } from "./defaultColors";
+import type { ColorSchemeMode } from "@sk-web-gui/react";
+import type { AIServiceModule } from "@sk-web-gui/ai";
+import type { HeadingLevel } from "../headings";
 
 export interface Options {
   colorscheme: ColorSchemeMode;
@@ -40,6 +41,7 @@ export interface Options {
   };
 
   title?: string;
+  headingLevel?: HeadingLevel;
   subtitle?: string;
   label?: string;
   fontbase?: number;

@@ -1,5 +1,8 @@
 {
   "appData": {
+    "heading_level": "h2",
+    "heading_level__useMetadata": false,
+    "heading_level__metadata": "",
     "use_user": false,
     "assistantId": "",
     "assistantId__useMetadata": false,
