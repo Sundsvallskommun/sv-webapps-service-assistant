@@ -39,3 +39,6 @@ Sitevision webbapp.
 Insticksmodul till Sitevision.
 
 Läs om hur den fungerar i `./sitevision/README.md`.
+
+För redaktörer finns en separat
+[guide för att ställa in appen i Sitevision](./docs/redaktorsguide-sitevision.md).
