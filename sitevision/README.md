@@ -1,5 +1,10 @@
 # Service assistant - Sitevision webapp
 
+## Editor documentation
+
+See the Swedish [Sitevision editor guide](../docs/redaktorsguide-sitevision.md)
+for instructions on configuring the webapp and troubleshooting CORS issues.
+
 ## Developing
 
 Create `.dev_properties.json` with your environment settings.
